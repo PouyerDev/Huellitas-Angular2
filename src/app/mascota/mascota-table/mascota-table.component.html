@@ -1,0 +1,118 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mostrar Todas Mascotas</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/css/landing.css}" />
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<section id="todas-mascotas">
+  <h1 id="todas-mascotas-title">Lista de Mascotas</h1>
+  <button class="btn btn-primary" (click)="mostrarForm = !mostrarForm">
+    Agregar Mascota
+  </button>
+  <ng-container *ngIf="mostrarForm">
+    <app-mascota-form (addMascotaEvent)="agregarMascota($event)">
+      (ocultarFormularioEvent)="ocultarForm($event)"</app-mascota-form
+    >
+  </ng-container>
+  <section id="mascotas-table">
+    <br />
+    <div id="mascota-container-todas" *ngFor="let mascota of mascotasList">
+      <div class="mascota-info">
+        <img class="img-mascota-todas" src="{{ mascota.foto }}" alt="mascota" />
+        <div class="datos">
+          <h2>{{ mascota.nombre }}</h2>
+          <p>Edad: {{ mascota.edad }}</p>
+          <p>Raza: {{ mascota.raza }}</p>
+          <p>Peso: {{ mascota.peso }}</p>
+          <p>Enfermedad: {{ mascota.enfermedad }}</p>
+          <p>Estado: {{ mascota.estado }}</p>
+        </div>
+      </div>
+      <div class="mascota-actions">
+        <a [routerLink]="['/mascotas/detail', mascota.id]">
+          <button
+            class="more-info fa-solid fa-circle-info"
+            style="color: #ff7474; font-size: 1.8vw; margin-top: 2vw"
+          >
+            Ver Detalle
+          </button>
+        </a>
+        <button
+          class="delete-btn fa-solid fa-trash"
+          style="color: #eb0000"
+          (click)="eliminarMascota(mascota)"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+
+
+
+<!-- Path: src/app/mascota/mascota-table/mascota-table.component.html -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Edad</th>
+      <th scope="col">raza</th>
+      <th scope="col">edad</th>
+      <th scope="col">peso</th>
+      <th scope="col">enfermedad</th>
+      <th scope="col">estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mascota of mascotasList">
+      <ng-container *ngIf="mascota.estado === true">
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.edad }}</td>
+        <td>{{ mascota.raza }}</td>
+        <td>{{ mascota.edad }}</td>
+        <td>{{ mascota.peso }}</td>
+        <td>{{ mascota.enfermedad }}</td>
+      </ng-container>
+
+      <td>
+        <button class="btn btn-primary" (click)="mostrarMascota(mascota)">
+          Select
+        </button>
+        <button class="btn btn-danger" (click)="eliminarMascota(mascota)">
+          Eliminar
+        </button>
+        <a [routerLink]="['/mascotas/detail', mascota.id]">
+          <button class="btn btn-warning">Ver Detalle</button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-mascota-detail [mascota]="selectedMascota"></app-mascota-detail>
