@@ -8,6 +8,10 @@ azul            #CEE3FA
 lima pastel     #CDFADB
 */
 /* Mascotas table */
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 #mascota-container,
 #cliente-container {
     padding: 2vw;

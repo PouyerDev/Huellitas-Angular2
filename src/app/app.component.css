@@ -14,7 +14,17 @@ lima pastel     #CDFADB
     scroll-behavior: smooth;
     scroll-margin-top: 7vw;
 }
-
+.btn-primary{
+    background-color: #fabf78;
+    color: white;
+    border: none;
+}
+.btn-primary:hover{
+    color: black;
+    background-color: #ff7474;
+    border: none;
+   
+}
 /*------------------------------------------Boton general---------------------------------------------------*/
 #button-huellitas {
     border-radius: 0.5vw;
@@ -77,10 +87,9 @@ button {
     width: 100%;
     display: flex;
     /*margen 0 arriba y abajo, auto derecha e izquierda*/
-    margin: 0 auto;
+    margin: 0;
     /*para que este por encima de otros elvwentos*/
     z-index: 9999;
-    padding-left: 0.5vw;
 }
 
 .navbar-full h2 {

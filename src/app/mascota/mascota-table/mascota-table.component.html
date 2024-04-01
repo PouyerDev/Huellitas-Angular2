@@ -39,7 +39,6 @@
     >
   </ng-container>
   <section id="mascotas-table">
-    <br />
     <div id="mascota-container-todas" *ngFor="let mascota of mascotasList">
       <div class="mascota-info">
         <img class="img-mascota-todas" src="{{ mascota.foto }}" alt="mascota" />
@@ -48,17 +47,15 @@
           <p>Edad: {{ mascota.edad }}</p>
           <p>Raza: {{ mascota.raza }}</p>
           <p>Peso: {{ mascota.peso }}</p>
-          <p>Enfermedad: {{ mascota.enfermedad }}</p>
-          <p>Estado: {{ mascota.estado }}</p>
         </div>
       </div>
       <div class="mascota-actions">
         <a [routerLink]="['/mascotas/detail', mascota.id]">
           <button
             class="more-info fa-solid fa-circle-info"
-            style="color: #ff7474; font-size: 1.8vw; margin-top: 2vw"
+            style="color: black;"
           >
-            Ver Detalle
+            Detalle
           </button>
         </a>
         <button
@@ -76,8 +73,8 @@
 
 
 
-
-<!-- Path: src/app/mascota/mascota-table/mascota-table.component.html -->
+<!--
+ Path: src/app/mascota/mascota-table/mascota-table.component.html 
 <table class="table">
   <thead>
     <tr>
@@ -116,3 +113,4 @@
   </tbody>
 </table>
 <app-mascota-detail [mascota]="selectedMascota"></app-mascota-detail>
+-->
