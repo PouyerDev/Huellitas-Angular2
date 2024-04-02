@@ -4,28 +4,13 @@
   <title>Mostrar Todas Mascotas</title>
   <link rel="stylesheet" th:href="@{/css/style.css}" />
   <link rel="stylesheet" th:href="@{/css/landing.css}" />
-  <link
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet" />
 </head>
 
 <section id="todas-mascotas">
@@ -35,8 +20,7 @@
   </button>
   <ng-container *ngIf="mostrarForm">
     <app-mascota-form (addMascotaEvent)="agregarMascota($event)">
-      (ocultarFormularioEvent)="ocultarForm($event)"</app-mascota-form
-    >
+      (ocultarFormularioEvent)="ocultarForm($event)"</app-mascota-form>
   </ng-container>
   <section id="mascotas-table">
     <div id="mascota-container-todas" *ngFor="let mascota of mascotasList">
@@ -51,20 +35,19 @@
       </div>
       <div class="mascota-actions">
         <a [routerLink]="['/mascotas/detail', mascota.id]">
-          <button
-            class="more-info fa-solid fa-circle-info"
-            style="color: black;"
-          >
-            Detalle
-          </button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa074" class="bi bi-info-circle-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+          </svg>
         </a>
-        <button
-          class="delete-btn fa-solid fa-trash"
-          style="color: #eb0000"
-          (click)="eliminarMascota(mascota)"
-        >
-          Eliminar
-        </button>
+        <a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="red" class="bi bi-trash3-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>

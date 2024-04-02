@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Mascota } from '../mascota';
+
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota.service';
 

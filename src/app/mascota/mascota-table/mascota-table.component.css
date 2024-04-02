@@ -77,7 +77,7 @@ lima pastel     #CDFADB
     padding: 1vw;
     margin: 0 1vw;
     width: 40vw;
-    height: 16vw;
+    height: 18vw auto;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
@@ -113,26 +113,29 @@ lima pastel     #CDFADB
     color: white;
 }
 
-
-
-#mascota-container-todas .mascota-actions button {
-    border-radius: 40px;
-    border-style: none;
-    padding: 1vw;
-    margin: 1vw 0vw;
-    width: 100%;
-}
-
 #mascota-container-todas .mascota-actions {
     display: flex;
     flex-direction: column;
     width: fit-content;
+    justify-content: space-evenly;
     padding: 1vw;
     font-size: 16px;
-
 }
 
+a{
+    height: 3vw;
+    margin: 1vw 0vw;
+}
 
+svg{
+    height: 3vw;
+    width: 3vw;
+    font-size: 20vw;
+}
+
+a:hover svg {
+    fill: black; /* Cambia el color a rojo (#FF0000) al hacer hover */
+  }
 
 #button_back {
     background-color: #FFCF96;
