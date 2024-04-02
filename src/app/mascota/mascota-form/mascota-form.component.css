@@ -10,10 +10,11 @@
 }
 
 .form-general-group {
+    width: 40vw;
     text-align: center;
     background-color: #ffd09691;
     border-radius: 1vw;
-    margin: 0 27vw;
+    margin: 0 22vw;
     margin-top: 3vw;
     padding: 2vw;
     padding-top: 1vw;
@@ -22,11 +23,11 @@
 
 .form-general-group h2 {
     font-size: 2vw;
-    margin-bottom: 1vw;
+    margin-bottom: 0.5vw;
 }
 
 .form-group {
-    padding: 1vw;
+    padding: 0.5vw;
 }
 
 .form-group input {

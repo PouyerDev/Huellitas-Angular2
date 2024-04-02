@@ -24,7 +24,7 @@ lima pastel     #CDFADB
 
 .add-btn {
     position: relative;
-    left: 1vw;
+    left: 0.5vw;
     transition: all .5s ease;
     color: #ff7474;
     border: 0.2vw solid #ff7474;
