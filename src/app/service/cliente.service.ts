@@ -1,33 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Cliente } from '../model/cliente';
+import { Observable, of } from 'rxjs';
+import { Cliente } from '../model/cliente'; // Assuming you have a Cliente model
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private baseUrl = 'http://localhost:8090/clientes';
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
+
+  clientesList: Cliente[] = [
+    {
+      id: '1',
+      nombre: 'Juan Perez',
+      cedula: '123456789',
+      correo: 'juan@example.com',
+      celular: '1234567890', // Assuming you have celular instead of direccion
+    },
+    {
+      id: '2',
+      nombre: 'Maria Rodriguez',
+      cedula: '987654321',
+      correo: 'maria@example.com',
+      celular: '9876543210',
+    },
+    {
+      id: '3',
+      nombre: 'Pedro Gomez',
+      cedula: '456789123',
+      correo: 'pedro@example.com',
+      celular: '4567891230',
+    },
+  ];
 
   getAllClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`${this.baseUrl}/all`);
+    return of(this.clientesList); // Return an observable of the client list
   }
 
-  getClienteById(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(`${this.baseUrl}/find/${id}`);
+  // You may also implement a method to get a single client by ID
+  getClienteById(id: string): Observable<Cliente | undefined> {
+    return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
   }
-
-  addCliente(cliente: Cliente): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/agregar`, cliente);
-  }
-
-  deleteCliente(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/delete/${id}`);
-  }
-
-  updateCliente(id: number, cliente: Cliente): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/update/${id}`, cliente);
-  }
+  
 }

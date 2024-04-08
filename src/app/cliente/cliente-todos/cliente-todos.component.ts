@@ -21,9 +21,8 @@ export class ClienteTodosComponent implements OnInit {
       this.clientes = clientes;
     });
   }
-  verDetalle(clienteId: number): void {
-    // Here you can navigate to the detailed view of the client
-    // For example, using Angular Router:
-    // this.router.navigate(['/clientes', clienteId]);
+
+  verDetalle(clienteId: string): void {
+
   }
 }

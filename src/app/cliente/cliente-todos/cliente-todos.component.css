@@ -1,0 +1,98 @@
+
+
+#cliente-container {
+    padding: 2vw;
+    margin: 2vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-top: 3vw;
+}
+
+#add-client {
+    margin: 1vw;
+    margin-top: 0;
+    padding: 1vw;
+
+}
+
+.add-btn {
+    position: relative;
+    left: 1vw;
+    transition: all .5s ease;
+    color: #ff7474;
+    border: 0.2vw solid #ff7474;
+    text-align: center;
+    line-height: 1;
+    background-color: rgba(255, 255, 255, 0.353);
+    font-size: 1.2vw;
+    padding: 0.8vw;
+    outline: none;
+    border-radius: 1vw;
+}
+
+.add-btn:hover {
+    color: white;
+    background-color: #ff7474;
+}
+
+.btn-detalle {
+    border-width: 0.15vw;
+    padding: 0.6vw;
+    font-size: 1vw;
+    position: unset;
+    color: #ffa074;
+    border-color: #ffa074;
+}
+
+#todas-mascotas-title {
+    margin: 0;
+}
+
+/* Heading */
+#todas-mascotas-title,
+#todas-clientes-title {
+    text-align: center;
+    padding-top: 2%;
+}
+
+#todos-clientes {
+    margin-top: 3vw;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 6%;
+
+}
+
+.btn-primary{
+    margin-left: 1vw;
+    color: black;
+    background-color: #ff7474;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #ffa074;
+    color: white;
+}
+
+.tabla-general {
+    margin: 0 6vw 0 0vw;
+    padding: 1.5vw;
+    width: 100%;
+    border-collapse: collapse;
+    border: #ff8080 0.3vw solid;
+    border-radius: 40px;
+}
+
+.tabla-general td {
+    padding: 0.5vw;
+    border: #ff8080 0.2vw solid;
+}
+
+.tabla-general th {
+    background-color: #ff8080;
+    color: white;
+    text-align: left;
+    padding: 0.5vw;
+    border: #ff8080 0.2vw solid;
+}

@@ -14,9 +14,9 @@
         <nav class="navbar-options">
             <ng-container [ngSwitch]="userType">
                 <ng-container *ngSwitchCase="'admin'">
-                  <a [routerLink]="['/landing']" class="btn btn-primary">Landing </a>
+                 <!-- <a [routerLink]="['/landing']" class="btn btn-primary">Landing </a> -->
                   <a [routerLink]="['/mascotas']">Mascotas </a>
-                  <a [routerLink]="['/admin']">Acciones Administrador </a>
+                  <a [routerLink]="['/clientes']">Clientes</a>
                 </ng-container>
                 <ng-container *ngSwitchCase="'veterinario'">
                   <button class="btn btn-primary">Acciones Basicas</button>
