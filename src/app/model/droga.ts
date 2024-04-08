@@ -1,4 +1,4 @@
-export class droga {
+export class Droga {
     public id: string ;
     public nombre: string ;
     public precioCompra: number ;

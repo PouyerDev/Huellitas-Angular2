@@ -1,6 +1,6 @@
 import { Mascota } from "../mascota/mascota";
 
-export class tratamiento {
+export class Tratamiento {
     public id: string;
     public descripcion: string;
     public fechaInicio: string;

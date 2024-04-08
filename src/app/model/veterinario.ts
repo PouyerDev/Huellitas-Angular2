@@ -1,4 +1,4 @@
-export class veterinario {
+export class Veterinario {
     public id: string;
     public cedula: string;
     public nombre: string ; 
