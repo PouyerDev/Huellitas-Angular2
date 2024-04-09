@@ -12,10 +12,10 @@ export class VeterinarioService {
   veterinariosList: Veterinario[] = [
     {
       id: '1',
-      nombre: 'Dr. Daniel Perez',
+      nombre: 'Dr. Daniel Gosling',
       cedula: '123456789',
-      especialidad: 'Cirugía',
-      foto: 'url_de_la_foto_1',
+      especialidad: 'Castración',
+      foto: 'https://media.glamourmagazine.co.uk/photos/6138c2682b5bbea008293ea2/master/w_320%2Cc_limit/4-Ryan-Gosling-Doctor-GL_03Apr13_rex_b.jpg',
       numAtenciones: 10
     },
     {
@@ -23,7 +23,7 @@ export class VeterinarioService {
       nombre: 'Dra. Andrea Rodriguez',
       cedula: '987654321',
       especialidad: 'Dermatología',
-      foto: 'url_de_la_foto_2',
+      foto: 'https://cdn.pixabay.com/photo/2024/02/23/15/16/ai-generated-8592228_640.jpg',
       numAtenciones: 15
     },
     {
@@ -31,7 +31,7 @@ export class VeterinarioService {
       nombre: 'Dr. Natalia Gomez',
       cedula: '456789123',
       especialidad: 'Oftalmología',
-      foto: 'url_de_la_foto_3',
+      foto: 'https://img.freepik.com/fotos-premium/medicina-mascota-animales-atencion-salud-concepto-personas-veterinario-feliz-o-sosteniendo-perro-salchicha-clinica-veterinaria_380164-112102.jpg?w=360',
       numAtenciones: 8
     },
   ];

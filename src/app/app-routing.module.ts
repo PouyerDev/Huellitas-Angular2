@@ -8,6 +8,9 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorPageComponent } from './errores/error-page/error-page.component';
 import { ClienteTodosComponent } from './cliente/cliente-todos/cliente-todos.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
+import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
+import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/veterinario-todos.component';
+import { VeterinarioCrearComponent } from './veterinarios/veterinario-crear/veterinario-crear.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -17,8 +20,12 @@ const routes: Routes = [
   { path: 'mascotas/detail/:id', component: MascotaDetailComponent },
   { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
   { path: 'admin', component: AdminPageComponent },
-  { path: '**', component: ErrorPageComponent }
+  { path: 'veterinarios/detail/:id', component: VeterinarioDetailComponent },
+  { path: 'veterinarios/crear', component: VeterinarioCrearComponent },
+  { path: 'veterinarios', component: VeterinarioTodosComponent },
+  { path: '**', component: ErrorPageComponent } 
 ];
+
 
 @NgModule({
   declarations: [],
