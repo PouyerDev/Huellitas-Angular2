@@ -10,9 +10,11 @@ lima pastel     #CDFADB
 
 /*---------------------------------LANDING PAGE---------------------------------------*/
 
+
 * {
     scroll-behavior: smooth;
     scroll-margin-top: 7vw;
+    font-family: 'Poppins', sans-serif;
 }
 .btn-primary{
     background-color: #ffa074;
