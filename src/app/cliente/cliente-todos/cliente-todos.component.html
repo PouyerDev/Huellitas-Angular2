@@ -16,8 +16,8 @@
     <h1 id="todas-mascotas-title">Lista de clientes</h1>
     <div id="cliente-container">
 
-        <!-- Botón para agregar un nuevo cliente -->
-        <a th:href="@{/clientes/add}"><button class="add-btn" id="add-client">Agregar Cliente</button></a>
+       
+        <a class="add-btn" [routerLink]="['/cliente/crear']">Agregar Cliente</a>
 
         <!-- Tabla con todos los clientes -->
 

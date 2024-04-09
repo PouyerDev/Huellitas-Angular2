@@ -8,6 +8,7 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorPageComponent } from './errores/error-page/error-page.component';
 import { ClienteTodosComponent } from './cliente/cliente-todos/cliente-todos.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'mascotas/detail/:id', component: MascotaDetailComponent },
   { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
   { path: 'admin', component: AdminPageComponent },
+  { path: 'cliente/update/:id', component: ClienteFormComponent },
+  { path: 'cliente/crear', component: ClienteFormComponent},  
   { path: '**', component: ErrorPageComponent }
 ];
 

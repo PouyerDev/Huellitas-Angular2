@@ -68,6 +68,7 @@ lima pastel     #CDFADB
 
 
 #container-vista {
+    margin-top: 5vw;
     margin-top: 4vw;
     display: inline-flex;
     justify-content: space-around;
@@ -614,3 +615,7 @@ header .navbar-full {
     cursor: pointer;
     color: white;
 }
+
+
+
+/*---------------------------------dejar---------------------------------------*/

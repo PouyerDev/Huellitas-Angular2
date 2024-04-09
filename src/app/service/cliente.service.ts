@@ -50,4 +50,17 @@ export class ClienteService {
     // Return an observable indicating the deletion was successful
     return of();
   }
+
+  // Método para actualizar un cliente
+  actualizarCliente(cliente: Cliente): Observable<Cliente> {
+    // Lógica para actualizar el cliente en tu backend
+    return of(cliente);
+  }
+
+  // Método para crear un nuevo cliente
+  crearCliente(cliente: Cliente): Observable<Cliente> {
+    this.clientesList.push(cliente); 
+    // Lógica para crear un nuevo cliente en tu backend
+    return of(cliente);
+  }
 }

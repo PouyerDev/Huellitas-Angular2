@@ -20,10 +20,7 @@
             <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
             <p><strong>Correo:</strong> {{ cliente.correo }}</p>
             <p><strong>Celular:</strong> {{ cliente.celular }}</p>
-            <a routerLink="/clientes/update/{{ cliente.id }}"><button class="add-btn btn-detalle">Editar</button></a>
-            <a style="margin-left: 14vw;" routerLink="/clientes/delete/{{ cliente.id }}">
-                <i class="delete-btn fa-solid fa-trash" style="color: #eb0000;"></i>
-            </a>
+            <a [routerLink]="['/cliente/update/' + cliente.id]">Modificar</a>
         </div>
     </div>
 

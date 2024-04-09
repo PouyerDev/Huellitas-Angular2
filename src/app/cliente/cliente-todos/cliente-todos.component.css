@@ -16,12 +16,7 @@
     border: 0.1vw solid #ff7474;
 }
 
-#add-client {
-    margin: 1vw;
-    margin-top: 0;
-    padding: 1vw;
 
-}
 
 .add-btn {
     position: relative;
@@ -36,6 +31,7 @@
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
+    margin-bottom: 3vw;
 }
 
 .add-btn:hover {
@@ -86,7 +82,7 @@ a:hover svg {
 }
 
 .tabla-general {
-    margin: 0 6vw 0 0vw;
+    margin: 2vw 6vw 0 0vw;
     padding: 1.5vw;
     width: 100%;
     border-collapse: collapse;

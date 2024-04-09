@@ -8,6 +8,8 @@ export class Cliente {
     public celular: string;
     mascotas?: Mascota[];
 
+    
+
     constructor(id: string, cedula: string, nombre: string, correo: string, celular: string) {
         this.id = id;
         this.cedula = cedula;
@@ -16,4 +18,7 @@ export class Cliente {
         this.celular = celular;
         
     }
+
+    
+    
 }
