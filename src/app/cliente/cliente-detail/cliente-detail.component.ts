@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/model/cliente';
-
 
 @Component({
   selector: 'app-cliente-detail',
   templateUrl: './cliente-detail.component.html',
   styleUrls: ['./cliente-detail.component.css']
 })
-
 export class ClienteDetailComponent implements OnInit {
   cliente: Cliente = {
     id: '',
@@ -19,11 +17,14 @@ export class ClienteDetailComponent implements OnInit {
     celular: '',
   };
 
-  constructor(private route: ActivatedRoute, private clienteService: ClienteService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private clienteService: ClienteService
+  ) { }
 
   ngOnInit(): void {
     this.getClienteDetail();
-    console.log("Holiwi");
   }
 
   getClienteDetail(): void {
@@ -34,4 +35,5 @@ export class ClienteDetailComponent implements OnInit {
       });
     }
   }
+
 }

@@ -25,4 +25,12 @@ export class ClienteTodosComponent implements OnInit {
   verDetalle(clienteId: string): void {
 
   }
+  
+  deleteCliente(clienteId: string): void {
+    // Llama al método del servicio para eliminar al cliente
+    this.clienteService.deleteCliente(clienteId).subscribe(() => {
+      // Una vez eliminado el cliente, actualiza la lista de clientes
+      this.loadClientes();
+    });
+  }
 }

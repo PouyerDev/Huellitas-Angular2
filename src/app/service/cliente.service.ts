@@ -6,9 +6,6 @@ import { Cliente } from '../model/cliente'; // Assuming you have a Cliente model
   providedIn: 'root'
 })
 export class ClienteService {
-
-  constructor() { }
-
   clientesList: Cliente[] = [
     {
       id: '1',
@@ -33,13 +30,37 @@ export class ClienteService {
     },
   ];
 
+  constructor() { }
+
   getAllClientes(): Observable<Cliente[]> {
     return of(this.clientesList); // Return an observable of the client list
   }
 
-  // You may also implement a method to get a single client by ID
   getClienteById(id: string): Observable<Cliente | undefined> {
     return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
   }
-  
+
+  deleteCliente(id: string): Observable<void> {
+    // Find the index of the client to delete
+    const index = this.clientesList.findIndex(cliente => cliente.id === id);
+    if (index !== -1) {
+      // Remove the client from the array
+      this.clientesList.splice(index, 1);
+    }
+    // Return an observable indicating the deletion was successful
+    return of();
+  }
+
+  // Método para actualizar un cliente
+  actualizarCliente(cliente: Cliente): Observable<Cliente> {
+    // Lógica para actualizar el cliente en tu backend
+    return of(cliente);
+  }
+
+  // Método para crear un nuevo cliente
+  crearCliente(cliente: Cliente): Observable<Cliente> {
+    this.clientesList.push(cliente); 
+    // Lógica para crear un nuevo cliente en tu backend
+    return of(cliente);
+  }
 }

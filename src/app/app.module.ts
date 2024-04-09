@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { MascotaTableComponent } from './mascota/mascota-table/mascota-table.component';
@@ -12,8 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './errores/error-page/error-page.component';
 import { ClienteTodosComponent } from './cliente/cliente-todos/cliente-todos.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
-import { ClienteCrearComponent } from './cliente/cliente-crear/cliente-crear.component';
-import { ClienteModificarComponent } from './cliente/cliente-modificar/cliente-modificar.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { VeterinarioCrearComponent } from './veterinarios/veterinario-crear/veterinario-crear.component';
 import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
 import { VeterinarioModificarComponent } from './veterinarios/veterinario-modificar/veterinario-modificar.component';
@@ -30,8 +28,7 @@ import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/vete
     ErrorPageComponent,
     ClienteTodosComponent,
     ClienteDetailComponent,
-    ClienteCrearComponent,
-    ClienteModificarComponent,
+    ClienteFormComponent,
     VeterinarioCrearComponent,
     VeterinarioDetailComponent,
     VeterinarioModificarComponent,

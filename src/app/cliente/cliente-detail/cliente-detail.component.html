@@ -1,3 +1,17 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar Todas Mascotas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/landing.css}" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet" />
+  </head>
 <!-- Tarjetón del cliente -->
 <div id="container-vista">
     <div>
@@ -6,14 +20,11 @@
             <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
             <p><strong>Correo:</strong> {{ cliente.correo }}</p>
             <p><strong>Celular:</strong> {{ cliente.celular }}</p>
-            <a routerLink="/clientes/update/{{ cliente.id }}"><button class="add-btn btn-detalle">Editar</button></a>
-            <a style="margin-left: 14vw;" routerLink="/clientes/delete/{{ cliente.id }}">
-                <i class="delete-btn fa-solid fa-trash" style="color: #eb0000;"></i>
-            </a>
+            <a [routerLink]="['/cliente/update/' + cliente.id]">Modificar</a>
         </div>
     </div>
 
-    <!-- Tarjetón de las mascotas del cliente 
+    
     <section id="mascotas-table-vista">
         <div *ngIf="cliente.mascotas">
             <div *ngFor="let mascota of cliente.mascotas">
@@ -32,5 +43,5 @@
                 </div>
             </div>
         </div>
-    </section>-->
+    </section>
 </div>
