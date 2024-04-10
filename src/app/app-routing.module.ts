@@ -11,26 +11,24 @@ import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
 import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/veterinario-todos.component';
-import { VeterinarioCrearComponent } from './veterinarios/veterinario-crear/veterinario-crear.component';
+import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veterinario-form.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
   { path: 'clientes', component: ClienteTodosComponent },
+  { path: 'cliente/update/:id', component: ClienteFormComponent },
+  { path: 'cliente/crear', component: ClienteFormComponent },
+  { path: 'veterinarios', component: VeterinarioTodosComponent },
+  { path: 'veterinario/update/:id', component: VeterinarioFormComponent },
+  { path: 'veterinario/crear', component: VeterinarioFormComponent },
   { path: 'mascotas', component: MascotaTableComponent },
   { path: 'mascotas/detail/:id', component: MascotaDetailComponent },
   { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
   { path: 'admin', component: AdminPageComponent },
-
-  { path: 'cliente/update/:id', component: ClienteFormComponent },
-  { path: 'cliente/crear', component: ClienteFormComponent},  
-  { path: '**', component: ErrorPageComponent },
-
   { path: 'veterinarios/detail/:id', component: VeterinarioDetailComponent },
-  { path: 'veterinarios/crear', component: VeterinarioCrearComponent },
-  { path: 'veterinarios', component: VeterinarioTodosComponent },
-  { path: '**', component: ErrorPageComponent } 
+  { path: '**', component: ErrorPageComponent }
 ];
 
 

@@ -43,4 +43,29 @@ export class VeterinarioService {
   getVeterinarioById(id: string): Observable<Veterinario | undefined> {
     return of(this.veterinariosList.find(veterinario => veterinario.id === id));
   }
+  
+  deleteVeterinario(id: string): Observable<void> {
+
+    const index = this.veterinariosList.findIndex(veterinario => veterinario.id === id);
+    if (index !== -1) {
+ 
+      this.veterinariosList.splice(index, 1);
+    }
+    // Return an observable indicating the deletion was successful
+    return of();
+  }
+
+  // Método para actualizar un veterinario
+  actualizarVeterinario(veterinario: Veterinario): Observable<Veterinario> {
+    // Lógica para actualizar el veterinario en tu backend
+    return of(veterinario);
+  }
+
+  // Método para crear un nuevo veterinario
+  crearVeterinario(veterinario: Veterinario): Observable<Veterinario> {
+    this.veterinariosList.push(veterinario); 
+    // Lógica para crear un nuevo veterinario en tu backend
+    return of(veterinario);
+  }
 }
+

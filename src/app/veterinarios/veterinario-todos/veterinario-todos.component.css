@@ -18,8 +18,7 @@ lima pastel     #CDFADB
 }
 
 
-/*/*---------------------------------Todas MASCOTAS/clientes---------------------------------------*/
-/* Button */
+
 
 .add-btn {
     position: relative;
@@ -165,10 +164,10 @@ a:hover svg {
 
 
 /* Heading */
-#todos-veterinarios-title,
 #todos-veterinarios-title {
     text-align: center;
     padding-top: 2%;
+    
 }
 
 #veterinarios-table-vista{
