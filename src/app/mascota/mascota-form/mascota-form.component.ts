@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Mascota } from '../mascota';
+import { Mascota } from 'src/app/model/mascota';
 
 @Component({
   selector: 'app-mascota-form',

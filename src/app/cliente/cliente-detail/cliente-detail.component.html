@@ -11,34 +11,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet" />
-  </head>
+</head>
 <!-- Tarjetón del cliente -->
 <div id="container-vista">
-    <div>
+    <div *ngIf="cliente">
         <div style="text-align: center;" id="informacionCliente">
             <h2 class="nombre-cliente">{{ cliente.nombre }}</h2>
             <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
             <p><strong>Correo:</strong> {{ cliente.correo }}</p>
             <p><strong>Celular:</strong> {{ cliente.celular }}</p>
-            <a [routerLink]="['/cliente/update/' + cliente.id]">Modificar</a>
+            <a [routerLink]="['/cliente/update/', cliente.id]">Modificar</a>
         </div>
     </div>
 
-    
-    <section id="mascotas-table-vista">
+
+    <section id="mascotas-table-vista" *ngIf="cliente">
         <div *ngIf="cliente.mascotas">
-            <div *ngFor="let mascota of cliente.mascotas" class="mascotas-flex" >
-                <a style="text-decoration: none; color: black;" *ngIf="mascota.estado" [routerLink]="'/mascotas/detail/' + mascota.id">
+            <div *ngFor="let mascota of cliente.mascotas" class="mascotas-flex">
+                <a style="text-decoration: none; color: black;" *ngIf="mascota.estado"
+                    [routerLink]="'/mascotas/detail/' + mascota.id">
                     <div class="mascota-info info-vista">
-                        <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}" alt="Foto de la mascota">
+                        <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}"
+                            alt="Foto de la mascota">
                         <h2>{{ mascota.nombre }}</h2>
                     </div>
                 </a>
                 <div *ngIf="!mascota.estado" class="mascota-info info-vista specified-mascota-inactive">
-                    <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}" alt="Foto de la mascota">
+                    <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}"
+                        alt="Foto de la mascota">
                     <div class="column">
                         <h2>{{ mascota.nombre }}</h2>
-                        <a [routerLink]="'/mascotas/activate/' + mascota.id + '/' + cliente.id">Activate</a>
+                        <a (click)="activate(mascota.id)">Activate</a>
                     </div>
                 </div>
             </div>

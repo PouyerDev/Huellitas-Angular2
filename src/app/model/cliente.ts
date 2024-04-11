@@ -1,4 +1,4 @@
-import { Mascota } from "../mascota/mascota";
+import { Mascota } from 'src/app/model/mascota';
 
 export class Cliente {
     public id: string;

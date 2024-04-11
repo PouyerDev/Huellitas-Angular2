@@ -1,61 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Mascota } from '../mascota/mascota';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Mascota } from 'src/app/model/mascota';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
-  constructor() { }
+  private apiUrl = 'http://localhost:8090/mascotas/'; // URL de la API REST
 
-  mascotasList: Mascota[] = [
-    {
-      id: '1',
-      nombre: 'Firulais',
-      raza: 'Pastor Aleman',
-      edad: 5,
-      peso: 20,
-      enfermedad: 'Moquillo',
-      foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQml49j3dVd1cexLLID_-gRgBWA5VpTJlQCeKvHovCatw&s',
-      estado: true,
-    },
-    {
-      id: '2',
-      nombre: 'Toby',
-      raza: 'Chihuahua',
-      edad: 2,
-      peso: 5,
-      enfermedad: 'Gripe',
-      foto: 'https://i.pinimg.com/736x/28/d0/82/28d082bfaaac80cbe38d056d15929371.jpg',
-      estado: true,
-    },
-    {
-      id: '3',
-      nombre: 'Rex',
-      raza: 'Bulldog',
-      edad: 3,
-      peso: 15,
-      enfermedad: 'Parvovirus',
-      foto: 'https://i.pinimg.com/474x/1a/28/18/1a281824b2f1faab9678eab109d31c5b.jpg',
-      estado: true,
-    },
-    {
-      id: '4',
-      nombre: 'Luna',
-      raza: 'Labrador',
-      edad: 4,
-      peso: 25,
-      enfermedad: 'Tos',
-      foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKw9N8PMP1pL1Y6k4jw_HinzmWGx7uoJKoAnVW7Od4Xw&s',
-      estado: true,
-    },
-  ];
+  constructor(private http: HttpClient) { }
 
-  findAll(): Mascota[] {
-    return this.mascotasList;
+  findAll(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(this.apiUrl+'all');
   }
-  fidnById(id: string): Mascota {
-    return this.mascotasList.find(mascota => mascota.id === id)!;
+
+  findById(id: string): Observable<Mascota> {
+    return this.http.get<Mascota>(this.apiUrl+'find/'+id);
   }
+  agregarMascota(mascota: Mascota): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'add', mascota);
+  }
+
+  deactivateMascota(id: string): Observable<any> {
+    console.log('Desactivando mascota en el servicio:', id);
+    return this.http.get<any>(this.apiUrl+'deactivate/'+id);
+  }
+  
     
+
 }

@@ -28,6 +28,8 @@ const routes: Routes = [
   { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
   { path: 'admin', component: AdminPageComponent },
   { path: 'veterinarios/detail/:id', component: VeterinarioDetailComponent },
+  { path: 'mascotas/deactivate/:id', component: MascotaDetailComponent },
+
   { path: '**', component: ErrorPageComponent }
 ];
 

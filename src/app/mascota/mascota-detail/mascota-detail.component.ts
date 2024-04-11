@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Mascota } from '../mascota';
-
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 
 @Component({
@@ -9,23 +8,20 @@ import { MascotaService } from 'src/app/service/mascota.service';
   templateUrl: './mascota-detail.component.html',
   styleUrls: ['./mascota-detail.component.css'],
 })
-export class MascotaDetailComponent {
-  @Input()
+export class MascotaDetailComponent implements OnInit {
   mascota!: Mascota;
 
   constructor(
     private mascotaService: MascotaService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
-ngOnInit(): void {
-  this.route.params.subscribe((params) => {
-    const id = params['id'];
-    this.mascota = this.mascotaService.fidnById(id);
-  });
-
-
-}
-
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.mascotaService.findById(id).subscribe((mascota) => {
+        this.mascota = mascota;
+      });
+    });
+  }
 }

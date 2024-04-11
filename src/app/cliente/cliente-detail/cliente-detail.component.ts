@@ -4,7 +4,7 @@ import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/model/cliente';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { mergeMap } from 'rxjs';
-import { Mascota } from 'src/app/mascota/mascota';
+import { Mascota } from 'src/app/model/mascota';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -12,8 +12,9 @@ import { Mascota } from 'src/app/mascota/mascota';
   styleUrls: ['./cliente-detail.component.css']
 })
 export class ClienteDetailComponent implements OnInit {
-  @Input() 
+  @Input()
   cliente!: Cliente;
+  mascota!: Mascota;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +38,7 @@ export class ClienteDetailComponent implements OnInit {
           this.cliente.mascotas = mascotas.map(mascota => this.convertirAMascota(mascota));
         }
       )
-      });
+    });
   }
 
 
@@ -54,5 +55,16 @@ export class ClienteDetailComponent implements OnInit {
       id: data.id || 0
     };
   }
+
+  activate(mascotaId: string): void {
+    console.log('Activando mascota:', mascotaId, 'del cliente:', this.cliente);
+    this.clienteService.activateMascota(mascotaId, this.cliente.id).subscribe(() => {
+      // Redirigir a la misma página para recargar el HTML
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        return this.router.navigate(['/cliente/cliente-detail/' + this.cliente.id]);
+      });
+    });
+  }
+  
 
 }

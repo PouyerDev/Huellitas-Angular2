@@ -1,4 +1,4 @@
-export class MascotaCL {
+export class Mascota {
   public id: string;
   public nombre: string;
   public raza: string;

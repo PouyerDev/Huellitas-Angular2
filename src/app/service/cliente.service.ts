@@ -36,6 +36,12 @@ export class ClienteService {
   getMascotasByClienteId(id: string): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl+'/getAllMascotas/'+id);
   }
+  ///mascotas/activate/{mascotaId}/{clientId}
+  activateMascota(mascotaId: string, clientId: string): Observable<void> {
+    console.log('Activando mascota en el servicio:', mascotaId, clientId);
+    return this.http.get<void>('http://localhost:8090/mascotas/activate/'+mascotaId+'/'+clientId, {});
+  }
+
 /*/clientes/getAllMascotas/{id}
   getClienteById(id: string): Observle<Cliente | undefined> {
     return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
