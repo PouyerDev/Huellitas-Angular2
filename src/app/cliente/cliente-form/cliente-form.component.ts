@@ -10,7 +10,7 @@ import { Cliente } from 'src/app/model/cliente';
 })
 export class ClienteFormComponent implements OnInit {
   cliente: Cliente = {
-    id: '',
+    id: 0,
     nombre: '',
     cedula: '',
     correo: '',
@@ -29,6 +29,7 @@ export class ClienteFormComponent implements OnInit {
     
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      /*
       this.clienteService.getClienteById(id).subscribe(cliente => {
         if (cliente) {
           this.cliente = cliente;
@@ -38,6 +39,7 @@ export class ClienteFormComponent implements OnInit {
           this.router.navigate(['/']); // Por ejemplo, redirige a la página principal
         }
       });
+      */
     }
     
   }

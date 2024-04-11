@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/model/cliente';
+import { MascotaService } from 'src/app/service/mascota.service';
+import { mergeMap } from 'rxjs';
+import { Mascota } from 'src/app/mascota/mascota';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -9,31 +12,56 @@ import { Cliente } from 'src/app/model/cliente';
   styleUrls: ['./cliente-detail.component.css']
 })
 export class ClienteDetailComponent implements OnInit {
-  cliente: Cliente = {
-    id: '',
-    nombre: '',
-    cedula: '',
-    correo: '',
-    celular: '',
-  };
+  @Input() 
+  cliente!: Cliente;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private mascotaService: MascotaService
   ) { }
 
   ngOnInit(): void {
-    this.getClienteDetail();
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+      this.clienteService.getClienteById(id).pipe(
+        mergeMap(
+          (clienteInfo) => {
+            this.cliente = clienteInfo;
+            return this.clienteService.getMascotasByClienteId(id);
+          }
+        )
+      ).subscribe(
+        (mascotas) => {
+          this.cliente.mascotas = mascotas.map(mascota => this.convertirAMascota(mascota));
+        }
+      )
+      });
   }
 
   getClienteDetail(): void {
+    /*
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.clienteService.getClienteById(id).subscribe(cliente => {
         this.cliente = cliente!;
       });
     }
+    */
+  }
+  convertirAMascota(data: any): Mascota {
+    // Realiza la conversión de datos según la estructura del modelo de Mascota
+    return {
+      nombre: data.nombre || '',
+      raza: data.raza || '',
+      edad: data.edad || 0,
+      peso: data.peso || 0,
+      enfermedad: data.enfermedad || '',
+      foto: data.foto || '',
+      estado: data.estado || false,
+      id: data.id || 0
+    };
   }
 
 }

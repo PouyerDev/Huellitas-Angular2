@@ -1,42 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from '../model/cliente'; // Assuming you have a Cliente model
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  clientesList: Cliente[] = [
-    {
-      id: '1',
-      nombre: 'Juan Perez',
-      cedula: '123456789',
-      correo: 'juan@example.com',
-      celular: '1234567890', // Assuming you have celular instead of direccion
-    },
-    {
-      id: '2',
-      nombre: 'Maria Rodriguez',
-      cedula: '987654321',
-      correo: 'maria@example.com',
-      celular: '9876543210',
-    },
-    {
-      id: '3',
-      nombre: 'Pedro Gomez',
-      cedula: '456789123',
-      correo: 'pedro@example.com',
-      celular: '4567891230',
-    },
-  ];
+  
 
-  constructor() { }
+  constructor( 
+    private http: HttpClient
+  ) { }
+
+  baseUrl: string = 'http://localhost:8090/clientes';
 
   getAllClientes(): Observable<Cliente[]> {
-    return of(this.clientesList); // Return an observable of the client list
+    // Return an observable of the client list
+    return this.http.get<Cliente[]>(this.baseUrl+'/all');
+  }
+  
+  getClienteById(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
+  }
+  deleteCliente(id: number): Observable<void> {
+    return this.http.delete<void>(this.baseUrl+'/delete/'+id);
+  }
+  actualizarCliente(cliente: Cliente): Observable<void> {
+    return this.http.put<void>(this.baseUrl+'/update', cliente);
+  }
+  crearCliente(cliente: Cliente): Observable<void> {
+    return this.http.post<void>(this.baseUrl+'/save', cliente);
   }
 
-  getClienteById(id: string): Observable<Cliente | undefined> {
+  getMascotasByClienteId(id: number): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.baseUrl+'/getAllMascotas/'+id);
+  }
+/*/clientes/getAllMascotas/{id}
+  getClienteById(id: string): Observle<Cliente | undefined> {
     return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
   }
 
@@ -45,7 +46,7 @@ export class ClienteService {
     const index = this.clientesList.findIndex(cliente => cliente.id === id);
     if (index !== -1) {
       // Remove the client from the array
-      this.clientesList.splice(index, 1);
+      this.clientesList.splice(index, 1)ab;
     }
     // Return an observable indicating the deletion was successful
     return of();
@@ -63,4 +64,5 @@ export class ClienteService {
     // Lógica para crear un nuevo cliente en tu backend
     return of(cliente);
   }
+  */
 }

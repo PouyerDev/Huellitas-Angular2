@@ -27,7 +27,7 @@
     
     <section id="mascotas-table-vista">
         <div *ngIf="cliente.mascotas">
-            <div *ngFor="let mascota of cliente.mascotas">
+            <div *ngFor="let mascota of cliente.mascotas" class="mascotas-flex" >
                 <a style="text-decoration: none; color: black;" *ngIf="mascota.estado" [routerLink]="'/mascotas/find/' + mascota.id">
                     <div class="mascota-info info-vista">
                         <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}" alt="Foto de la mascota">

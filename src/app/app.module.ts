@@ -15,6 +15,7 @@ import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.compon
 import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
 import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/veterinario-todos.component';
 import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veterinario-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,9 @@ import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veteri
   ],
   imports: [
     BrowserModule,
-    
     FormsModule,
-          AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

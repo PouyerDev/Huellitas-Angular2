@@ -10,14 +10,14 @@ export class MascotaCL {
   public estado: boolean;
 
   constructor(
-    id: string,
     nombre: string,
     raza: string,
     edad: number,
     peso: number,
     enfermedad: string,
     foto: string,
-    estado: boolean
+    estado: boolean,
+    id: string
   ) {
     this.id = id;
     this.nombre = nombre;
