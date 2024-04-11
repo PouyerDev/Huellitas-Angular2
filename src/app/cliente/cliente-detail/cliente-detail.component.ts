@@ -24,7 +24,7 @@ export class ClienteDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('id'));
+      const id = String(params.get('id'));
       this.clienteService.getClienteById(id).pipe(
         mergeMap(
           (clienteInfo) => {
@@ -40,16 +40,7 @@ export class ClienteDetailComponent implements OnInit {
       });
   }
 
-  getClienteDetail(): void {
-    /*
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.clienteService.getClienteById(id).subscribe(cliente => {
-        this.cliente = cliente!;
-      });
-    }
-    */
-  }
+
   convertirAMascota(data: any): Mascota {
     // Realiza la conversión de datos según la estructura del modelo de Mascota
     return {

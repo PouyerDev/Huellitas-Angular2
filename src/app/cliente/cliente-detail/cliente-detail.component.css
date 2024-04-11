@@ -93,18 +93,25 @@ lima pastel     #CDFADB
 
 .info-vista {
     padding: 1.5vw 1vw;
-    width: 18vw;
-    height: 6vw;
+    width: 22vw;
+    height: 10vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     margin-top: 3vw;
     text-align: center;
     transition: 0.3s;
+
 }
 .info-vista:hover {
 
     box-shadow: 0 0 1.5rem #f28d5ee8;
+}
+.info-vista h2{
+    text-align: center;
+    height: fit-content;
+    padding: 1vw;
+    margin-top: 1vw;
 }
 
 .lista-mascotas-vista {
@@ -267,10 +274,10 @@ lima pastel     #CDFADB
     width: 100%;
     margin: 1vw 5vw;
     padding: 1vw;
-
 }
 
 #mascotas-table-vista .info-vista{
+
     margin-top: 1vw;
 }
 

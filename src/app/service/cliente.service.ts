@@ -20,20 +20,20 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.baseUrl+'/all');
   }
   
-  getClienteById(id: number): Observable<Cliente> {
+  getClienteById(id: string): Observable<Cliente> {
     return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
   }
-  deleteCliente(id: number): Observable<void> {
+  deleteCliente(id: string): Observable<void> {
     return this.http.delete<void>(this.baseUrl+'/delete/'+id);
   }
   actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);
   }
   crearCliente(cliente: Cliente): Observable<void> {
-    return this.http.post<void>(this.baseUrl+'/save', cliente);
+    return this.http.post<void>(this.baseUrl+'/add', cliente);
   }
 
-  getMascotasByClienteId(id: number): Observable<Cliente[]> {
+  getMascotasByClienteId(id: string): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl+'/getAllMascotas/'+id);
   }
 /*/clientes/getAllMascotas/{id}

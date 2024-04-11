@@ -10,7 +10,7 @@ import { Cliente } from 'src/app/model/cliente';
 })
 export class ClienteFormComponent implements OnInit {
   cliente: Cliente = {
-    id: 0,
+    id: '',
     nombre: '',
     cedula: '',
     correo: '',
@@ -24,33 +24,56 @@ export class ClienteFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     console.log('ClienteFormComponent');
     
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      /*
-      this.clienteService.getClienteById(id).subscribe(cliente => {
-        if (cliente) {
-          this.cliente = cliente;
-        } else {
-          console.log('El cliente no existe');
-          // Redirigir a una página de error o a otra ubicación deseada
-          this.router.navigate(['/']); // Por ejemplo, redirige a la página principal
+      this.clienteService.getClienteById(id).subscribe(
+        (cliente) => {
+          if (cliente) {
+            this.cliente = cliente;
+          } else {
+            console.log('El cliente no existe');
+            // Redirigir a una página de error o a otra ubicación deseada
+            this.router.navigate(['/']); // Por ejemplo, redirige a la página principal
+          }
+        },
+        (error) => {
+          console.error('Error al obtener el cliente:', error);
         }
-      });
-      */
+      );
     }
-    
   }
 
   onSubmit(): void {
     if (this.cliente.id) {
-      this.clienteService.actualizarCliente(this.cliente).subscribe(/* Manejar respuesta*/ );
-      this.router.navigate(['/cliente/cliente-detail', this.cliente.id]);
+      console.log('Actualizando cliente:', this.cliente);
+      this.clienteService.actualizarCliente(this.cliente).subscribe(
+        () => {
+          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
+          console.log('Cliente actualizado exitosamente.');
+          // Redirigir al detalle del cliente
+          this.router.navigate(['/cliente/cliente-detail/'+ this.cliente.id]);
+        },
+        (error) => {
+          console.error('Error al actualizar el cliente:', error);
+          // Manejar el error, por ejemplo, mostrar un mensaje de error
+        }
+      );
     } else {
-      this.clienteService.crearCliente(this.cliente).subscribe(/* Manejar respuesta */ );
-      this.router.navigate(['/clientes']);
+      console.log('Creando cliente:', this.cliente);  
+      this.clienteService.crearCliente(this.cliente).subscribe(
+        () => {
+          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
+          console.log('Cliente creado exitosamente.');
+          // Redirigir a la lista de clientes
+          this.router.navigate(['/clientes']);
+        },
+        (error) => {
+          console.error('Error al crear el cliente:', error);
+          // Manejar el error, por ejemplo, mostrar un mensaje de error
+        }
+      );
     }
   }
 }
