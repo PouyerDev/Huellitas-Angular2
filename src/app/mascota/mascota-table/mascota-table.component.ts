@@ -17,7 +17,6 @@ export class MascotaTableComponent {
   //inyectar dependencias
   constructor(
     private mascotaService: MascotaService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
   //realizar llamados cuando ya esta cargada la interfaz

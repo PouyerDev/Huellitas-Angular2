@@ -29,6 +29,7 @@ export class ClienteService {
   actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);
   }
+
   crearCliente(cliente: Cliente): Observable<void> {
     return this.http.post<void>(this.baseUrl+'/add', cliente);
   }
@@ -36,39 +37,18 @@ export class ClienteService {
   getMascotasByClienteId(id: string): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl+'/getAllMascotas/'+id);
   }
-  ///mascotas/activate/{mascotaId}/{clientId}
+  
   activateMascota(mascotaId: string, clientId: string): Observable<void> {
     console.log('Activando mascota en el servicio:', mascotaId, clientId);
     return this.http.get<void>('http://localhost:8090/mascotas/activate/'+mascotaId+'/'+clientId, {});
   }
 
-/*/clientes/getAllMascotas/{id}
-  getClienteById(id: string): Observle<Cliente | undefined> {
-    return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
+  addMascotaCliente(mascotaId: string, clienteId: string): Observable<void> {
+    const body = { idCliente: clienteId, idMascota: mascotaId };
+    return this.http.post<void>(`${this.baseUrl}/addMascotaCliente`, body);
   }
-
-  deleteCliente(id: string): Observable<void> {
-    // Find the index of the client to delete
-    const index = this.clientesList.findIndex(cliente => cliente.id === id);
-    if (index !== -1) {
-      // Remove the client from the array
-      this.clientesList.splice(index, 1)ab;
-    }
-    // Return an observable indicating the deletion was successful
-    return of();
+/* actualizarCliente(cliente: Cliente): Observable<void> {
+    return this.http.put<void>(this.baseUrl+'/update', cliente);
   }
-
-  // Método para actualizar un cliente
-  actualizarCliente(cliente: Cliente): Observable<Cliente> {
-    // Lógica para actualizar el cliente en tu backend
-    return of(cliente);
-  }
-
-  // Método para crear un nuevo cliente
-  crearCliente(cliente: Cliente): Observable<Cliente> {
-    this.clientesList.push(cliente); 
-    // Lógica para crear un nuevo cliente en tu backend
-    return of(cliente);
-  }
-  */
+ */
 }

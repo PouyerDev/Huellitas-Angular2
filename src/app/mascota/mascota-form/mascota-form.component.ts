@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MascotaService } from 'src/app/service/mascota.service';
 import { Mascota } from 'src/app/model/mascota';
 
 @Component({
@@ -6,17 +8,9 @@ import { Mascota } from 'src/app/model/mascota';
   templateUrl: './mascota-form.component.html',
   styleUrls: ['./mascota-form.component.css']
 })
-export class MascotaFormComponent {
-  //evento
-  @Output()
-  addMascotaEvent = new EventEmitter<Mascota>();
-
-  @Output()
-  ocultarFormularioEvent = new EventEmitter<boolean>();
-  
-  sendMascota!: Mascota;
-  //modelo
-  formMascota: Mascota = {
+export class MascotaFormComponent implements OnInit {
+  mascota: Mascota = {
+    id: '',
     nombre: '',
     raza: '',
     edad: 0,
@@ -24,27 +18,62 @@ export class MascotaFormComponent {
     enfermedad: '',
     foto: '',
     estado: true,
-    id: ''
   };
 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private mascotaService: MascotaService
+  ) { }
 
-  //agregar por formulario
-  addMascotaForm() {
-    console.log(this.formMascota);
-    //copiar valores
-    this.sendMascota = Object.assign({}, this.formMascota);
-
-    this.addMascotaEvent.emit(this.sendMascota);
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.mascotaService.findById(id).subscribe(
+        (mascota) => {
+          if (mascota) {
+            this.mascota = mascota;
+          } else {
+            console.log('La mascota no existe');
+            this.router.navigate(['/'])
+          }
+        },
+        (error) => {
+          console.error('Error al obtener la mascota:', error);
+        }
+      );
+    }
   }
-  addMascota(form: any) {
-    console.log(this.formMascota);
-    //copiar valores
-    this.sendMascota = Object.assign({}, this.formMascota);
 
-    this.addMascotaEvent.emit(this.sendMascota);
-  }
-
-  cancelar() {
-    this.ocultarFormularioEvent.emit(false);
+  onSubmit(): void {
+    if (this.mascota.id) {
+      console.log('Actualizando mascota:', this.mascota);
+      this.mascotaService.actualizarMascota(this.mascota).subscribe(
+        () => {
+          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
+          console.log('Mascota actualizada exitosamente.');
+          // Redirigir al detalle de la mascota
+          this.router.navigate(['/mascota/mascota-detail/'+ this.mascota.id]);
+        },
+        (error) => {
+          console.error('Error al actualizar la mascota:', error);
+          // Manejar el error, por ejemplo, mostrar un mensaje de error
+        }
+      );
+    } else {
+      console.log('Creando mascota:', this.mascota);  
+      this.mascotaService.agregarMascota(this.mascota).subscribe(
+        () => {
+          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
+          console.log('Mascota creada exitosamente.');
+          // Redirigir a la lista de mascotas
+          this.router.navigate(['/mascotas']);
+        },
+        (error) => {
+          console.error('Error al crear la mascota:', error);
+          // Manejar el error, por ejemplo, mostrar un mensaje de error
+        }
+      );
+    }
   }
 }

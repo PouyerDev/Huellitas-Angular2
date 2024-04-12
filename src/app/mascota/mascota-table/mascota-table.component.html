@@ -21,7 +21,7 @@
   <ng-container *ngIf="mostrarForm">
     <app-mascota-form (addMascotaEvent)="agregarMascota($event)">
       (ocultarFormularioEvent)="ocultarForm($event)"</app-mascota-form>
-  </ng-container>
+    </ng-container>
   <section id="mascotas-table">
     <div id="mascota-container-todas" *ngFor="let mascota of mascotasList">
       <div class="mascota-info">

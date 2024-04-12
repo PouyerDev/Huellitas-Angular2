@@ -20,12 +20,17 @@ export class MascotaService {
     return this.http.get<Mascota>(this.apiUrl+'find/'+id);
   }
   agregarMascota(mascota: Mascota): Observable<any> {
+    
     return this.http.post<any>(this.apiUrl+'add', mascota);
   }
 
   deactivateMascota(id: string): Observable<any> {
     console.log('Desactivando mascota en el servicio:', id);
     return this.http.get<any>(this.apiUrl+'deactivate/'+id);
+  }
+
+  actualizarMascota(mascota: Mascota): Observable<any> {
+    return this.http.put<any>(this.apiUrl+'update', mascota);
   }
   
     
