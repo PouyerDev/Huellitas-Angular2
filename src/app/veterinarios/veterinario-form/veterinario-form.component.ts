@@ -43,10 +43,10 @@ export class VeterinarioFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.veterinario.id) {
-      this.veterinarioService.actualizarVeterinario(this.veterinario).subscribe(/* Manejar respuesta */);
+      this.veterinarioService.actualizarVeterinario(this.veterinario);
       this.router.navigate(['/veterinarios/detail', this.veterinario.id]);
     } else {
-      this.veterinarioService.crearVeterinario(this.veterinario).subscribe(/* Manejar respuesta */);
+      this.veterinarioService.crearVeterinario(this.veterinario);
       this.router.navigate(['/veterinarios']);
     }
   }

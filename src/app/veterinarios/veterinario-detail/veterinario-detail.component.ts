@@ -1,16 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Veterinario } from 'src/app/model/veterinario';
-import { VeterinarioService } from 'src/app/service/veterinario.service'; // Asegúrate de importar el servicio de veterinario
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-veterinario-detail',
   templateUrl: './veterinario-detail.component.html',
   styleUrls: ['./veterinario-detail.component.css'],
 })
 export class VeterinarioDetailComponent implements OnInit {
-  @Input()
-  veterinario!: Veterinario;
+  @Input() veterinario!: Veterinario;
 
   constructor(
     private veterinarioService: VeterinarioService,
@@ -19,15 +18,13 @@ export class VeterinarioDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const id = params['id'];
-      this.veterinarioService.getVeterinarioById(id).subscribe(veterinario => {
-        if (veterinario) {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.veterinarioService.getVeterinarioById(id).subscribe((veterinario) => {
           this.veterinario = veterinario;
-        } else {
-          // 
-        }
-      });
+        });
+      }
     });
   }
 }
