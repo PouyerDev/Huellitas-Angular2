@@ -1,0 +1,42 @@
+<div id="forms-container">
+    <div class="form-general-group">
+        <h2>Editar Tratamiento</h2>
+        <!-- Formulario para modificar un tratamiento trayendo toda su información -->
+        <form class="submit" (submit)="onSubmit()">
+            <!-- Hidden input field para el ID del tratamiento -->
+            <input type="hidden" [(ngModel)]="tratamiento.id" name="id">
+
+            <div class="form-group">
+                <label for="id">Id de Mascota:</label><br>
+                <input type="number" id="id" [(ngModel)]="mascotaId" name="id" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="droga">Droga:</label><br>
+                <input type="text" id="droga" [(ngModel)]="tratamiento.droga" name="droga" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label><br>
+                <input type="text" id="descripcion" [(ngModel)]="tratamiento.descripcion" name="descripcion" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio de Tratamiento:</label><br>
+                <input type="date" id="fechaInicio" [(ngModel)]="tratamiento.fechaInicio" name="fechaInicio" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaFin">Fecha de Fin de Tratamiento:</label><br>
+                <input type="date" id="fechaFin" [(ngModel)]="tratamiento.fechaFin" name="fechaFin" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="veterinarioCedula">Cédula del Veterinario:</label><br>
+                <input type="text" id="veterinarioCedula" [(ngModel)]="veterinarioCedula" name="veterinarioCedula" required><br>
+            </div>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</div>

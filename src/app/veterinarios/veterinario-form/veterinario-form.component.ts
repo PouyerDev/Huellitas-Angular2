@@ -42,12 +42,19 @@ export class VeterinarioFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     if (this.veterinario.id) {
+      console.log('Actualizando veterinario:', this.veterinario);
+      
       this.veterinarioService.actualizarVeterinario(this.veterinario);
       this.router.navigate(['/veterinarios/detail', this.veterinario.id]);
+      console.log("veterinario actualizado");
     } else {
+      console.log('Creando veterinario:', this.veterinario);
       this.veterinarioService.crearVeterinario(this.veterinario);
       this.router.navigate(['/veterinarios']);
+      console.log("veterinario creado");
+      
     }
   }
 }

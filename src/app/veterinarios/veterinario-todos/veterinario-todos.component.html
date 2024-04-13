@@ -13,16 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet" />
 </head>
 
-<section id="todos-veterinarios">
-    <h1 id="todos-veterinarios-title">Lista de Veterinarios</h1>
+<section id="todas-mascotas">
+    <h1 id="todas-mascotas-title">Lista de Veterinarios</h1>
     <button class="add-btn" [routerLink]="['/veterinario/crear']">
       Agregar Veterinario
     </button>
     
-    <section id="veterinarios-table">
-      <div id="veterinario-container-todos" *ngFor="let veterinario of veterinarios">
-        <div class="veterinario-info">
-          <img class="img-veterinario-todos" src="{{ veterinario.foto }}" alt="veterinario" />
+    <section id="mascota-table">
+      <div id="mascota-container-todas" *ngFor="let veterinario of veterinarios">
+        <div class="mascota-info">
+          <img class="img-mascota-todas" src="{{ veterinario.foto }}" alt="veterinario" />
           <div class="datos">
             <h2>{{ veterinario.nombre }}</h2>
             <p>Cédula: {{ veterinario.cedula }}</p>
@@ -30,7 +30,7 @@
             <p>Número de Atenciones: {{ veterinario.numAtenciones }}</p>
           </div>
         </div>
-        <div class="veterinario-actions">
+        <div class="mascota-actions">
           <!-- Enlace para ver detalles del veterinario -->
           <a [routerLink]="['/veterinarios/detail', veterinario.id]">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa074" class="bi bi-info-circle-fill"

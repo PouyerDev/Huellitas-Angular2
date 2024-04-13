@@ -22,19 +22,48 @@ export class VeterinarioService {
   
   }
   
-  deleteVeterinario(id: string): Observable<void> {
+  deleteVeterinario(id: string ): Observable<void> {
   return this.http.delete<void>('http://localhost:8090/veterinarios/delete/' + id);
 }
 
 
   // Método para actualizar un veterinario
-  actualizarVeterinario(veterinario: Veterinario){
-    // Lógica para actualizar el veterinario en tu backend
-    this.http.put('http://localhost:8090/veterinarios//update/' + veterinario.id, veterinario);
-  }
+  // Método para actualizar un veterinario
+actualizarVeterinario(veterinario: Veterinario){
+  console.log("actualizando servicio angular");
+  
+  this.http.put('http://localhost:8090/veterinarios/update/' + veterinario.id, veterinario)
+    .subscribe(
+      response => {
+        console.log("Veterinario actualizado correctamente:", response);
+        // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+      },
+      error => {
+        console.error("Error al actualizar el veterinario:", error);
+        // Aquí puedes manejar el error adecuadamente si lo deseas
+      }
+    );
+}
 
-  // Método para crear un nuevo veterinario
-  crearVeterinario(veterinario: Veterinario) {
-    this.http.post('http://localhost:8090/veterinarios/agregar', veterinario)
+// Método para crear un nuevo veterinario
+crearVeterinario(veterinario: Veterinario) { 
+  console.log("creando servicio angular");
+  
+  this.http.post('http://localhost:8090/veterinarios/add', veterinario)
+    .subscribe(
+      response => {
+        console.log("Veterinario creado correctamente:", response);
+        // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+      },
+      error => {
+        console.error("Error al crear el veterinario:", error);
+        // Aquí puedes manejar el error adecuadamente si lo deseas
+      }
+    );
+}
+
+  obtenerPorCedula(cedula: string) {
+    return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCedula/' + cedula);
+
   }
 }

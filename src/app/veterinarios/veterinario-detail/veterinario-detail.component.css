@@ -524,8 +524,7 @@ header .navbar-full {
     width: 25vw;
     height: 25vw;
     margin-left: 3vw;
-    object-fit: fill;
-
+    object-fit: cover;
 }
 
 

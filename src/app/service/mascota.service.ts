@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Mascota } from 'src/app/model/mascota';
+import { Tratamiento } from '../model/tratamiento';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,9 @@ export class MascotaService {
     return this.http.get<any>(this.apiUrl+'deactivate/'+id);
   }
   
-    
+  getTratamientosByMascotaId(id: string): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(this.apiUrl+'getAlltratamientos/'+id);
+
+  } 
 
 }
