@@ -1132,3 +1132,7 @@ footer h3 {
     margin: 0 1vw;
     box-shadow: 0 0 40px rgba(2, 2, 2, 0.1);
 }
+
+app-tratamiento-todos{
+    text-align: center;
+}

@@ -7,7 +7,7 @@
             <p>Cédula: {{veterinario.cedula}}</p>
             <p>Especialidad: {{veterinario.especialidad}}</p>
             <p>Número de Atenciones: {{veterinario.numAtenciones}}</p>
-            <a [routerLink]="['/veterinario/update/' + veterinario.id]">Modificar</a>
+            <button class="btn-primary" [routerLink]="['/veterinario/update/' + veterinario.id]">Modificar</button>
         </div>
     </div>
 </section>

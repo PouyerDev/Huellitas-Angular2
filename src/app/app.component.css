@@ -29,6 +29,13 @@ lima pastel     #CDFADB
     border: none;
    
 }
+
+/*::-webkit-scrollbar{
+    width: 5vw;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffa074;
+}*/
 /*------------------------------------------Boton general---------------------------------------------------*/
 #button-huellitas {
     border-radius: 0.5vw;

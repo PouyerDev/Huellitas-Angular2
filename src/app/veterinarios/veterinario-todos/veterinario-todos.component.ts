@@ -23,14 +23,15 @@ export class VeterinarioTodosComponent implements OnInit {
   }
 
   verDetalle(veterinarioId: string): void {
-    
+    this.veterinarioService.getVeterinarioById(veterinarioId).subscribe();
   }
 
   deleteVeterinario(veterinarioId: string): void {
-    // Llama al método del servicio para eliminar al veterinario
-    this.veterinarioService.deleteVeterinario(veterinarioId).subscribe(() => {
-      // Una vez eliminado el cliente, actualiza la lista de clientes
-      this.loadVeterinarios();
-    });
-  }
+  this.veterinarioService.deleteVeterinario(veterinarioId).subscribe();
+
+  this.veterinarios = this.veterinarios.filter(veterinario => veterinario.id !== veterinarioId);
+}
+
+  
+
 }

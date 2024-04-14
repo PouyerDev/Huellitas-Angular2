@@ -1,3 +1,5 @@
+import { Tratamiento } from "./tratamiento";
+
 export class Mascota {
   public id: string;
   public nombre: string;
@@ -8,6 +10,7 @@ export class Mascota {
   public foto: string;
   // no obligatorio
   public estado: boolean;
+  tratamientos?: Tratamiento[];
 
   constructor(
     nombre: string,
@@ -17,7 +20,8 @@ export class Mascota {
     enfermedad: string,
     foto: string,
     estado: boolean,
-    id: string
+    id: string,
+    tratamientos?: Tratamiento[]
   ) {
     this.id = id;
     this.nombre = nombre;
@@ -27,5 +31,6 @@ export class Mascota {
     this.enfermedad = enfermedad;
     this.foto = foto;
     this.estado = estado;
+    this.tratamientos = [];
   }
 }
