@@ -13,7 +13,9 @@
 
             <div class="form-group">
                 <label for="drogaNombre">Nombre Droga:</label><br>
-                <input type="text" id="drogaNombre" [(ngModel)]="drogaNombre" name="drogaNombre" required [disabled]="!!tratamiento.id"><br>
+                <select id="drogaNombre" [(ngModel)]="drogaNombre" name="drogaNombre" required [disabled]="!!tratamiento.id">
+                    <option *ngFor="let droga of drogas" [value]="droga.nombre">{{droga.nombre}}</option>
+                </select><br>
             </div>
 
             <div class="form-group">
@@ -33,7 +35,9 @@
 
             <div class="form-group">
                 <label for="veterinarioCedula">Cédula del Veterinario:</label><br>
-                <input type="text" id="veterinarioCedula" [(ngModel)]="veterinarioCedula" name="veterinarioCedula" required [disabled]="!!tratamiento.id"><br>
+  <select id="veterinarioCedula" [(ngModel)]="veterinarioCedula" name="veterinarioCedula" required [disabled]="!!tratamiento.id">
+    <option *ngFor="let veterinario of veterinarios" [value]="veterinario.cedula">{{veterinario.cedula}}</option>
+  </select><br>
             </div>
 
             <button type="submit">Guardar</button>

@@ -29,14 +29,14 @@
     padding: 1vw;
 }
 
-.form-group input {
+.form-group input, #drogaNombre, #veterinarioCedula {
     border-radius: 1vw;
     border-style: none;
     padding: 1vw;
     background-color: rgba(255, 255, 255, 0.651);
     font-family: 'Poppins', sans-serif;
+    width: 15vw;
 }
-
 
 .form-general-group button {
     position: relative;

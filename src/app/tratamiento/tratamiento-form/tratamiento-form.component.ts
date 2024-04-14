@@ -15,6 +15,8 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 })
 export class TratamientoFormComponent implements OnInit {
   veterinarioCedula: string = '';
+  drogas: any[] = [];
+  veterinarios: any[] = [];
   drogaNombre: string = '';
   mascotaId: string | null = null; // Inicializar como null
   tratamiento: Tratamiento = { // Cambiar la inicialización del tratamiento
@@ -61,60 +63,83 @@ export class TratamientoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.mascotaId = params['mascotaId'] || null; // Obtener el valor de mascotaId del parámetro de consulta
+      this.mascotaId = params['mascotaId'] || null;
     });
+  
     console.log('desde mascota' + this.mascotaId);
   
-  const id = this.route.snapshot.paramMap.get('id');
-  if (id) {
-    this.tratamientoService.findById(id).subscribe(
-      (tratamiento) => {
-        if (tratamiento) {
-          this.tratamiento = tratamiento;
-          // Cargar la cédula del veterinario
-          this.veterinarioCedula = tratamiento.veterinario ? tratamiento.veterinario.cedula : '';
-          // Cargar el ID de la mascota
-          this.mascotaId = tratamiento.mascota ? tratamiento.mascota.id : '';
-          // Cargar el nombre de la droga
-          this.drogaNombre = tratamiento.droga ? tratamiento.droga.nombre : '';
-        } else {
-          console.log('El tratamiento no existe');
-          this.router.navigate(['/']);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.tratamientoService.findById(id).subscribe(
+        (tratamiento) => {
+          if (tratamiento) {
+            this.tratamiento = tratamiento;
+            this.veterinarioCedula = tratamiento.veterinario ? tratamiento.veterinario.cedula : '';
+            this.mascotaId = tratamiento.mascota ? tratamiento.mascota.id : '';
+            this.drogaNombre = tratamiento.droga ? tratamiento.droga.nombre : '';
+          } else {
+            console.log('El tratamiento no existe');
+            this.router.navigate(['/']);
+          }
+        },
+        (error) => {
+          console.error('Error al obtener el tratamiento:', error);
         }
-      },
-      (error) => {
-        console.error('Error al obtener el tratamiento:', error);
-      }
-    );
+      );
+    } else {
+      // Obtener lista de veterinarios
+      this.veterinarioService.getAllVeterinarios().subscribe(
+        (veterinarios) => {
+          this.veterinarios = veterinarios;
+        },
+        (error) => {
+          console.error('Error al obtener la lista de veterinarios:', error);
+        }
+      );
+  
+      // Obtener lista de drogas
+      this.drogaService.getAllDrogas().subscribe(
+        (drogas) => {
+          this.drogas = drogas;
+        },
+        (error) => {
+          console.error('Error al obtener la lista de drogas:', error);
+        }
+      );
+    }
   }
-}
+  
 
 
   // Método para obtener el veterinario por cédula
-  obtenerVeterinarioPorCedula(cedula: string): void {
-    this.veterinarioService.obtenerPorCedula(cedula).subscribe(
-      (veterinario) => {
-        this.tratamiento.veterinario = veterinario;
-      },
-      (error) => {
-        console.error('Error al obtener el veterinario:', error);
-        // Manejar el error, por ejemplo, mostrar un mensaje de error
-      }
-    );
-  }
-  
-  // Método para obtener la droga por nombre
-  obtenerDrogaPorNombre(nombre: string): void {
-    this.drogaService.obtenerPorNombre(nombre).subscribe(
-      (droga) => {
-        this.tratamiento.droga = droga;
-      },
-      (error) => {
-        console.error('Error al obtener la droga:', error);
-        // Manejar el error, por ejemplo, mostrar un mensaje de error
-      }
-    );
-  }
+ // Método para obtener el veterinario por cédula
+ obtenerVeterinarioPorCedula(cedula: string): void {
+  this.veterinarioService.obtenerPorCedula(cedula).subscribe(
+    (veterinario) => {
+      this.tratamiento.veterinario = veterinario;
+    },
+    (error) => {
+      console.error('Error al obtener el veterinario:', error);
+      // Manejar el error, por ejemplo, mostrar un mensaje de error
+    }
+  );
+}
+
+obtenerDrogaPorNombre(nombre: string): void {
+  this.drogaService.obtenerPorNombre(nombre).subscribe(
+    (droga) => {
+      this.tratamiento.droga = droga;
+      console.log('Droga encontrada');
+
+    },
+    (error) => {
+      console.error('Error al obtener la droga:', error);
+      // Manejar el error, por ejemplo, mostrar un mensaje de error
+    }
+  );
+}
+
+
   obtenerMascotaPorId(id: string): void {
     this.mascotaService.findById(id).subscribe(
       (mascota) => {
@@ -167,4 +192,5 @@ export class TratamientoFormComponent implements OnInit {
       );
     }
   }
+  
 }

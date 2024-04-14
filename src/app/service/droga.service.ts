@@ -13,4 +13,7 @@ import { HttpClient } from '@angular/common/http';
       obtenerPorNombre(nombre: string): Observable<any> {
         return this.http.get('http://localhost:8090/drogas/getBynombre/' + nombre);
     }
+    getAllDrogas(): Observable<any> {
+        return this.http.get('http://localhost:8090/drogas/all');
+    }
 }
