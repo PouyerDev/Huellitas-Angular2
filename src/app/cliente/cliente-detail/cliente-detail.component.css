@@ -639,6 +639,20 @@ header .navbar-full {
     color: white;
 }
 
+.btn-primary{
+    margin-left: 1vw;
+    color: #ffa074;
+    background-color: white;
+    border: 0.2vw solid #ffa074;
+    border-radius: 1vw;
+    padding: 0.5vw 1vw;
+    transition: all .3s ease;
+}
+.btn-primary:hover{
+    background-color: #ffa074;
+    color: white;
+    border-color: #ffa074;
+}
 
 
 /*---------------------------------dejar---------------------------------------*/

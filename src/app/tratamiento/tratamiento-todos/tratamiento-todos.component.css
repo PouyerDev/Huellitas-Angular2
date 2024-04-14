@@ -104,9 +104,12 @@ lima pastel     #CDFADB
 }
 .btn-primary{
     margin-left: 1vw;
-    color: black;
-    background-color: #ff7474;
-    border: none;
+    color: #ffa074;
+    background-color: white;
+    border: 0.2vw solid #ffa074;
+    border-radius: 1vw;
+    padding: 0.5vw 1vw;
+    transition: all .3s ease;
 }
 .btn-primary:hover{
     background-color: #ffa074;
@@ -134,7 +137,7 @@ svg{
 }
 
 a:hover svg {
-    fill: #5c0025; /* Cambia el color a rojo (#FF0000) al hacer hover */
+    fill: #970606; /* Cambia el color a rojo (#FF0000) al hacer hover */
   }
 
 #button_back {
@@ -184,9 +187,7 @@ a:hover svg {
     margin-top: 1vw;
 }
 
-.delete-btn:hover {
-    background-color: #ff000016;
-}
+
 
 .more-info:hover {
     background-color: #ffa0740f;

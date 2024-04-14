@@ -15,7 +15,8 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 })
 export class TratamientoFormComponent implements OnInit {
   veterinarioCedula: string = '';
-  @Input() mascotaId!: number;
+  drogaNombre: string = '';
+  mascotaId: string | null = null; // Inicializar como null
   tratamiento: Tratamiento = { // Cambiar la inicialización del tratamiento
     id: '',
     descripcion: '',
@@ -54,30 +55,40 @@ export class TratamientoFormComponent implements OnInit {
     private router: Router,
     private tratamientoService: TratamientoService, // Cambiar la inyección de dependencia al servicio de tratamiento
     private veterinarioService: VeterinarioService,
-    private drogaService: DrogaService
+    private drogaService: DrogaService,
+    private mascotaService: MascotaService
   ) { }
 
   ngOnInit(): void {
-    console.log('TratamientoFormComponent');
-    
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.tratamientoService.findById(id).subscribe(
-        (tratamiento) => {
-          if (tratamiento) {
-            this.tratamiento = tratamiento;
-          } else {
-            console.log('El tratamiento no existe');
-            // Redirigir a una página de error o a otra ubicación deseada
-            this.router.navigate(['/']); // Por ejemplo, redirige a la página principal
-          }
-        },
-        (error) => {
-          console.error('Error al obtener el tratamiento:', error);
+    this.route.queryParams.subscribe(params => {
+      this.mascotaId = params['mascotaId'] || null; // Obtener el valor de mascotaId del parámetro de consulta
+    });
+    console.log('desde mascota' + this.mascotaId);
+  
+  const id = this.route.snapshot.paramMap.get('id');
+  if (id) {
+    this.tratamientoService.findById(id).subscribe(
+      (tratamiento) => {
+        if (tratamiento) {
+          this.tratamiento = tratamiento;
+          // Cargar la cédula del veterinario
+          this.veterinarioCedula = tratamiento.veterinario ? tratamiento.veterinario.cedula : '';
+          // Cargar el ID de la mascota
+          this.mascotaId = tratamiento.mascota ? tratamiento.mascota.id : '';
+          // Cargar el nombre de la droga
+          this.drogaNombre = tratamiento.droga ? tratamiento.droga.nombre : '';
+        } else {
+          console.log('El tratamiento no existe');
+          this.router.navigate(['/']);
         }
-      );
-    }
+      },
+      (error) => {
+        console.error('Error al obtener el tratamiento:', error);
+      }
+    );
   }
+}
+
 
   // Método para obtener el veterinario por cédula
   obtenerVeterinarioPorCedula(cedula: string): void {
@@ -104,12 +115,26 @@ export class TratamientoFormComponent implements OnInit {
       }
     );
   }
+  obtenerMascotaPorId(id: string): void {
+    this.mascotaService.findById(id).subscribe(
+      (mascota) => {
+        this.tratamiento.mascota = mascota;
+      },
+      (error) => {
+        console.error('Error al obtener la mascota:', error);
+        // Manejar el error, por ejemplo, mostrar un mensaje de error
+      }
+    );
+  }
   onSubmit(): void {
     if (this.veterinarioCedula) {
       this.obtenerVeterinarioPorCedula(this.veterinarioCedula);
     }
-    if (this.tratamiento.droga) {
-      this.obtenerDrogaPorNombre(this.tratamiento.droga.nombre);
+    if (this.drogaNombre) {
+      this.obtenerDrogaPorNombre(this.drogaNombre);
+    }
+    if (this.mascotaId) {
+      this.obtenerMascotaPorId(this.mascotaId);
     }
     if (this.tratamiento.id) {
       console.log('Actualizando tratamiento:', this.tratamiento);
@@ -118,7 +143,7 @@ export class TratamientoFormComponent implements OnInit {
           // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
           console.log('Tratamiento actualizado exitosamente.');
           // Redirigir al detalle del tratamiento
-          this.router.navigate(['/tratamiento/tratamiento-detail/'+ this.tratamiento.id]);
+          this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
         },
         (error) => {
           console.error('Error al actualizar el tratamiento:', error);
@@ -132,7 +157,8 @@ export class TratamientoFormComponent implements OnInit {
           // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
           console.log('Tratamiento creado exitosamente.');
           // Redirigir a la lista de tratamientos
-          this.router.navigate(['/tratamientos']);
+          this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
+          
         },
         (error) => {
           console.error('Error al crear el tratamiento:', error);

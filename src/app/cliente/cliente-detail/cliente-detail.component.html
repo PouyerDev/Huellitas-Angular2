@@ -20,7 +20,7 @@
             <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
             <p><strong>Correo:</strong> {{ cliente.correo }}</p>
             <p><strong>Celular:</strong> {{ cliente.celular }}</p>
-            <a [routerLink]="['/cliente/update/', cliente.id]">Modificar</a>
+            <button class="btn-primary" [routerLink]="['/cliente/update/', cliente.id]">Modificar</button>
         </div>
     </div>
 
