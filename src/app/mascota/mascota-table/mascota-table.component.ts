@@ -11,7 +11,6 @@ import { MascotaService } from 'src/app/service/mascota.service';
 })
 export class MascotaTableComponent {
   //atributos
-  mostrarForm: boolean = false;
   selectedMascota!: Mascota;
   mascotasList!: Mascota[];
   //inyectar dependencias
@@ -40,10 +39,5 @@ export class MascotaTableComponent {
       this.mascotasList = this.mascotasList.filter(m => m !== mascota);
       this.router.navigate(['/mascotas']);
     });
-  }
-  
-
-  ocultarFormulario(mostrar: boolean) {
-    this.mostrarForm = false;
   }
 }

@@ -15,13 +15,7 @@
 
 <section id="todas-mascotas">
   <h1 id="todas-mascotas-title">Lista de Mascotas</h1>
-  <button class="btn btn-primary" (click)="mostrarForm = !mostrarForm">
-    Agregar Mascota
-  </button>
-  <ng-container *ngIf="mostrarForm">
-  <!-- <app-mascota-form (addMascotaEvent)="agregarMascota($event)">
-      (ocultarFormularioEvent)="ocultarForm($event)"</app-mascota-form>-->
-    </ng-container>
+  <a class="add-btn" [routerLink]="['/mascota/crear']">Agregar Mascota</a>
   <section id="mascotas-table">
     <div id="mascota-container-todas" *ngFor="let mascota of mascotasList">
       <div class="mascota-info">
