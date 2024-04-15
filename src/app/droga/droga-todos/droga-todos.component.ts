@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Droga } from 'src/app/model/droga';
 import { Tratamiento } from 'src/app/model/tratamiento';
+import { ExcelService } from 'src/app/service/Excel.service';
 import { DrogaService } from 'src/app/service/droga.service';
+
 
 @Component({
   selector: 'app-droga-todos',
@@ -12,14 +14,16 @@ export class DrogaTodosComponent implements OnInit {
   
   drogasList: Droga[] = [];
   @Input() tratamiento!: Tratamiento;
-  constructor(private drogaService: DrogaService) { }
+  constructor(private drogaService: DrogaService,
+    private excelService: ExcelService
+  ) { }
 
   ngOnInit(): void {
     this.loadDrogas();
   }
 
   loadDrogas(): void {
-    this.drogaService.findAll().subscribe(drogas => {
+    this.drogaService.getAllDrogas().subscribe(drogas => {
       this.drogasList = drogas;
     });
   }
@@ -28,17 +32,50 @@ export class DrogaTodosComponent implements OnInit {
       
     })
   }
+  /*
+  deleteDroga(drogaId: string): void {
+    this.drogaService.deleteDroga(drogaId).subscribe();
+  
+    this.drogasList = this.drogasList.filter(droga => droga.id !== drogaId);
+  }
+  */
   deleteDroga(drogaId: string): void {
     this.drogaService.deleteDroga(drogaId).subscribe({
       next: () => {
-        console.log('Cliente eliminado exitosamente.');
-        // Una vez eliminado el cliente, actualiza la lista de clientes
+        console.log('Droga eliminado exitosamente.');
+        // Una vez eliminado el cliente, actualiza la lista de Drogas
         this.loadDrogas();
       },
       error: (error) => {
-        console.error('Error al eliminar cliente:', error);
+        console.error('Error al eliminar Droga:', error);
       }
     });
-
   }
+
+//exel
+cargarDatosDesdeExcel(event: any): void {
+  const file: File = event.target.files[0];
+
+  if (file) {
+    this.excelService.leerExcel(file).subscribe((drogas: Droga[]) => {
+      this.agregarDrogasALaBaseDeDatos(drogas);
+    }, (error) => {
+      console.error('Error al cargar datos desde Excel:', error);
+    });
+  }
+}
+agregarDrogasALaBaseDeDatos(drogas: Droga[]): void {
+  console.log('Drogas desde el archivo Excel:', drogas);
+  drogas.forEach(droga => {
+    this.drogaService.agregarDroga(droga).subscribe(
+      () => {
+        console.log(`Droga ${droga.nombre} agregada a la base de datos.`);
+      },
+      (error) => {
+        console.error(`Error al agregar droga ${droga.nombre} a la base de datos:`, error);
+      }
+    );
+  });
+}
+
 }

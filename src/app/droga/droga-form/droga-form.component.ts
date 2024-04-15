@@ -44,7 +44,7 @@ export class DrogaFormComponent implements OnInit {
       );
     }
   }
-  onSubmit(): void {
+  OnSubmit(): void {
     if (this.droga.id) {
       console.log('Actualizando droga:', this.droga);
       this.drogaService.modificarDroga(this.droga).subscribe(
@@ -75,4 +75,42 @@ export class DrogaFormComponent implements OnInit {
       );
     }
   }
+
+
+  onSubmit(): void {
+    
+    if (this.droga.id) {
+      console.log('Actualizando droga:', this.droga);
+      
+      this.drogaService.actualizarDroga(this.droga);
+      this.router.navigate(['/drogas/detail', this.droga.id]);
+      console.log("droga actualizado");
+    } else {
+      console.log('Creando droga:', this.droga);
+      this.drogaService.crearDroga(this.droga);
+      this.router.navigate(['/drogas']);
+      console.log("droga creado");
+      
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

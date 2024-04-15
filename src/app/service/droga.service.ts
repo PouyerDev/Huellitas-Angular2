@@ -28,15 +28,50 @@ export class DrogaService {
   borrarDroga(id: string): Observable<any> {
     return this.http.delete(this.apiUrl + 'delete/' + id);
   }
+  
   deleteDroga(id: string): Observable<void> {
-    return this.http.delete<void>(this.apiUrl + '/delete/' + id);
+    return this.http.delete<void>(this.apiUrl + 'delete/' + id);
   }
-  modificarDroga(droga: Droga): Observable<any> {
-    return this.http.put<any>(this.apiUrl + 'update', droga);
+  modificarDroga(droga: Droga): Observable<void> {
+    return this.http.put<void>(this.apiUrl + 'update', droga);
   }
 
+  getTratamientosByDrogaId(id: string): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.apiUrl+'/getAllTratamientos/'+id);
+  }
 
-
+  actualizarDroga(droga: Droga){
+    console.log("actualizando servicio angular");
+    
+    this.http.put('http://localhost:8090/drogas/update/' + droga.id, droga)
+      .subscribe(
+        response => {
+          console.log("droga actualizada correctamente:", response);
+          // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+        },
+        error => {
+          console.error("Error al actualizar el droga:", error);
+          // Aquí puedes manejar el error adecuadamente si lo deseas
+        }
+      );
+  }
+  
+  // Método para crear un nuevo veterinario
+  crearDroga(droga: Droga) { 
+    console.log("creando servicio angular");
+    
+    this.http.post('http://localhost:8090/drogas/add', droga)
+      .subscribe(
+        response => {
+          console.log("droga creada correctamente:", response);
+          // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+        },
+        error => {
+          console.error("Error al crear el droga:", error);
+          // Aquí puedes manejar el error adecuadamente si lo deseas
+        }
+      );
+  }
 
 
 //GetbyName
