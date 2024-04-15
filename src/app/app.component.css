@@ -93,15 +93,11 @@ button {
 
 /*menu de navegación*/
 .navbar-full {
-    margin-left: -5vw;
     top: 0;
     position: fixed;
     background-color: #FFCF96;
     width: 100%;
     display: flex;
-    /*margen 0 arriba y abajo, auto derecha e izquierda*/
-    margin: 0;
-    /*para que este por encima de otros elvwentos*/
     z-index: 9999;
 }
 
