@@ -12,8 +12,7 @@ import { Mascota } from 'src/app/model/mascota';
   styleUrls: ['./cliente-detail.component.css']
 })
 export class ClienteDetailComponent implements OnInit {
-  @Input()
-  cliente!: Cliente;
+  @Input() cliente!: Cliente;
   mascota!: Mascota;
 
   constructor(
@@ -24,6 +23,10 @@ export class ClienteDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadMascotas();
+  }
+
+  loadMascotas(): void {
     this.route.paramMap.subscribe(params => {
       const id = String(params.get('id'));
       this.clienteService.getClienteById(id).pipe(
@@ -40,7 +43,6 @@ export class ClienteDetailComponent implements OnInit {
       )
     });
   }
-
 
   convertirAMascota(data: any): Mascota {
     // Realiza la conversión de datos según la estructura del modelo de Mascota
@@ -59,12 +61,11 @@ export class ClienteDetailComponent implements OnInit {
   activate(mascotaId: string): void {
     console.log('Activando mascota:', mascotaId, 'del cliente:', this.cliente);
     this.clienteService.activateMascota(mascotaId, this.cliente.id).subscribe(() => {
-      // Redirigir a la misma página para recargar el HTML
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        return this.router.navigate(['/cliente/cliente-detail/' + this.cliente.id]);
-      });
+      //
+      // Recargar la página completa
+    
     });
+    this.loadMascotas();  
+    //window.location.reload();
   }
-  
-
 }

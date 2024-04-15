@@ -50,7 +50,6 @@ export class ClienteFormComponent implements OnInit {
       console.log('Actualizando cliente:', this.cliente);
       this.clienteService.actualizarCliente(this.cliente).subscribe(
         () => {
-          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
           console.log('Cliente actualizado exitosamente.');
           // Redirigir al detalle del cliente
           this.router.navigate(['/cliente/cliente-detail/'+ this.cliente.id]);

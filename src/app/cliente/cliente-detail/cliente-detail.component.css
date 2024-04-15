@@ -157,6 +157,7 @@ lima pastel     #CDFADB
 }
 
 .mascota-info {
+    width: fit-content;
     display: inline-flex;
     justify-content: space-evenly;
     padding-right: auto;
@@ -255,30 +256,27 @@ lima pastel     #CDFADB
 
 }
 
-.mascotas-flex{
-    align-self: center;
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2vw;
-    
-}
-
 
 
 #mascotas-table-vista{
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     width: 100%;
     margin: 1vw 5vw;
     padding: 1vw;
 }
 
-#mascotas-table-vista .info-vista{
+#flex-container{
+    margin: 0vw 10vw;
+    align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+
+#mascotas-table-vista .info-vista{
     margin-top: 1vw;
+
 }
 
 .delete-btn:hover {
