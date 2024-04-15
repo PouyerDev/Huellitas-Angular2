@@ -15,6 +15,9 @@ import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veteri
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/tratamiento-todos.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
+import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
+import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -39,6 +42,11 @@ const routes: Routes = [
   { path: 'tratamientos/', component: TratamientoTodosComponent },
   { path: 'tratamiento/update/:id/:mascotaId', component: TratamientoFormComponent },
   { path: 'tratamiento/crear', component: TratamientoFormComponent },
+
+  { path: 'drogas', component: DrogaTodosComponent },
+  { path: 'droga/update/:id', component: DrogaFormComponent },
+  { path: 'droga/crear', component: DrogaFormComponent },
+  { path: 'droga/droga-detail/:id', component: DrogaDetailComponent },
   
   { path: '**', component: ErrorPageComponent }
 ];

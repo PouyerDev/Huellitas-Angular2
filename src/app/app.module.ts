@@ -18,6 +18,9 @@ import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veteri
 import { HttpClientModule } from '@angular/common/http';
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/tratamiento-todos.component';
+import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
+import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
+import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/trata
     VeterinarioTodosComponent,
     VeterinarioFormComponent,
     TratamientoFormComponent,
-    TratamientoTodosComponent
+    TratamientoTodosComponent,
+    DrogaTodosComponent,
+    DrogaFormComponent,
+    DrogaDetailComponent
   ],
   imports: [
     BrowserModule,
