@@ -83,12 +83,12 @@ export class DrogaFormComponent implements OnInit {
       console.log('Actualizando droga:', this.droga);
       
       this.drogaService.actualizarDroga(this.droga);
-      this.router.navigate(['/drogas/detail', this.droga.id]);
+      this.router.navigate(['/droga/droga-detail', this.droga.id]);
       console.log("droga actualizado");
     } else {
       console.log('Creando droga:', this.droga);
       this.drogaService.crearDroga(this.droga);
-      this.router.navigate(['/drogas']);
+      this.router.navigate(['/drogas/all']);
       console.log("droga creado");
       
     }

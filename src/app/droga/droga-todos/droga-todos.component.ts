@@ -75,7 +75,9 @@ agregarDrogasALaBaseDeDatos(drogas: Droga[]): void {
         console.error(`Error al agregar droga ${droga.nombre} a la base de datos:`, error);
       }
     );
-  });
+    this.loadDrogas();
+  }
+);
 }
 
 }
