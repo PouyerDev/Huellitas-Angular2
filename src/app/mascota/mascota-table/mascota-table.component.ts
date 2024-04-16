@@ -26,6 +26,13 @@ export class MascotaTableComponent {
       this.mascotasList = mascotas.filter(mascota => mascota.estado);
     });
   }
+
+  ngOnChanges() {
+    this.mascotaService.findAll().subscribe(mascotas => {
+      // Filter mascotas with estado = true
+      this.mascotasList = mascotas.filter(mascota => mascota.estado);
+    });
+  }
  
   agregarMascota(mascota: Mascota) {
     this.mascotaService.agregarMascota(mascota).subscribe(() => {
@@ -37,7 +44,10 @@ export class MascotaTableComponent {
     console.log('Desactivando mascota:', mascota);
     this.mascotaService.deactivateMascota(mascota.id).subscribe(() => {
       this.mascotasList = this.mascotasList.filter(m => m !== mascota);
-      this.router.navigate(['/mascotas']);
+      
     });
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        return this.router.navigate(['/mascotas']);
+      });
   }
 }

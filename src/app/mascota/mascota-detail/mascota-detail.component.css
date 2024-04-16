@@ -93,6 +93,7 @@ lima pastel     #CDFADB
 }
 
 .info-vista {
+    margin: 0 2vw;
     padding: 1.5vw 1vw;
     width: 18vw;
     height: 6vw;
@@ -112,6 +113,13 @@ lima pastel     #CDFADB
     display: flex;
     flex-direction: column;
 }
+
+.edit-btn{
+    border-radius: 40vw;
+    color: #ff7474;
+    position: relative;
+}
+
 
 /*/*---------------------------------Todas MASCOTAS/clientes---------------------------------------*/
 /* Button */
@@ -257,6 +265,7 @@ lima pastel     #CDFADB
 
 #mascotas-table-vista .info-vista{
     margin-top: 1vw;
+    margin: 1vw 2vw;
 }
 
 .delete-btn:hover {

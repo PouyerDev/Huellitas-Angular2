@@ -20,8 +20,8 @@ export class MascotaService {
   findById(id: string): Observable<Mascota> {
     return this.http.get<Mascota>(this.apiUrl+'find/'+id);
   }
+  
   agregarMascota(mascota: Mascota): Observable<any> {
-    
     return this.http.post<any>(this.apiUrl+'add', mascota);
   }
 
@@ -36,7 +36,6 @@ export class MascotaService {
   
   getTratamientosByMascotaId(id: string): Observable<Mascota[]> {
     return this.http.get<Mascota[]>(this.apiUrl+'getAlltratamientos/'+id);
-
   } 
 
 }

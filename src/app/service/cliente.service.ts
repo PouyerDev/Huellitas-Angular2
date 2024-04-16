@@ -19,6 +19,10 @@ export class ClienteService {
     // Return an observable of the client list
     return this.http.get<Cliente[]>(this.baseUrl+'/all');
   }
+
+  getClienteByCedula(cedula: string): Observable<Cliente> {
+    return this.http.get<Cliente>(this.baseUrl+'/findCedula/'+cedula);
+  }
   
   getClienteById(id: string): Observable<Cliente> {
     return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
@@ -43,10 +47,11 @@ export class ClienteService {
     return this.http.get<void>('http://localhost:8090/mascotas/activate/'+mascotaId+'/'+clientId, {});
   }
 
-  addMascotaCliente(mascotaId: string, clienteId: string): Observable<void> {
-    const body = { idCliente: clienteId, idMascota: mascotaId };
-    return this.http.post<void>(`${this.baseUrl}/addMascotaCliente`, body);
+  addMascotaCliente(mascotaId: number, clienteId: string): Observable<void> {
+    const datos = [clienteId, mascotaId];
+    return this.http.post<any>(this.baseUrl + '/addMascotaCliente', datos);
   }
+
 /* actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);
   }
