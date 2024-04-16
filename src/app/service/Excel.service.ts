@@ -23,13 +23,16 @@ export class ExcelService {
         const excelData: any[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
 
         const drogas: Droga[] = excelData.map((item: any) => {
+          // Generar un ID automático
+          const id = this.generarID();
           return new Droga(
-            item.id,
-            item.nombre,
-            item.precioCompra,
-            item.precioVenta,
-            item.unidadesDisponibles,
-            item.unidadesVendidas
+            id.toString(),
+            item.NOMBRE,
+            
+            parseFloat(item['PRECIO VENTA'].toString().replace('$', '').replace('.', ',')),
+            parseFloat(item['PRECIO COMPRA'].toString().replace('$', '').replace('.', ',')),
+            parseInt(item['UNIDADES DISPONIBLES']),
+            parseInt(item['UNIDADES VENDIDAS'])
           );
         });
 
@@ -42,7 +45,11 @@ export class ExcelService {
 
       reader.readAsArrayBuffer(file);
     })).pipe(
-        map((drogas: unknown) => drogas as Droga[])
+      map((drogas: unknown) => drogas as Droga[])
     );
+  }
+  private generarID(): number {
+    // Generar un ID aleatorio único
+    return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
   }
 }
