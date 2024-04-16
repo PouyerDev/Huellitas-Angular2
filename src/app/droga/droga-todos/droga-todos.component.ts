@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { Droga } from 'src/app/model/droga';
 import { Tratamiento } from 'src/app/model/tratamiento';
 import { ExcelService } from 'src/app/service/Excel.service';
 import { DrogaService } from 'src/app/service/droga.service';
+import { TratamientoService } from 'src/app/service/tratamiento.service';
 
 
 @Component({
@@ -15,7 +17,8 @@ export class DrogaTodosComponent implements OnInit {
   drogasList: Droga[] = [];
   @Input() tratamiento!: Tratamiento;
   constructor(private drogaService: DrogaService,
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private tratamientoService: TratamientoService
   ) { }
 
   ngOnInit(): void {
@@ -32,13 +35,13 @@ export class DrogaTodosComponent implements OnInit {
       
     })
   }
-  /*
+  
   deleteDroga(drogaId: string): void {
     this.drogaService.deleteDroga(drogaId).subscribe();
   
     this.drogasList = this.drogasList.filter(droga => droga.id !== drogaId);
   }
-  */
+  /*
   deleteDroga(drogaId: string): void {
     this.drogaService.deleteDroga(drogaId).subscribe({
       next: () => {
@@ -51,6 +54,42 @@ export class DrogaTodosComponent implements OnInit {
       }
     });
   }
+  */
+/*
+deleteDroga(drogaId: string): void {
+  this.tratamientoService.getTratamientosPorDroga(drogaId).subscribe({
+    next: (tratamientos) => {
+      const deleteTratamientosObservables = tratamientos.map(tratamiento => 
+        this.tratamientoService.borrarTratamiento(tratamiento.id)
+      );
+
+      forkJoin(deleteTratamientosObservables).subscribe({
+        next: () => {
+          this.drogaService.deleteDroga(drogaId).subscribe({
+            next: () => {
+              console.log('Droga eliminada exitosamente.');
+              this.loadDrogas();
+            },
+            error: (error) => {
+              console.error('Error al eliminar Droga:', error);
+            }
+          });
+        },
+        error: (error) => {
+          console.error('Error al eliminar Tratamientos:', error);
+        }
+      });
+    },
+    error: (error) => {
+      console.error('Error al obtener Tratamientos:', error);
+    }
+  });
+}
+
+*/
+
+
+
 
 //exel
 cargarDatosDesdeExcel(event: any): void {
