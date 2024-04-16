@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'mascotas/detail/:id', component: MascotaDetailComponent },
   { path: 'mascotas/deactivate/:id', component: MascotaDetailComponent },
   { path: 'mascota/crear', component: MascotaFormComponent},
+  { path: 'mascota/update/:id', component: MascotaFormComponent},
   
   { path: 'tratamientos/', component: TratamientoTodosComponent },
   { path: 'tratamiento/update/:id/:mascotaId', component: TratamientoFormComponent },
