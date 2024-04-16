@@ -19,6 +19,7 @@ import { LoginGeneralComponent } from './login/login-general/login-general.compo
 import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
 import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
 import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [

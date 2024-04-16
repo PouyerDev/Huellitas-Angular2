@@ -45,7 +45,6 @@ import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.componen
     DrogaTodosComponent,
     DrogaFormComponent,
     DrogaDetailComponent
-
   ],
   imports: [
     BrowserModule,

@@ -67,6 +67,7 @@ lima pastel     #CDFADB
     border-radius: 1vw;
     background-color: #ffffff;
     align-self: center;
+    height: max-content;
 }
 
 
@@ -145,10 +146,11 @@ lima pastel     #CDFADB
 }
 
 #informacionMascota .add-btn{
-    margin-left: 72vw;
+    /*margin-left: 72vw;
     transform:translatex(134px) translatey(-40px);
-    position: fixed;
-    
+    position: relative;*/
+    margin-left:-1vw;
+    margin-top:2vw;
 }
 
 .add-btn:hover {
