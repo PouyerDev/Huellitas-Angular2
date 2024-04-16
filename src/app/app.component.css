@@ -72,14 +72,15 @@ lima pastel     #CDFADB
 }
 
 
-#button-huellitas button:hover {
+#button-huellitas:hover {
     cursor: pointer;
     border: none;
+    ba
 }
 
-body {
-
-    margin: auto;
+body {  
+    padding:0;
+    margin: 0;
     margin-top: 2%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3vw;
@@ -136,7 +137,7 @@ button {
     text-decoration: none;
     background-color: #ffa074;
     color: rgb(249, 242, 233);
-
+    border: none;
 }
 
 .navbar-options .btn-login:hover {
@@ -884,9 +885,6 @@ header {
 header .navbar-full {
     background-color: #FFCF96;
     transform: translatex(0px) translatey(0px);
-    border-bottom-style: solid;
-    border-bottom-width: 0.1em !important;
-    border-bottom-color: rgba(0, 0, 0, 0.50);
     align-items: center;
     justify-content: center;
     float: none;
