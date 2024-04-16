@@ -15,11 +15,13 @@ import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veteri
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/tratamiento-todos.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { LoginGeneralComponent } from './login/login-general/login-general.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
   { path: 'admin', component: AdminPageComponent },
+  { path: 'login', component: LoginGeneralComponent},
   
   { path: 'clientes', component: ClienteTodosComponent },
   { path: 'cliente/update/:id', component: ClienteFormComponent },

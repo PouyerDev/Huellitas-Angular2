@@ -118,6 +118,11 @@ lima pastel     #CDFADB
     border-radius: 40vw;
     color: #ff7474;
     position: relative;
+    border:#fca5a5 0.2vw solid;
+    
+}
+.edit-btn:hover{
+    color: red;
 }
 
 
@@ -137,6 +142,13 @@ lima pastel     #CDFADB
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
+}
+
+#informacionMascota .add-btn{
+    margin-left: 72vw;
+    transform:translatex(134px) translatey(-40px);
+    position: fixed;
+    
 }
 
 .add-btn:hover {
