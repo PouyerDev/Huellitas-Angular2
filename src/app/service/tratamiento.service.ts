@@ -32,5 +32,9 @@ export class TratamientoService {
   modificarTratamiento(tratamiento: Tratamiento): Observable<any> {
     return this.http.put<any>(this.apiUrl + 'update/' + tratamiento.id, tratamiento);
   }
-  
+  /*
+getTratamientosPorDroga(drogaId: string): Observable<Tratamiento[]> {
+  return this.http.get<Tratamiento[]>(`${this.apiUrl}/findbydroga/${drogaId}`);
+}
+  */
 }
