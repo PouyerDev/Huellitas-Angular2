@@ -98,7 +98,7 @@ export class TratamientoFormComponent implements OnInit {
       );
   
       // Obtener lista de drogas
-      this.drogaService.getAllDrogas().subscribe(
+      this.drogaService.getAllDrogasValidas().subscribe(
         (drogas) => {
           this.drogas = drogas;
         },
