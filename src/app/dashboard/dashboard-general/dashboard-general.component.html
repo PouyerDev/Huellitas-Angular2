@@ -23,6 +23,24 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <h2>Total de Mascotas: {{ numMascotas }}</h2>
+
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <h2>Mascotas en Tratamiento: {{ totalMascotasTratamiento }}</h2>
+
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <h2>Ganancias Totales: ${{ gananciasTotales }}</h2>
+
                    
                     </div>
                 </a>
@@ -30,20 +48,8 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
-                    
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                   
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
+                        <h2>Drogas Vendidas: {{ totalDrogasVendidas }}</h2>
+
          
                     </div>
                 </a>
@@ -51,13 +57,19 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
-                  
+
+                <h2>Top 3 Drogas Más Vendidas:</h2>
+            <ul>
+                <li *ngFor="let droga of topDrogasVendidas">{{ droga.nombre }}</li>
+            </ul>
                     </div>
                 </a>
             </div>
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <h2>Tratamientos Administrados en el Último Mes: {{ totalTratamientosUltimoMes }}</h2>
+
                 
                     </div>
                 </a>
@@ -65,6 +77,20 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Droga</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tratamiento of tratamientosPorDrogaUltimoMes">
+                                    <td>{{ tratamiento.droga }}</td>
+                                    <td>{{ tratamiento.cantidad }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
  
                     </div>
                 </a>
