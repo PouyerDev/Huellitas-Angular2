@@ -192,5 +192,11 @@ obtenerDrogaPorNombre(nombre: string): void {
       );
     }
   }
-  
+   minFechaInicio(): string {
+    return new Date().toISOString().split('T')[0]; // Obtener la fecha actual
+  }
+
+  minFechaFin(): string {
+    return this.tratamiento.fechaInicio || new Date().toISOString().split('T')[0]; //
+  }
 }

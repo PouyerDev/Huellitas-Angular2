@@ -25,23 +25,25 @@
 
             <div class="form-group">
                 <label for="fechaInicio">Fecha de Inicio de Tratamiento:</label><br>
-                <input type="date" id="fechaInicio" [(ngModel)]="tratamiento.fechaInicio" name="fechaInicio" required><br>
+                <input type="date" id="fechaInicio" [(ngModel)]="tratamiento.fechaInicio" name="fechaInicio" required
+                    [min]="minFechaInicio()" [max]="minFechaInicio()"><br>
             </div>
 
             <div class="form-group">
                 <label for="fechaFin">Fecha de Fin de Tratamiento:</label><br>
-                <input type="date" id="fechaFin" [(ngModel)]="tratamiento.fechaFin" name="fechaFin" required><br>
+                <input type="date" id="fechaFin" [(ngModel)]="tratamiento.fechaFin" name="fechaFin" required
+                    [min]="minFechaFin()"><br>
             </div>
 
             <div class="form-group">
                 <label for="veterinarioCedula">Cédula del Veterinario:</label><br>
-  <select id="veterinarioCedula" [(ngModel)]="veterinarioCedula" name="veterinarioCedula" required [disabled]="!!tratamiento.id">
-    <option *ngFor="let veterinario of veterinarios" [value]="veterinario.cedula">{{veterinario.cedula}}</option>
-  </select><br>
+                <select id="veterinarioCedula" [(ngModel)]="veterinarioCedula" name="veterinarioCedula" required
+                    [disabled]="!!tratamiento.id">
+                    <option *ngFor="let veterinario of veterinarios" [value]="veterinario.cedula">{{veterinario.cedula}}</option>
+                </select><br>
             </div>
 
             <button type="submit">Guardar</button>
         </form>
     </div>
 </div>
-
