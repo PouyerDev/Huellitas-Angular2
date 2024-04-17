@@ -83,7 +83,7 @@ export class DrogaService {
     return this.http.get('http://localhost:8090/drogas/all');
   }
   getAllDrogasValidas(): Observable<any> {
-    return this.http.get('http://localhost:8090/drogas/AllValidas');
+    return this.http.get('http://localhost:8090/drogas/allValidas');
   }
   
 }
