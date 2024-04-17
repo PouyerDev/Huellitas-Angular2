@@ -23,56 +23,25 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <h2>Total de Mascotas: {{ numMascotas }}</h2>
+
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
                         <iframe class="lottie" src="https://lottie.host/embed/5f99740b-4f2c-43bd-a698-1c8c2697acf9/MUJsXjzV02.json"></iframe> 
-                        <p>Mascotas totales</p>
+                        <h2>Mascotas en Tratamiento: {{ totalMascotasTratamiento }}</h2>
+
                     </div>
                 </a>
             </div>
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
-                        <iframe class="lottie" src="https://lottie.host/embed/24b347eb-ca64-4b68-aa65-46115065c2f7/yCFMBp6mQy.json"></iframe>
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                       
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-         
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                  
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
- 
-                    </div>
-                </a>
-            </div>
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
+                        <h2>Ganancias Totales: ${{ gananciasTotales }}</h2>
+
                    
                     </div>
                 </a>
@@ -80,6 +49,66 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <h2>Drogas Vendidas: {{ totalDrogasVendidas }}</h2>
+                        <iframe class="lottie" src="https://lottie.host/embed/24b347eb-ca64-4b68-aa65-46115065c2f7/yCFMBp6mQy.json"></iframe>
+                    </div>
+                </a>
+           
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+
+                <h2>Top 3 Drogas Más Vendidas:</h2>
+            <ul>
+                <li *ngFor="let droga of topDrogasVendidas">{{ droga.nombre }}</li>
+            </ul>
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <h2>Tratamientos Administrados en el Último Mes: {{ totalTratamientosUltimoMes }}</h2>
+
+                
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Droga</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tratamiento of tratamientosPorDrogaUltimoMes">
+                                    <td>{{ tratamiento.droga }}</td>
+                                    <td>{{ tratamiento.cantidad }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+ 
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <h2>Veterinarios Activos: {{ totalVeterinariosActivos }}</h2>
+
+                   
+                    </div>
+                </a>
+            </div>
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <h2>Veterinarios No activos: {{ totalVeterinariosInActivos }}</h2>
+
                
                     </div>
                 </a>
