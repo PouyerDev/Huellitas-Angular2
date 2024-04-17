@@ -22,7 +22,7 @@ export class LoginGeneralComponent {
     if (this.cedula === "0000") {
       // Redirigir al administrador a su página correspondiente
     
-      this.router.navigate(['/veterinarios']); // Aquí debería ser /veterinarios para el admin, ¿no?
+      this.router.navigate(['/dashboard']); // Aquí debería ser /veterinarios para el admin, ¿no?
     } else {
       // Verificar si la cedula ingresada corresponde a un veterinario existente
       this.veterinarioService.obtenerPorCedula(this.cedula).subscribe(

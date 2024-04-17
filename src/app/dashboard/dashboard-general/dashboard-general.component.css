@@ -1,0 +1,62 @@
+
+
+#mascotas-table, #mascotas-table-vista{
+    width: 100%;
+    padding-left: 9%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 0em;
+    align-items: center;
+
+}
+
+
+#mascotas-table-vista{
+    width: 100%;
+    margin: 1vw 5vw;
+    padding: 1vw;
+}
+#todas-mascotas-title{
+    text-align: center;
+    padding-top: 10%;
+    font-family: poppins;
+}
+
+#flex-container{
+    margin: 2vw 12vw 0vw 8vw;
+    align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mascota-info {
+    width: fit-content;
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding-right: auto;
+}
+
+.info-vista {
+    padding: 1.5vw 1vw;
+    width: 22vw;
+    height: 10vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-top: 3vw;
+    text-align: center;
+    transition: 0.3s;
+
+}
+.info-vista:hover {
+
+    box-shadow: 0 0 1.5rem #f28d5ee8;
+}
+.info-vista h2{
+    text-align: center;
+    height: fit-content;
+    padding: 1vw;
+    margin-top: 1vw;
+}
