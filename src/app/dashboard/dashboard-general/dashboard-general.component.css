@@ -10,7 +10,9 @@
 
 }
 
-
+.lottie{
+    border:none;
+}
 #mascotas-table-vista{
     width: 100%;
     margin: 1vw 5vw;
@@ -33,15 +35,16 @@
 
 .mascota-info {
     width: fit-content;
-    display: inline-flex;
+    display:inline-block;
     justify-content: space-evenly;
     padding-right: auto;
 }
 
 .info-vista {
     padding: 1.5vw 1vw;
-    width: 22vw;
-    height: 10vw;
+    max-width: 32vw;
+    max-height: 32vw;
+
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
