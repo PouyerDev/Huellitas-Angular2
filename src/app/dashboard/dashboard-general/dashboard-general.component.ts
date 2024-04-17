@@ -6,6 +6,8 @@ import { Tratamiento } from 'src/app/model/tratamiento'; // Importa el modelo Tr
 import { TratamientoService } from 'src/app/service/tratamiento.service'; // Importa el servicio Tratamiento
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { Veterinario } from 'src/app/model/veterinario';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
   selector: 'app-dashboard-general',
@@ -22,12 +24,16 @@ export class DashboardGeneralComponent {
   totalDrogasVendidas!: number;
   topDrogasVendidas!: Droga[];
   totalTratamientosUltimoMes!: number;
-  tratamientosPorDrogaUltimoMes!: { droga: string; cantidad: number }[]; // Nueva propiedad
+  tratamientosPorDrogaUltimoMes!: { droga: string; cantidad: number }[]; 
+  totalVeterinariosActivos!: number;
+  totalVeterinariosInActivos!: number;
+
   //inyectar dependencias
   constructor(
     private mascotaService2: MascotaService,
     private drogaService: DrogaService,
     private tratamientoService: TratamientoService, // Nueva dependencia
+    private veterinarioService: VeterinarioService, 
     private router: Router
   ) {}
   //realizar llamados cuando ya esta cargada la interfaz
@@ -83,6 +89,15 @@ export class DashboardGeneralComponent {
         };
       });
     });
+
+    this.veterinarioService.getAllVeterinarios().subscribe(veterinarios => {
+     // this.totalVeterinariosActivos = veterinarios.filter(veterinario => veterinario.estado).length;
+     // this.totalVeterinariosInActivos = veterinarios.filter(veterinario => !veterinario.activo).length;
+    });
+
+
+
+
   }
 
   //metodos
