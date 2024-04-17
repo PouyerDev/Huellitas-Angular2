@@ -20,6 +20,8 @@ import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
 import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
 import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
 import { AppComponent } from './app.component';
+import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
+import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
 
 
 const routes: Routes = [
@@ -52,6 +54,8 @@ const routes: Routes = [
   { path: 'droga/update/:id', component: DrogaFormComponent },
   { path: 'droga/crear', component: DrogaFormComponent },
   { path: 'droga/droga-detail/:id', component: DrogaDetailComponent },
+
+  { path: 'dashboard', component: DashboardGeneralComponent},
   
   { path: '**', component: ErrorPageComponent }
 ];
