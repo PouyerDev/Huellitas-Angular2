@@ -66,6 +66,8 @@ export class DashboardGeneralComponent implements OnInit {
       });
     });
 
+    console.log(this.tratamientosPorDrogaUltimoMes)
+
     this.veterinarioService.getAllVeterinarios().subscribe((veterinarios) => {
       this.totalVeterinariosActivos = veterinarios.filter((veterinario) => veterinario.estado).length;
       this.totalVeterinariosInActivos = veterinarios.filter((veterinario) => !veterinario.estado).length;

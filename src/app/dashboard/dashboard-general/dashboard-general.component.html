@@ -43,6 +43,28 @@
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
+                        src="https://lottie.host/embed/9de68c9d-571a-43aa-adfa-0eeac4908732/OarmJsJq5e.json"></iframe>
+                        <h2>Veterinarios Activos: {{ totalVeterinariosActivos }}</h2>
+
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <iframe class="lottie"
+                        src="https://lottie.host/embed/9de68c9d-571a-43aa-adfa-0eeac4908732/OarmJsJq5e.json"></iframe>
+                        <h2>Veterinarios inactivos: {{ totalVeterinariosInActivos }}</h2>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mascotas-flex">
+                <a style="text-decoration: none; color: black;">
+                    <div class="mascota-info info-vista">
+                        <iframe class="lottie"
                             src="https://lottie.host/embed/f6afce49-ab45-4773-bddc-368e0858082f/dG9oXFWh5h.json"></iframe>
                         <h2>Ganancias Totales: ${{ gananciasTotales }}</h2>
                     </div>
@@ -72,48 +94,30 @@
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
+                        <iframe class="lottie"
+                        src="https://lottie.host/embed/9de68c9d-571a-43aa-adfa-0eeac4908732/OarmJsJq5e.json"></iframe>
                         <h2>Tratamientos Administrados en el Último Mes: {{ totalTratamientosUltimoMes }}</h2>
                     </div>
                 </a>
             </div>
 
-
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                        <h2>Veterinarios Activos: {{ totalVeterinariosActivos }}</h2>
-
-                    </div>
-                </a>
-            </div>
-
-
-            <div class="mascotas-flex">
-                <a style="text-decoration: none; color: black;">
-                    <div class="mascota-info info-vista">
-                        <h2>Veterinarios No activos: {{ totalVeterinariosInActivos }}</h2>
-                    </div>
-                </a>
-            </div>
-
-           
-
         </div>
-        <div class="mascotas-flex">
-            <a style="text-decoration: none; color: black;">
-                <h2>Cantidad de tratamientos por tipo de medicamento administrado
-                    en el último mes </h2>
+        <div class="info-special">
+            <a style="text-decoration: none; color: black;" class="flex">
+                <h2>Cantidad de tratamientos por tipo de medicamento administrado en el último mes</h2>
                 <table class="tabla-general">
-                    <tr>
+                    <tr>    
                         <th>Medicamento</th>
                         <th>Cantidad de tratamientos</th>
                     </tr>
-                    <tr>
-
+                    <tr *ngFor="let tratamiento of tratamientosPorDrogaUltimoMes">
+                        <td>{{ tratamiento.droga }}</td>
+                        <td>{{ tratamiento.cantidad }}</td>
                     </tr>
                 </table>
             </a>
         </div>
     </section>
+  
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>

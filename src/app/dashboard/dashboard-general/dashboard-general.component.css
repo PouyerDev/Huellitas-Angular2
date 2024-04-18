@@ -1,4 +1,70 @@
+.info-special{
+    width: 70%;
+    margin: 4vw 13vw;
+    padding: 1.5vw 1vw;
+    border-radius: 1vw;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    text-align: center;
+    transition: 0.3s;
+}
 
+.info-special:hover {
+
+    box-shadow: 0 0 1.5rem #f28d5ee8;
+}
+.info-special h2{
+    text-align: center;
+    height: fit-content;
+    padding: 1vw;
+    margin-top: 1vw;
+}
+.flex{
+display: inline-flex;
+flex-direction: column;
+justify-content: space-between;
+text-align: center;
+}
+.tabla-general {
+    padding: 1.5vw;
+    width: 70%;
+    border-collapse: collapse;
+    /*border: #ff8080 0.3vw solid;
+    border-radius: 40px;*/
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tabla-general td {
+    padding: 0.5vw;
+    background-color: #ff8080;
+    
+}
+
+.tabla-general th {
+    text-align: center; 
+    background-color: #ff8080;
+    color: white;
+    padding: 0.5vw;
+    width: 50% ;
+}
+
+.tabla-general th:first-child
+{
+    border-top-left-radius: 2vw;
+}
+
+.tabla-general th:last-child
+{
+    border-top-right-radius: 2vw;
+}
+
+
+.tabla-general td:last-child tr:last-child{
+    border-bottom-right-radius: 2vw;
+    background-color: aqua;
+}
 
 #mascotas-table, #mascotas-table-vista{
     width: 100%;
@@ -68,11 +134,30 @@
 ol{
     padding: 0;
     margin: 0;
-    list-style-position: inside
+    list-style-position: inside;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 ol li{
     padding: 0.5vw;
     margin: 0.5vw;
     font-size: 1.2vw;
+    border-radius: 1vw;
 }
+
+#flex-container ol li:nth-child(1) {
+    background-color: rgba(255, 126, 126, 0.507);
+    width: 80%;
+}
+
+#flex-container ol li:nth-child(2) {
+    background-color: rgba(251, 190, 141, 0.507);
+    width: 70%;
+}
+#flex-container ol li:nth-child(3) {
+    background-color: rgba(255, 214, 126, 0.507);
+    width: 60%;
+}
+

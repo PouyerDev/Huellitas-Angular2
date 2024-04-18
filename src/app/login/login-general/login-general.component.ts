@@ -34,9 +34,17 @@ export class LoginGeneralComponent {
         this.veterinarioService.obtenerPorCedula(this.cedula).subscribe(
           (veterinario) => {
             if (veterinario) {
-              // Redirigir al veterinario a su página correspondiente
-              this.auth.setCurrentUser('veterinario');
-              this.router.navigate(['/clientes']); 
+              if (!veterinario.estado) {
+                // El veterinario está desactivado, no se le permite iniciar sesión
+                console.log('El veterinario está desactivado. No se puede iniciar sesión.');
+                // Puedes mostrar un mensaje de error o redirigir a una página de error
+                // Por ejemplo:
+                this.mostrarMensajeError('El veterinario está desactivado');
+              } else {
+                // El veterinario está activo, se le permite iniciar sesión
+                this.auth.setCurrentUser('veterinario');
+                this.router.navigate(['/clientes']);
+              }
             } else {
               // Si el veterinario no existe, buscar en el servicio de cliente
               this.clienteService.getClienteByCedula(this.cedula).subscribe(
@@ -47,28 +55,28 @@ export class LoginGeneralComponent {
                     this.router.navigate(['/cliente/cliente-detail/' + cliente.id]);
                   } else {
                     // Si no se encuentra ningún usuario, mostrar un mensaje de error
-                    this.mostrarMensajeError();
+                    this.mostrarMensajeError('El usuario no existe');
                   }
                 },
                 (error) => {
                   console.error('Error al verificar el cliente:', error);
-                  this.mostrarMensajeError();
+                  this.mostrarMensajeError('El usuario no existe');
                 }
               );
             }
           },
           (error) => {
             console.error('Error al verificar el veterinario:', error);
-            this.mostrarMensajeError();
+            this.mostrarMensajeError('El usuario no existe');
           }
         );
       }
     }
   }
 
-  mostrarMensajeError(): void {
+  mostrarMensajeError(mensaje : string): void {
     // Mostrar un mensaje de error al usuario
-    alert('El usuario no existe');
+    alert(mensaje);
   }
 
 }
