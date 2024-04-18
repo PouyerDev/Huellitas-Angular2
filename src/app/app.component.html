@@ -1,35 +1,4 @@
-<header>
-  <div class="navbar-full">
-    <a id="button-huellitas" [routerLink]="['../../landing']"><button>
-        <img class="logo" src="assets\img\logo.png" alt="Logo huellitas felices">
-        <h2>Huellitas Felices</h2>
-      </button>
-    </a>
-    <nav class="navbar-options">
-      <ng-container [ngSwitch]="userType">
-        <ng-container *ngSwitchCase="'admin'">
-          <a [routerLink]="['/mascotas']">Portal </a>
-          <a [routerLink]="['/veterinarios']">Veterinarios</a>
-          <a [routerLink]="['/drogas']">Drogas</a>
-        </ng-container>
-        <ng-container *ngSwitchCase="'veterinario'">
-          <a [routerLink]="['/mascotas']">Mascotas </a>
-          <a [routerLink]="['/clientes']">Clientes</a>
-        </ng-container>
-        <ng-container *ngSwitchCase="'cliente'">
-          <a [routerLink]="['/mascotas']">Mascotas </a>
-        </ng-container>
-        <ng-container *ngSwitchCase="'otro'">
-          <!-- <a [routerLink]="['/landing']" class="btn btn-primary">Landing </a> -->
-          <a [routerLink]="['/mascotas']">Mascotas </a>
-          <a [routerLink]="['/clientes']">Clientes </a>
-          <a [routerLink]="['/veterinarios']">Veterinarios </a>
-        </ng-container>
-      </ng-container>
-    </nav>
-
-  </div>
-</header>
+<app-navbar></app-navbar>
 
 <div id="mascota-table">
   <router-outlet></router-outlet>

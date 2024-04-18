@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './service/auth.service';
 
 
 @Component({
@@ -9,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   
-  constructor() {}
+  constructor( ) {}
   title = 'nuevo';
-  userType = 'otro'; 
+  userType = 'dev'; 
 
 }

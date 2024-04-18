@@ -1,0 +1,225 @@
+/*
+--------------COLORES----------------
+Durazno---------#FFCF96
+Arena-----------#FBECD9
+amarillo claro---#FCF4C4
+rosa            #FF8080
+azul            #CEE3FA
+lima pastel     #CDFADB
+*/
+
+/*---------------------------------LANDING PAGE---------------------------------------*/
+
+
+* {
+   
+    scroll-behavior: smooth;
+    scroll-margin-top: 7vw;
+    font-family: 'Poppins', sans-serif;
+}
+.btn-primary{
+    background-color: #ffa074;
+    color: white;
+    border: none;
+}
+.btn-primary:hover{
+    color: black;
+    background-color: #ff7474;
+    border: none;
+   
+}
+
+/*::-webkit-scrollbar{
+    width: 5vw;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffa074;
+}*/
+/*------------------------------------------Boton general---------------------------------------------------*/
+#button-huellitas {
+    border-radius: 0.5vw;
+    box-shadow: none;
+    padding: 0 0, 5vw;
+    float: right;
+    margin-left: 1vw;
+    border: none;
+}
+
+#button-huellitas * {
+    padding: 0;
+    margin: 0;
+    margin: 0.4vw;
+    border: none;
+    background-color: transparent;
+    align-self: auto;
+    float: left;
+    text-align: left;
+    font-weight: bold;
+    background-color: unset !important;
+}
+#button-huellitas:checked{
+    border: none;
+}
+
+#button-huellitas button {
+    display: inline-flex;
+    align-items: center;
+    border: none;
+}
+
+#button-huellitas h2,
+.navbar-full h2 {
+    font-family: 'Amatic SC', sans-serif;
+    border: none;
+}
+
+
+#button-huellitas:hover {
+    cursor: pointer;
+    border: none;
+    border: none;
+}
+
+body {  
+    padding:0;
+    margin: 0;
+    margin-top: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3vw;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw;
+    border: none;
+}
+
+/*menu de navegación*/
+.navbar-full {
+    top: 0;
+    position: fixed;
+    background-color: #FFCF96;
+    width: 100%;
+    display: flex;
+    z-index: 9999;
+}
+
+.navbar-full h2 {
+    font-size: 1.6vw;
+}
+
+.navbar-options {
+    font-size: larger;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+/*opciones de navegación*/
+.navbar-options a {
+    color: black;
+    text-decoration: none;
+    margin: 1vw 0;
+    padding: 1.5vw 2vw;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    transition: 0.4s;
+    font-family: poppins;
+    border:none;
+}
+
+.btn-login {
+    background-color: rgb(244, 244, 244);
+}
+
+
+/*cambio de color al pasar el mouse*/
+.navbar-options a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #ffa074;
+    color: rgb(249, 242, 233);
+    border: none;
+}
+
+.navbar-options .btn-login:hover {
+    background-color: #ff7474;
+}
+
+.btn-login:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.logo {
+    width: auto;
+    height: 5vw;
+    margin: 0.5vw;
+    margin-top: 1vw;
+}
+
+
+/* Navbar full */
+header .navbar-full {
+    background-color: #FFCF96;
+    transform: translatex(0px) translatey(0px);
+    align-items: center;
+    justify-content: center;
+    float: none;
+    clear: none;
+    opacity: 1;
+    flex-direction: row;
+    display: flex;
+}
+
+/* Navbar */
+.navbar-specific {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+    align-items: center;
+    border-bottom: 1px solid;
+}
+
+.navbar-specific h2 {
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 1.6vw;
+    width: 50%;
+    text-wrap: wrap;
+}
+
+.navbar-specific div {
+    display: inline-flex;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 1.6vw;
+    margin-left: 2vw;
+}
+
+
+.btn-login {
+    background-color: rgb(244, 244, 244);
+    scroll-behavior: smooth;
+    color: black;
+    text-decoration: none;
+    margin: 0 3.5vw;
+    padding: 1.5vw 2vw;
+    width: max-content;
+    text-wrap: nowrap;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    font-size: 1.1vw;
+    transition: 0.4s;
+    font-family: poppins;
+}
+
+.btn-login:hover {
+    background-color: #fcb8a5;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}

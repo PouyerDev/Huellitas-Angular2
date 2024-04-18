@@ -22,6 +22,8 @@ import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.componen
 import { AppComponent } from './app.component';
 import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
+import { AuthService } from './service/auth.service';
+
 
 
 const routes: Routes = [
@@ -29,7 +31,8 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'admin', component: AdminPageComponent },
   { path: 'login', component: LoginGeneralComponent},
-  
+
+
   { path: 'clientes', component: ClienteTodosComponent },
   { path: 'cliente/update/:id', component: ClienteFormComponent },
   { path: 'cliente/crear', component: ClienteFormComponent },

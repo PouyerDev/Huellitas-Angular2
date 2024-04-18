@@ -1,0 +1,34 @@
+<header>
+    <div class="navbar-full">
+      <a id="button-huellitas" [routerLink]="['../../landing']"><button>
+          <img class="logo" src="assets\img\logo.png" alt="Logo huellitas felices">
+          <h2>Huellitas Felices</h2>
+        </button>
+      </a>
+      <nav class="navbar-options">
+        <ng-container [ngSwitch]="userType">
+          <ng-container *ngSwitchCase="'admin'">
+            <a [routerLink]="['/dashboard']">Dashboard </a>
+            <a [routerLink]="['/veterinarios']">Veterinarios</a>
+            <a [routerLink]="['/drogas']">Drogas</a>
+          </ng-container>
+          <ng-container *ngSwitchCase="'veterinario'">
+            <a [routerLink]="['/mascotas']">Mascotas </a>
+            <a [routerLink]="['/clientes']">Clientes</a>
+          </ng-container>
+          <ng-container *ngSwitchCase="'cliente'">
+            
+          </ng-container>
+          <ng-container *ngSwitchCase="'dev'">
+            <a [routerLink]="['/dashboard']">Dashboard</a>
+            <a [routerLink]="['/drogas']">Drogas </a>
+            <a [routerLink]="['/mascotas']">Mascotas </a>
+            <a [routerLink]="['/clientes']">Clientes </a>
+            <a [routerLink]="['/veterinarios']">Veterinarios </a>
+          </ng-container>
+        </ng-container>
+       
+      </nav>
+      <a (click)="logOut()" [routerLink]="['/landing']" class="btn-login" >Cerrar Sesión</a>
+    </div>
+  </header>

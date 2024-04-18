@@ -24,6 +24,7 @@ import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
 import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
 import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.c
     DrogaFormComponent,
     DrogaDetailComponent,
     DashboardGeneralComponent,
-    DashboardAuxComponent
+    DashboardAuxComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
