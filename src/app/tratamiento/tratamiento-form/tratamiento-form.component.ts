@@ -48,7 +48,8 @@ export class TratamientoFormComponent implements OnInit {
       nombre: '',
       especialidad: '',
       foto: '',
-      numAtenciones: 0
+      numAtenciones: 0,
+      estado: true
     }
   };
 

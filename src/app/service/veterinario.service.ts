@@ -66,4 +66,8 @@ crearVeterinario(veterinario: Veterinario) {
     return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCedula/' + cedula);
 
   }
+
+  cambiarEstadoVeterinario(veterinarioId: string) {
+    return this.http.put('http://localhost:8090/veterinarios/changeState', veterinarioId);
+  }
 }
