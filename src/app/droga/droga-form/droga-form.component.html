@@ -1,0 +1,28 @@
+<div id="forms-container">
+    <div class="form-general-group">
+        <h1>Droga</h1>
+        <form class="submit" (submit)="onSubmit()">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" [(ngModel)]="droga.nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="precioCompra">Precio Compra</label>
+                <input type="number" id="precioCompra" [(ngModel)]="droga.precioCompra" name="precioCompra" required>
+            </div>
+            <div class="form-group">
+                <label for="precioVenta">Precio Venta</label>
+                <input type="number" id="precioVenta" [(ngModel)]="droga.precioVenta" name="precioVenta" required>
+            </div>
+            <div class="form-group">
+                <label for="unidadesDisponibles">Unidades Disponibles</label>
+                <input type="number" id="unidadesDisponibles" [(ngModel)]="droga.unidadesDisponibles" name="unidadesDisponibles" required>
+            </div>
+            <div class="form-group">
+                <label for="unidadesVendidas">Unidades Vendidas</label>
+                <input type="number" id="unidadesVendidas" [(ngModel)]="droga.unidadesVendidas" name="unidadesVendidas" required>
+            </div>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</div>

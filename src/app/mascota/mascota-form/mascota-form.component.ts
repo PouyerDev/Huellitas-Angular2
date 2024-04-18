@@ -19,10 +19,17 @@ export class MascotaFormComponent implements OnInit {
     enfermedad: '',
     foto: '',
     estado: true,
-    id: ''  
+    id: '',
+    cliente: {
+      cedula: '',
+      nombre: '',
+      correo: '',
+      celular: '',
+      id: ''
+    }
   };
   cedulaCliente: number | undefined;
-  clienteNoExiste: boolean = false; // Variable para controlar si el cliente no exis
+  clienteNoExiste: boolean = false; 
   cliente: Cliente | undefined;
 
   constructor(
@@ -53,11 +60,34 @@ export class MascotaFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.cedulaCliente) {
-      this.validarCliente(this.cedulaCliente);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      // La mascota está en modo de edición, no es necesario validar la cédula
+      this.editarMascota();
     } else {
-      console.error('Por favor ingresa la cedula del cliente.');
+      // La mascota está en modo de creación, validar la cédula del cliente
+      if (this.cedulaCliente) {
+        this.validarCliente(this.cedulaCliente);
+      } else {
+        console.error('Por favor ingresa la cedula del cliente.');
+      }
     }
+  }
+
+  editarMascota(): void {
+    console.log('Editando mascota:', this.mascota);
+    this.mascotaService.actualizarMascota(this.mascota).subscribe(
+      () => {
+        // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
+        console.log('Mascota editada exitosamente.');
+        // Redirigir a la lista de mascotas
+        this.router.navigate(['/mascotas/detail/' + this.mascota.id]);
+      },
+      (error) => {
+        console.error('Error al editar la mascota:', error);
+        // Manejar el error, por ejemplo, mostrar un mensaje de error
+      }
+    );
   }
 
   validarCliente(cedula: number): void {

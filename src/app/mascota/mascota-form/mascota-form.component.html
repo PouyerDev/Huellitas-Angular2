@@ -4,9 +4,11 @@
             <h1>Mascota</h1>
             <form class="submit" (submit)="onSubmit()">
                 <div class="error-message" *ngIf="clienteNoExiste">El cliente no existe.</div>
-                <div class="form-group">
-                    <label for="cedulaCliente">Cedula del Cliente</label>
-                    <input type="number" id="cedulaCliente" [(ngModel)]="cedulaCliente" name="cedulaCliente" required>
+                <!-- Campo del cliente, solo se muestra si no se está editando -->
+                <div *ngIf="!mascota.id" class="form-group">
+                    <label for="cedulaCliente">Cédula del Cliente:</label>
+                    <input type="number" class="form-control" id="cedulaCliente" [(ngModel)]="cedulaCliente"
+                        name="cedulaCliente" required>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
@@ -31,11 +33,11 @@
                 <div class="form-group">
                     <label for="foto">Foto</label>
                     <input type="url" id="foto" [(ngModel)]="mascota.foto" name="foto" required>
-                </div> 
+                </div>
                 <button class="form-group" type="submit">Guardar</button>
             </form>
         </div>
     </div>
-    
+
 
 </section>
