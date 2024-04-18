@@ -19,6 +19,40 @@ lima pastel     #CDFADB
 }
 
 
+/*Vet inactivo*/
+.vet-inactive {
+    pointer-events:unset;
+    user-select: none;
+    display: inline-flex;
+}
+.vet-inactive:hover{
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+.vet-inactive img {
+    align-items: center;
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
+.vet-inactive .datos {
+    align-items: center;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+
+
+.disabled-link {
+    pointer-events: none; /* Deshabilita la interacción del enlace */
+    opacity: 0.5; /* Reduce la opacidad del enlace */
+    cursor: not-allowed; /* Cambia el cursor cuando el enlace está desactivado */
+ }
+
+ .enabled-link{
+    pointer-events: auto; /* Deshabilita la interacción del enlace */
+    opacity: 1.5; /* Reduce la opacidad del enlace */
+    cursor: default; /* Cambia el cursor cuando el enlace está desactivado */
+ }
+
 /*/*---------------------------------Todas MASCOTAS/clientes---------------------------------------*/
 /* Button */
 

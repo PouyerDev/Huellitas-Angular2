@@ -15,7 +15,8 @@ export class VeterinarioFormComponent implements OnInit {
     nombre: '',
     especialidad: '',
     foto: '',
-    numAtenciones: 0
+    numAtenciones: 0,
+    estado: true
   };
 
   constructor(

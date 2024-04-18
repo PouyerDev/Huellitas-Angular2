@@ -14,38 +14,48 @@
 </head>
 
 <section id="todas-mascotas">
-    <h1 id="todas-mascotas-title">Lista de Veterinarios</h1>
-    <button class="add-btn" [routerLink]="['/veterinario/crear']">
-      Agregar Veterinario
-    </button>
-    
-    <section id="mascota-table">
-      <div id="mascota-container-todas" *ngFor="let veterinario of veterinarios">
-        <div class="mascota-info">
-          <img class="img-mascota-todas" src="{{ veterinario.foto }}" alt="veterinario" />
-          <div class="datos">
-            <h2>{{ veterinario.nombre }}</h2>
-            <p>Cédula: {{ veterinario.cedula }}</p>
-            <p>Especialidad: {{ veterinario.especialidad }}</p>
-            <p>Número de Atenciones: {{ veterinario.numAtenciones }}</p>
-          </div>
-        </div>
-        <div class="mascota-actions">
-          <!-- Enlace para ver detalles del veterinario -->
-          <a [routerLink]="['/veterinarios/detail', veterinario.id]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa074" class="bi bi-info-circle-fill"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
-            </svg>
-          </a>
-          <a (click)="deleteVeterinario(veterinario.id)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="red" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-              </svg>
-        </a>
+  <h1 id="todas-mascotas-title">Lista de Veterinarios</h1>
+  <button class="add-btn" [routerLink]="['/veterinario/crear']">
+    Agregar Veterinario
+  </button>
+
+  <section id="mascota-table">
+    <div id="mascota-container-todas" *ngFor="let veterinario of veterinarios"
+      [ngClass]="{'vet-inactive': !veterinario.estado}">
+      <div class="mascota-info">
+        <img class="img-mascota-todas" src="{{ veterinario.foto }}" alt="veterinario" />
+        <div class="datos">
+          <h2>{{ veterinario.nombre }}</h2>
+          <p>Cédula: {{ veterinario.cedula }}</p>
+          <p>Especialidad: {{ veterinario.especialidad }}</p>
+          <p>Número de Atenciones: {{ veterinario.numAtenciones }}</p>
         </div>
       </div>
-    </section>
+      <div class="mascota-actions" *ngIf="veterinario.estado; else deactivatedSection">
+        <!-- Enlace para ver detalles del veterinario -->
+        <a [routerLink]="['/veterinarios/detail', veterinario.id]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffa074" class="bi bi-info-circle-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+          </svg>
+        </a>
+        <a (click)="deactivateVeterinario(veterinario.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff7474" class="bi bi-toggle-on" viewBox="0 0 16 16">
+            <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+          </svg>
+        </a>
+      </div>
+      <ng-template #deactivatedSection>
+        <div class="mascota-actions">
+          <!-- Enlace para ver detalles del veterinario -->
+          <a (click)="activateVeterinario(veterinario.id)" class="enabled-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ff7474" class="bi bi-toggle-off" viewBox="0 0 16 16">
+              <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </ng-template>
+    </div>
   </section>
-  
+</section>
