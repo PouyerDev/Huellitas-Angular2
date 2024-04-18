@@ -8,7 +8,8 @@ azul            #CEE3FA
 lima pastel     #CDFADB
 */
 /* Mascotas table */
-#veterinario-container{
+#mascota-container,
+#cliente-container {
     padding: 2vw;
     margin: 2vw;
     border-radius: 1vw;
@@ -17,6 +18,40 @@ lima pastel     #CDFADB
     margin-top: 3vw;
 }
 
+
+/*Vet inactivo*/
+.vet-inactive {
+    pointer-events:unset;
+    user-select: none;
+    display: inline-flex;
+}
+.vet-inactive:hover{
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+.vet-inactive img {
+    align-items: center;
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
+.vet-inactive .datos {
+    align-items: center;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+
+
+.disabled-link {
+    pointer-events: none; /* Deshabilita la interacción del enlace */
+    opacity: 0.5; /* Reduce la opacidad del enlace */
+    cursor: not-allowed; /* Cambia el cursor cuando el enlace está desactivado */
+ }
+
+ .enabled-link{
+    pointer-events: auto; /* Deshabilita la interacción del enlace */
+    opacity: 1.5; /* Reduce la opacidad del enlace */
+    cursor: default; /* Cambia el cursor cuando el enlace está desactivado */
+ }
 
 /*/*---------------------------------Todas MASCOTAS/clientes---------------------------------------*/
 /* Button */
@@ -55,7 +90,7 @@ lima pastel     #CDFADB
     background-color: #ffa074;
 }
 
-.veterinario-info {
+.mascota-info {
     width: 100%;
     display: inline-flex;
     justify-content: space-evenly;
@@ -72,7 +107,7 @@ lima pastel     #CDFADB
 }
 
 
-#veterinario-container-todos {
+#mascota-container-todas {
     padding: 1vw;
     margin: 0 1vw;
     width: 40vw;
@@ -85,15 +120,14 @@ lima pastel     #CDFADB
     display: inline-flex;
     ;
     transition: 0.3s;
-    margin-left: 20vw;
 }
 
-#veterinario-container-todos:hover{
+#mascota-container-todas:hover{
     cursor: pointer;
     box-shadow: 0 0 1.5rem #f28d5ee8;
 }
 
-#veterinario-container-todos .img-veterinario-todos {
+#mascota-container-todas .img-mascota-todas {
     border-radius: 500px;
     width: 12vw;
     height: 12vw;
@@ -113,7 +147,7 @@ lima pastel     #CDFADB
     color: white;
 }
 
-#veterinario-container-todos .veterinario-actions {
+#mascota-container-todas .mascota-actions {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -134,7 +168,7 @@ svg{
 }
 
 a:hover svg {
-    fill: black; /* Cambia el color a rojo (#FF0000) al hacer hover */
+    fill: #970606; /* Cambia el color a rojo (#FF0000) al hacer hover */
   }
 
 #button_back {
@@ -157,7 +191,7 @@ a:hover svg {
 
 
 
-#todos-veterinarios{
+#todas-mascotas {
     margin-top: 2vw;
     margin-bottom: 3vw;
 }
@@ -165,13 +199,13 @@ a:hover svg {
 
 
 /* Heading */
-#todos-veterinarios-title,
-#todos-veterinarios-title {
+#todas-mascotas-title,
+#todas-clientes-title {
     text-align: center;
     padding-top: 2%;
 }
 
-#veterinarios-table-vista{
+#mascotas-table-vista{
     display: inline-flex;
     justify-content: space-evenly;
     width: 100%;
@@ -180,7 +214,7 @@ a:hover svg {
 
 }
 
-#veterinarios-table-vista .info-vista{
+#mascotas-table-vista .info-vista{
     margin-top: 1vw;
 }
 
@@ -192,7 +226,8 @@ a:hover svg {
     background-color: #ffa0740f;
 }
 
-#todos-veterinarios{
+#todas-mascotas,
+#todas-clientes {
     padding-left: 7%;
     padding-right: 7%;
     padding-top: 6%;

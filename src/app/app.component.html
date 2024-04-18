@@ -1,39 +1,6 @@
-<!-- <app-landing></app-landing>-->
-
-<!-- cosas de lista de mascotas -->
-
-
-<header>
-    
-    <div class="navbar-full">
-      <a id="button-huellitas" th:href="@{/}"><button>
-        <img class="logo" src="assets\img\logo.png" alt="Logo huellitas felices">
-        
-        <h2>Huellitas Felices</h2></button>
-      </a>
-        <nav class="navbar-options">
-            <ng-container [ngSwitch]="userType">
-                <ng-container *ngSwitchCase="'admin'">
-                 <!-- <a [routerLink]="['/landing']" class="btn btn-primary">Landing </a> -->
-                  <a [routerLink]="['/mascotas']">Mascotas </a>
-                  <a [routerLink]="['/clientes']">Clientes</a>
-                  <a [routerLink]="['/veterinarios']">Veterinarios</a>
-                </ng-container>
-                <ng-container *ngSwitchCase="'veterinario'">
-                  <button class="btn btn-primary">Acciones Basicas</button>
-                  <button class="btn btn-primary">Acciones veterinario</button>
-                </ng-container>
-                <ng-container *ngSwitchCase="'Cliente'">
-                  <button class="btn btn-primary">Acciones Basicas</button>
-                </ng-container>
-              </ng-container>
-
-        </nav>
-        <a href="javascript:history.back()"><button id="button_back">Volver</button></a>
-     
-    </div>
-  </header>
+<app-navbar></app-navbar>
 
 <div id="mascota-table">
   <router-outlet></router-outlet>
 </div>
+

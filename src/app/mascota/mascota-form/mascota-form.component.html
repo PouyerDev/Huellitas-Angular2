@@ -1,100 +1,43 @@
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro Mascota</title>
-    <link rel="stylesheet" th:href="@{/css/landing.css}" />
-    <link rel="stylesheet" th:href="@{/css/registros.css}" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
-        rel="stylesheet" />
-</head>
-<div class="form-general-group">
-    <form #mascotaForm="ngForm" (ngSubmit)="addMascota(mascotaForm)">
-        <div class="form-group">
-            <label for="mascota"> Nombre </label>
-            <br>
-            <input
-                type="text"
-                id="mascota"
-                name="mascota"
-                [(ngModel)]="formMascota.nombre"
-                required />
+<section class="background-registro">
+    <div class="forms-container">
+        <div class="form-general-group">
+            <h1>Mascota</h1>
+            <form class="submit" (submit)="onSubmit()">
+                <div class="error-message" *ngIf="clienteNoExiste">El cliente no existe.</div>
+                <!-- Campo del cliente, solo se muestra si no se está editando -->
+                <div *ngIf="!mascota.id" class="form-group">
+                    <label for="cedulaCliente">Cédula del Cliente:</label>
+                    <input type="number" class="form-control" id="cedulaCliente" [(ngModel)]="cedulaCliente"
+                        name="cedulaCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" [(ngModel)]="mascota.nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="raza">Raza</label>
+                    <input type="text" id="raza" [(ngModel)]="mascota.raza" name="raza" required>
+                </div>
+                <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" [(ngModel)]="mascota.edad" name="edad" required>
+                </div>
+                <div class="form-group">
+                    <label for="peso">Peso</label>
+                    <input type="number" id="peso" [(ngModel)]="mascota.peso" name="peso" required>
+                </div>
+                <div class="form-group">
+                    <label for="enfermedad">Enfermedad</label>
+                    <input type="text" id="enfermedad" [(ngModel)]="mascota.enfermedad" name="enfermedad" required>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="url" id="foto" [(ngModel)]="mascota.foto" name="foto" required>
+                </div>
+                <button class="form-group" type="submit">Guardar</button>
+            </form>
         </div>
-        <div class="form-group">
-            
-            <label for="edad"> Edad</label>
-            <br>
-            <input
-                type="number"
-                id="edad"
-                name="edad"
-                [(ngModel)]="formMascota.edad"
-                required />
-        </div>
+    </div>
 
-        <div class="form-group">
-            <label for="raza"> Raza</label>
-            <br>
-            <input
-                type="text"
-                id="raza"
-                name="raza"
-                [(ngModel)]="formMascota.raza"
-                required />
-        </div>
 
-        <div class="form-group">
-            <label for="peso"> Peso</label>
-            <br>
-            <input
-                type="number"
-                id="peso"
-                name="peso"
-                [(ngModel)]="formMascota.peso"
-                required />
-        </div>
-        <div class="form-group">
-            <label for="enfermedad"> Enfermedad</label>
-            <br>
-
-            <input
-                type="text"
-                id="enfermedad"
-                name="enfermedad"
-                [(ngModel)]="formMascota.enfermedad"
-                required />
-        </div>
-        <div class="form-group">
-            <label for="foto"> Foto</label>
-            <br>
-
-            <input
-                type="text"
-                id="foto"
-                name="foto"
-                [(ngModel)]="formMascota.foto"
-                required />
-        </div>
-        <div class="form-group">
-            <label for="estado"> Estado</label>
-            <br>
-
-            <input
-                type="text"
-                id="estado"
-                name="estado"
-                [(ngModel)]="formMascota.estado"
-                required />
-        </div>
-        <br />
-        <button
-            type="submit"
-            [disabled]="!mascotaForm.form.valid"
-            class="btn btn-primary">
-            Agregar
-        </button>
-    </form>
-</div>
+</section>

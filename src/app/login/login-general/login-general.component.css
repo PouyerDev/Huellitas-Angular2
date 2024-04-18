@@ -1,0 +1,106 @@
+/*menu de navegación*/
+.navbar-full {
+    top: 0;
+    position: fixed;
+    background-color: #FFCF96;
+    width: 100%;
+    display: flex;
+    /*margen 0 arriba y abajo, auto derecha e izquierda*/
+    margin: 0 auto;
+    /*para que este por encima de otros elvwentos*/
+    z-index: 9999;
+    padding-left: 0.5vw;
+}
+
+.navbar-full h2 {
+    font-size: 1.6vw;
+    width: 4vw;
+}
+#button-huellitas h2,
+.navbar-full h2 {
+    font-family: 'Amatic SC', sans-serif;
+}
+
+.logo {
+    width: auto;
+    height: 5vw;
+    margin: 0.5vw;
+    margin-top: 1vw;
+}
+
+/**/
+
+.background {
+    background-image: url("../../../assets/img/loginBack.png");
+    margin-top: -2vw;
+    padding-top: 2vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; /* Set height to cover the entire viewport */
+}
+
+
+#forms-container{
+    margin-top: 9vw;
+    height: 50%;
+}
+
+.form-general-group {
+    text-align: center;
+    background-color: #ffffff55;
+    border-radius: 1vw;
+    margin: 0 27vw;
+    padding: 2vw;
+    padding-top: 1vw;
+    backdrop-filter: blur(0.1vw);
+    font-weight: 700;
+}
+
+.form-general-group input {
+    border-radius: 1vw;
+    border-style: none;
+    padding: 0.5vw;
+    background-color: rgba(253, 158, 158, 0.644);
+    font-family: 'Poppins', sans-serif;
+    border: 3px solid #ff7474;
+    font-size: 1.2vw;
+    text-align: center;
+    margin-bottom: 6vw;
+}
+
+
+.form-general-group button {
+    transition: all .5s ease;
+    color: #ffffff;
+    border: 3px solid #ff7474;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-size: 1.2vw;
+    background-color: rgba(253, 158, 158, 0.644);
+    font-weight: 600;
+    padding: 0.8vw;
+    outline: none;
+    border-radius: 1vw;
+    margin-top: 10vw;
+}
+
+.form-general-group button:hover {
+    color: white;
+    background-color: #ff7474;
+}
+
+.flex-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+.flex-container button{
+    margin-top: 2vw;
+}

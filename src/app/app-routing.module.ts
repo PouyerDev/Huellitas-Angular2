@@ -8,22 +8,59 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorPageComponent } from './errores/error-page/error-page.component';
 import { ClienteTodosComponent } from './cliente/cliente-todos/cliente-todos.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
 import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/veterinario-todos.component';
-import { VeterinarioCrearComponent } from './veterinarios/veterinario-crear/veterinario-crear.component';
+import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veterinario-form.component';
+import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
+import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/tratamiento-todos.component';
+import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { LoginGeneralComponent } from './login/login-general/login-general.component';
+import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
+import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
+import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
+import { AppComponent } from './app.component';
+import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
+import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
+import { AuthService } from './service/auth.service';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
+  { path: 'admin', component: AdminPageComponent },
+  { path: 'login', component: LoginGeneralComponent},
+
+
   { path: 'clientes', component: ClienteTodosComponent },
+  { path: 'cliente/update/:id', component: ClienteFormComponent },
+  { path: 'cliente/crear', component: ClienteFormComponent },
+  { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
+  
+  { path: 'veterinarios', component: VeterinarioTodosComponent },
+  { path: 'veterinario/update/:id', component: VeterinarioFormComponent },
+  { path: 'veterinario/crear', component: VeterinarioFormComponent },
+  { path: 'veterinarios/detail/:id', component: VeterinarioDetailComponent },
+  
   { path: 'mascotas', component: MascotaTableComponent },
   { path: 'mascotas/detail/:id', component: MascotaDetailComponent },
-  { path: 'cliente/cliente-detail/:id', component: ClienteDetailComponent },
-  { path: 'admin', component: AdminPageComponent },
-  { path: 'veterinarios/detail/:id', component: VeterinarioDetailComponent },
-  { path: 'veterinarios/crear', component: VeterinarioCrearComponent },
-  { path: 'veterinarios', component: VeterinarioTodosComponent },
-  { path: '**', component: ErrorPageComponent } 
+  { path: 'mascotas/deactivate/:id', component: MascotaDetailComponent },
+  { path: 'mascota/crear', component: MascotaFormComponent},
+  { path: 'mascota/update/:id', component: MascotaFormComponent},
+  
+  { path: 'tratamientos/', component: TratamientoTodosComponent },
+  { path: 'tratamiento/update/:id/:mascotaId', component: TratamientoFormComponent },
+  { path: 'tratamiento/crear', component: TratamientoFormComponent },
+
+  { path: 'drogas', component: DrogaTodosComponent },
+  { path: 'droga/update/:id', component: DrogaFormComponent },
+  { path: 'droga/crear', component: DrogaFormComponent },
+  { path: 'droga/droga-detail/:id', component: DrogaDetailComponent },
+
+  { path: 'dashboard', component: DashboardGeneralComponent},
+  
+  { path: '**', component: ErrorPageComponent }
 ];
 
 

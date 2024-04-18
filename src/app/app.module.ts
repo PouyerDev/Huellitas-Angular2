@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { MascotaTableComponent } from './mascota/mascota-table/mascota-table.component';
@@ -12,12 +11,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './errores/error-page/error-page.component';
 import { ClienteTodosComponent } from './cliente/cliente-todos/cliente-todos.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
-import { ClienteCrearComponent } from './cliente/cliente-crear/cliente-crear.component';
-import { ClienteModificarComponent } from './cliente/cliente-modificar/cliente-modificar.component';
-import { VeterinarioCrearComponent } from './veterinarios/veterinario-crear/veterinario-crear.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { VeterinarioDetailComponent } from './veterinarios/veterinario-detail/veterinario-detail.component';
-import { VeterinarioModificarComponent } from './veterinarios/veterinario-modificar/veterinario-modificar.component';
 import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/veterinario-todos.component';
+import { VeterinarioFormComponent } from './veterinarios/veterinario-form/veterinario-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
+import { TratamientoTodosComponent } from './tratamiento/tratamiento-todos/tratamiento-todos.component';
+import { LoginGeneralComponent } from './login/login-general/login-general.component';
+import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
+import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
+import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
+import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
+import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -30,18 +38,25 @@ import { VeterinarioTodosComponent } from './veterinarios/veterinario-todos/vete
     ErrorPageComponent,
     ClienteTodosComponent,
     ClienteDetailComponent,
-    ClienteCrearComponent,
-    ClienteModificarComponent,
-    VeterinarioCrearComponent,
+    ClienteFormComponent,
     VeterinarioDetailComponent,
-    VeterinarioModificarComponent,
-    VeterinarioTodosComponent
+    VeterinarioTodosComponent,
+    VeterinarioFormComponent,
+    TratamientoFormComponent,
+    TratamientoTodosComponent,
+    LoginGeneralComponent,
+    DrogaTodosComponent,
+    DrogaFormComponent,
+    DrogaDetailComponent,
+    DashboardGeneralComponent,
+    DashboardAuxComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    
     FormsModule,
-          AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

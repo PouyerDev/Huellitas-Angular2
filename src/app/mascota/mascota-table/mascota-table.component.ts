@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Mascota } from '../mascota';
-import { MascotaCL } from 'src/app/model/mascota-cl';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 
 @Component({
@@ -10,29 +11,43 @@ import { MascotaService } from 'src/app/service/mascota.service';
 })
 export class MascotaTableComponent {
   //atributos
-  mostrarForm: boolean = false;
   selectedMascota!: Mascota;
   mascotasList!: Mascota[];
   //inyectar dependencias
-  constructor(private mascotaService: MascotaService) {}
+  constructor(
+    private mascotaService: MascotaService,
+    private router: Router
+  ) { }
   //realizar llamados cuando ya esta cargada la interfaz
 
   ngOnInit(): void {
-    this.mascotasList = this.mascotaService.findAll();
+    this.mascotaService.findAll().subscribe(mascotas => {
+      // Filter mascotas with estado = true
+      this.mascotasList = mascotas.filter(mascota => mascota.estado);
+    });
   }
 
-  mostrarMascota(mascota: Mascota) {
-    this.selectedMascota = mascota;
+  ngOnChanges() {
+    this.mascotaService.findAll().subscribe(mascotas => {
+      // Filter mascotas with estado = true
+      this.mascotasList = mascotas.filter(mascota => mascota.estado);
+    });
   }
+ 
   agregarMascota(mascota: Mascota) {
-    this.mascotasList.push(mascota);
-  }
-  eliminarMascota(mascota: Mascota) {
-    var index = this.mascotasList.indexOf(mascota);
-    this.mascotasList.splice(index, 1);
+    this.mascotaService.agregarMascota(mascota).subscribe(() => {
+      this.mascotasList.push(mascota);
+    });
   }
 
-  ocultarFormulario(mostrar: boolean) {
-    this.mostrarForm = false;
+  deactivateMascota(mascota: Mascota) {
+    console.log('Desactivando mascota:', mascota);
+    this.mascotaService.deactivateMascota(mascota.id).subscribe(() => {
+      this.mascotasList = this.mascotasList.filter(m => m !== mascota);
+      
+    });
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        return this.router.navigate(['/mascotas']);
+      });
   }
 }

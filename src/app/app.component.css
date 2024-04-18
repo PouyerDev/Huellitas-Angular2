@@ -11,7 +11,9 @@ lima pastel     #CDFADB
 /*---------------------------------LANDING PAGE---------------------------------------*/
 
 
+
 * {
+   
     scroll-behavior: smooth;
     scroll-margin-top: 7vw;
     font-family: 'Poppins', sans-serif;
@@ -27,6 +29,13 @@ lima pastel     #CDFADB
     border: none;
    
 }
+
+/*::-webkit-scrollbar{
+    width: 5vw;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffa074;
+}*/
 /*------------------------------------------Boton general---------------------------------------------------*/
 #button-huellitas {
     border-radius: 0.5vw;
@@ -63,13 +72,14 @@ lima pastel     #CDFADB
 }
 
 
-#button-huellitas button:hover {
+#button-huellitas:hover {
     cursor: pointer;
     border: none;
 }
 
-body {
-    margin: auto;
+body {  
+    padding:0;
+    margin: 0;
     margin-top: 2%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3vw;
@@ -88,9 +98,6 @@ button {
     background-color: #FFCF96;
     width: 100%;
     display: flex;
-    /*margen 0 arriba y abajo, auto derecha e izquierda*/
-    margin: 0;
-    /*para que este por encima de otros elvwentos*/
     z-index: 9999;
 }
 
@@ -129,7 +136,7 @@ button {
     text-decoration: none;
     background-color: #ffa074;
     color: rgb(249, 242, 233);
-
+    border: none;
 }
 
 .navbar-options .btn-login:hover {
@@ -877,9 +884,6 @@ header {
 header .navbar-full {
     background-color: #FFCF96;
     transform: translatex(0px) translatey(0px);
-    border-bottom-style: solid;
-    border-bottom-width: 0.1em !important;
-    border-bottom-color: rgba(0, 0, 0, 0.50);
     align-items: center;
     justify-content: center;
     float: none;

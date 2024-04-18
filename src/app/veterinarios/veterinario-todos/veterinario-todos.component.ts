@@ -23,6 +23,20 @@ export class VeterinarioTodosComponent implements OnInit {
   }
 
   verDetalle(veterinarioId: string): void {
-    
+    this.veterinarioService.getVeterinarioById(veterinarioId).subscribe();
+  }
+
+  deactivateVeterinario(veterinarioId: string): void {
+    this.veterinarioService.cambiarEstadoVeterinario(veterinarioId).subscribe(() => {
+      // Reload veterinarios after the change
+      this.loadVeterinarios();
+    });
+  }
+
+  activateVeterinario(veterinarioId: string): void {
+    this.veterinarioService.cambiarEstadoVeterinario(veterinarioId).subscribe(() => {
+      // Reload veterinarios after the change
+      this.loadVeterinarios();
+    });
   }
 }

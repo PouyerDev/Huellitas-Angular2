@@ -67,6 +67,7 @@ lima pastel     #CDFADB
     border-radius: 1vw;
     background-color: #ffffff;
     align-self: center;
+    height: max-content;
 }
 
 
@@ -93,6 +94,7 @@ lima pastel     #CDFADB
 }
 
 .info-vista {
+    margin: 0 2vw;
     padding: 1.5vw 1vw;
     width: 18vw;
     height: 6vw;
@@ -113,6 +115,18 @@ lima pastel     #CDFADB
     flex-direction: column;
 }
 
+.edit-btn{
+    border-radius: 40vw;
+    color: #ff7474;
+    position: relative;
+    border:#fca5a5 0.2vw solid;
+    
+}
+.edit-btn:hover{
+    color: red;
+}
+
+
 /*/*---------------------------------Todas MASCOTAS/clientes---------------------------------------*/
 /* Button */
 
@@ -129,6 +143,14 @@ lima pastel     #CDFADB
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
+}
+
+#informacionMascota .add-btn{
+    /*margin-left: 72vw;
+    transform:translatex(134px) translatey(-40px);
+    position: relative;*/
+    margin-left:-1vw;
+    margin-top:2vw;
 }
 
 .add-btn:hover {
@@ -257,6 +279,7 @@ lima pastel     #CDFADB
 
 #mascotas-table-vista .info-vista{
     margin-top: 1vw;
+    margin: 1vw 2vw;
 }
 
 .delete-btn:hover {
@@ -1131,4 +1154,8 @@ footer h3 {
     border-radius: 1vw;
     margin: 0 1vw;
     box-shadow: 0 0 40px rgba(2, 2, 2, 0.1);
+}
+
+app-tratamiento-todos{
+    text-align: center;
 }

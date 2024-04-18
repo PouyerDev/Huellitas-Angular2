@@ -134,7 +134,7 @@ svg{
 }
 
 a:hover svg {
-    fill: black; /* Cambia el color a rojo (#FF0000) al hacer hover */
+    fill: #970606; /* Cambia el color a rojo (#FF0000) al hacer hover */
   }
 
 #button_back {

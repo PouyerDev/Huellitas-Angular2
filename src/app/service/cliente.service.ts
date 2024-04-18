@@ -1,45 +1,59 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from '../model/cliente'; // Assuming you have a Cliente model
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
+  
 
-  constructor() { }
+  constructor( 
+    private http: HttpClient
+  ) { }
 
-  clientesList: Cliente[] = [
-    {
-      id: '1',
-      nombre: 'Juan Perez',
-      cedula: '123456789',
-      correo: 'juan@example.com',
-      celular: '1234567890', // Assuming you have celular instead of direccion
-    },
-    {
-      id: '2',
-      nombre: 'Maria Rodriguez',
-      cedula: '987654321',
-      correo: 'maria@example.com',
-      celular: '9876543210',
-    },
-    {
-      id: '3',
-      nombre: 'Pedro Gomez',
-      cedula: '456789123',
-      correo: 'pedro@example.com',
-      celular: '4567891230',
-    },
-  ];
+  baseUrl: string = 'http://localhost:8090/clientes';
 
   getAllClientes(): Observable<Cliente[]> {
-    return of(this.clientesList); // Return an observable of the client list
+    // Return an observable of the client list
+    return this.http.get<Cliente[]>(this.baseUrl+'/all');
   }
 
-  // You may also implement a method to get a single client by ID
-  getClienteById(id: string): Observable<Cliente | undefined> {
-    return of(this.clientesList.find(cliente => cliente.id === id)); // Return an observable of the client or undefined
+  getClienteByCedula(cedula: string): Observable<Cliente> {
+    return this.http.get<Cliente>(this.baseUrl+'/findCedula/'+cedula);
   }
   
+  getClienteById(id: string): Observable<Cliente> {
+    return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
+  }
+  deleteCliente(id: string): Observable<void> {
+    return this.http.delete<void>(this.baseUrl+'/delete/'+id);
+  }
+  actualizarCliente(cliente: Cliente): Observable<void> {
+    return this.http.put<void>(this.baseUrl+'/update', cliente);
+  }
+
+  crearCliente(cliente: Cliente): Observable<void> {
+    return this.http.post<void>(this.baseUrl+'/add', cliente);
+  }
+
+  getMascotasByClienteId(id: string): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.baseUrl+'/getAllMascotas/'+id);
+  }
+  
+  activateMascota(mascotaId: string, clientId: string): Observable<void> {
+    console.log('Activando mascota en el servicio:', mascotaId, clientId);
+    return this.http.get<void>('http://localhost:8090/mascotas/activate/'+mascotaId+'/'+clientId, {});
+  }
+
+  addMascotaCliente(mascotaId: number, clienteId: string): Observable<void> {
+    const datos = [clienteId, mascotaId];
+    return this.http.post<any>(this.baseUrl + '/addMascotaCliente', datos);
+  }
+
+/* actualizarCliente(cliente: Cliente): Observable<void> {
+    return this.http.put<void>(this.baseUrl+'/update', cliente);
+  }
+ */
 }
