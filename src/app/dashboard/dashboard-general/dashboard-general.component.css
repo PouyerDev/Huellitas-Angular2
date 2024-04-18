@@ -38,7 +38,7 @@ text-align: center;
 
 .tabla-general td {
     padding: 0.5vw;
-    background-color: #ff8080;
+    /*background-color: #ff8080;*/
     
 }
 
@@ -59,13 +59,13 @@ text-align: center;
 {
     border-top-right-radius: 2vw;
 }
-
+/*
 
 .tabla-general td:last-child tr:last-child{
     border-bottom-right-radius: 2vw;
     background-color: aqua;
 }
-
+*/
 #mascotas-table, #mascotas-table-vista{
     width: 100%;
     padding-left: 9%;
