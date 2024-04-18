@@ -34,7 +34,8 @@
 }
 
 .mascota-info {
-    width: fit-content;
+    width: 32vw;
+    height: 25vw;
     display:inline-block;
     justify-content: space-evenly;
     padding-right: auto;
@@ -62,4 +63,16 @@
     height: fit-content;
     padding: 1vw;
     margin-top: 1vw;
+}
+
+ol{
+    padding: 0;
+    margin: 0;
+    list-style-position: inside
+}
+
+ol li{
+    padding: 0.5vw;
+    margin: 0.5vw;
+    font-size: 1.2vw;
 }
