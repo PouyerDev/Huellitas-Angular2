@@ -29,17 +29,18 @@ text-align: center;
     padding: 1.5vw;
     width: 70%;
     border-collapse: collapse;
-    /*border: #ff8080 0.3vw solid;
-    border-radius: 40px;*/
+    border: #ff8080 1px solid; /* Añade el borde a la tabla */
+    border-radius: 2vw; /* Añade el redondeo a los bordes exteriores */
     align-self: center;
     justify-content: center;
     text-align: center;
 }
 
-.tabla-general td {
+.tabla-general tr {
     padding: 0.5vw;
-    /*background-color: #ff8080;*/
-    
+    background-color: white;
+    border: #ff8080 1px solid; /* Define el borde para las celdas */
+   
 }
 
 .tabla-general th {
@@ -47,30 +48,17 @@ text-align: center;
     background-color: #ff8080;
     color: white;
     padding: 0.5vw;
-    width: 50% ;
+    width: 50%;
+    border: #ff8080 1px solid;
 }
 
-.tabla-general th:first-child
-{
-    border-top-left-radius: 2vw;
-}
 
-.tabla-general th:last-child
-{
-    border-top-right-radius: 2vw;
-}
-/*
 
-.tabla-general td:last-child tr:last-child{
-    border-bottom-right-radius: 2vw;
-    background-color: aqua;
-}
-*/
 #mascotas-table, #mascotas-table-vista{
     width: 100%;
     padding-left: 9%;
     padding-right: 5%;
-    padding-top: 2%;
+    padding-top: 2%;    
     padding-bottom: 0em;
     align-items: center;
 

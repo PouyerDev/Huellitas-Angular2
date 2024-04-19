@@ -1,17 +1,16 @@
 /*------------------------------------------Registros---------------------------------------------------*/
 
-.background-registro {
-    /* background-image: url("../../../assets/img/registro-mascota.jpg"); */
+
+.background {
+    background-image: url("../../../assets/img/registro-mascota.jpg");
+    margin-top: -2vw;
+    padding-top: 2vw;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    background-color: #ffffff;
+    height: 180vh; 
 }
-
 .form-general-group {
     text-align: center;
     background-color: #ffd09691;
@@ -57,11 +56,13 @@
     text-align: center;
     line-height: 1;
     font-size: 1.2vw;
-    background-color: rgba(255, 255, 255, 0.199);
+    background-color: rgba(255, 255, 255, 0.457);
     font-weight: bolder;
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
+    margin-top: 1vw;
+    width: 20vw;
 }
 
 .form-general-group button:hover {
@@ -73,7 +74,8 @@
     margin-top: 9vw;
 }
 
+
 label{
-    font-weight: 700;
-    align-self: center;
+    font-weight: bold;
+    margin-right: 1vw;
 }

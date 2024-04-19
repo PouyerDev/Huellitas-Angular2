@@ -17,7 +17,7 @@ export class AuthService {
     ) { }
 
     setCurrentUser(user: string): void {
-        this.currentUserSubject.next('dev');
+        this.currentUserSubject.next(user);
     }
 
     getCurrentUser(): Observable<string> {
