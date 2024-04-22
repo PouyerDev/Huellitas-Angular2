@@ -64,18 +64,15 @@ export class TratamientoFormComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  getCurrentUserCedula(): any {
-    this.authService.getCurrentUserCedula().subscribe(cedula => {
-      this.veterinarioCedula = cedula.toString();
-    });
-    console.log('Cedula del veterinario: ' + this.veterinarioCedula);
-  }
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.mascotaId = params['mascotaId'] || null;
     });
-  
+    
+    this.authService.getCurrentUserCedula().subscribe(cedula => {
+      this.veterinarioCedula = cedula.toString();
+    });
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.tratamientoService.findById(id).subscribe(
@@ -95,15 +92,6 @@ export class TratamientoFormComponent implements OnInit {
         }
       );
     } else {
-      // Obtener lista de veterinarios
-      this.veterinarioService.getAllVeterinarios().subscribe(
-        (veterinarios) => {
-          this.veterinarios = veterinarios;
-        },
-        (error) => {
-          console.error('Error al obtener la lista de veterinarios:', error);
-        }
-      );
   
       // Obtener lista de drogas
       this.drogaService.getAllDrogasValidas().subscribe(
