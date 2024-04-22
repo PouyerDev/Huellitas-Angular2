@@ -67,15 +67,22 @@ text-align: center;
 .lottie{
     border:none;
 }
+
+
 #mascotas-table-vista{
     width: 100%;
     margin: 1vw 5vw;
     padding: 1vw;
 }
-#todas-mascotas-title{
+#todas-mascotas-title {
     text-align: center;
     padding-top: 10%;
-    font-family: poppins;
+    font-weight: 900;
+    font-family: Poppins;
+    text-decoration: underline;
+    text-decoration-color: #ff8080 ;
+    text-underline-position: under;
+    line-height: 1.5;
 }
 
 #flex-container{

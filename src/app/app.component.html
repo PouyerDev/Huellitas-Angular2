@@ -1,6 +1,7 @@
-<app-navbar></app-navbar>
+<ng-container *ngIf="!isLoginPageOrLanding()">
+  <app-navbar></app-navbar>
+</ng-container>
 
 <div id="mascota-table">
   <router-outlet></router-outlet>
 </div>
-

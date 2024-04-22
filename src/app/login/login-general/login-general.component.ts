@@ -18,13 +18,21 @@ export class LoginGeneralComponent {
     private auth: AuthService,
     private router: Router,
     private veterinarioService: VeterinarioService,
-    private clienteService: ClienteService) { }
+    private clienteService: ClienteService,
+    private authService: AuthService
+  ) {
+    this.checkIfSession();
+  }
+
+  ngOnChanges(): void {
+    this.checkIfSession();
+  }
 
   login(): void {
     if (this.cedula === "9999") {
       this.auth.setCurrentUser('dev');
       this.router.navigate(['/mascotas']); 
-    } else{
+    } else {
       if (this.cedula === "0000") {
         // Redirigir al administrador a su página correspondiente
         this.auth.setCurrentUser('admin');
@@ -79,4 +87,33 @@ export class LoginGeneralComponent {
     alert(mensaje);
   }
 
+  checkIfSession(): void {
+    this.authService.getCurrentUser().subscribe(currentUser => {
+      if (currentUser) {
+        // Si hay un usuario en sesión, redirigir a la página correspondiente
+        // según el tipo de usuario
+        switch (currentUser) {
+          case 'dev':
+            this.router.navigate(['/mascotas']);
+            break;
+          case 'admin':
+            this.router.navigate(['/dashboard']);
+            break;
+          case 'veterinario':
+            this.router.navigate(['/clientes']);
+            break;
+          case 'cliente':
+            break;
+          default:
+            // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
+            // redirigir a la página de inicio de sesión
+            this.router.navigate(['/login']);
+            break;
+        }
+      } else {
+        // Si no hay un usuario en sesión, redirigir a la página de inicio de sesión
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 }
