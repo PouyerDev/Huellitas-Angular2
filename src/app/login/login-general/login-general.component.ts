@@ -31,11 +31,13 @@ export class LoginGeneralComponent {
   login(): void {
     if (this.cedula === "9999") {
       this.auth.setCurrentUser('dev');
+      this.auth.setCurrentUserCedula(this.cedula);
       this.router.navigate(['/mascotas']); 
     } else {
       if (this.cedula === "0000") {
         // Redirigir al administrador a su página correspondiente
         this.auth.setCurrentUser('admin');
+        this.auth.setCurrentUserCedula(this.cedula);
         this.router.navigate(['/dashboard']); 
       } else {
         // Verificar si la cedula ingresada corresponde a un veterinario existente
@@ -51,6 +53,7 @@ export class LoginGeneralComponent {
               } else {
                 // El veterinario está activo, se le permite iniciar sesión
                 this.auth.setCurrentUser('veterinario');
+                this.auth.setCurrentUserCedula(this.cedula);
                 this.router.navigate(['/clientes']);
               }
             } else {
@@ -60,6 +63,7 @@ export class LoginGeneralComponent {
                   if (cliente) {
                     // Redirigir al cliente a su página correspondiente
                     this.auth.setCurrentUser('cliente');
+                    this.auth.setCurrentUserCedula(this.cedula);
                     this.router.navigate(['/cliente/cliente-detail/' + cliente.id]);
                   } else {
                     // Si no se encuentra ningún usuario, mostrar un mensaje de error

@@ -8,6 +8,7 @@ import { Droga } from 'src/app/model/droga';
 import { DrogaService } from 'src/app/service/droga.service';
 import { Input } from '@angular/core';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-tratamiento-form', // Cambiar el selector del componente
   templateUrl: './tratamiento-form.component.html', // Cambiar la ruta de la plantilla
@@ -59,15 +60,21 @@ export class TratamientoFormComponent implements OnInit {
     private tratamientoService: TratamientoService, // Cambiar la inyección de dependencia al servicio de tratamiento
     private veterinarioService: VeterinarioService,
     private drogaService: DrogaService,
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private authService: AuthService
   ) { }
+
+  getCurrentUserCedula(): any {
+    this.authService.getCurrentUserCedula().subscribe(cedula => {
+      this.veterinarioCedula = cedula.toString();
+    });
+    console.log('Cedula del veterinario: ' + this.veterinarioCedula);
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.mascotaId = params['mascotaId'] || null;
     });
-  
-    console.log('desde mascota' + this.mascotaId);
   
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {

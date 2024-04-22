@@ -33,15 +33,24 @@ export class AuthService {
         }
     }
 
-    getCurrentUserCedula(): string {
+    getCurrentUserCedula(): Observable<string> {
+        console.log('getCurrentUserCedula');
+        console.log(this.currentUserSubjectCedula.value);
+        console.log(localStorage.getItem('cedula'))
         // Recuperar la cedula desde localStorage
-        return localStorage.getItem('cedula') || '';
+        if (this.currentUserSubjectCedula.value !== '') {
+            return this.currentUserCedula;
+        } else {
+            const cedulaFromLocalStorage = localStorage.getItem('cedula');
+            return cedulaFromLocalStorage ? of(cedulaFromLocalStorage) : of('');
+        }
     }
 
     setCurrentUserCedula(cedula: string): void {
         // Guardar la cedula en localStorage
-        localStorage.setItem('cedula', cedula);
         this.currentUserSubjectCedula.next(cedula);
+        localStorage.setItem('cedula', cedula);
+        
     }
 
     // Métodos para manejar la sesión del usuario
