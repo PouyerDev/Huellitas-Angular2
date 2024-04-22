@@ -20,22 +20,29 @@ export class TratamientoFormComponent implements OnInit {
   veterinarios: any[] = [];
   drogaNombre: string = '';
   mascotaId: string | null = null; // Inicializar como null
-  tratamiento: Tratamiento = { // Cambiar la inicialización del tratamiento
-    id: '',
+  tratamiento: Tratamiento = {
     descripcion: '',
     fechaInicio: '',
     fechaFin: '',
+    id: '',
     mascota: {
-      id: '',
       nombre: '',
       raza: '',
       edad: 0,
       peso: 0,
       enfermedad: '',
       foto: '',
-      estado: true
+      estado: true,
+      id: '',
+      cliente: {
+        cedula: '',
+        nombre: '',
+        correo: '',
+        celular: '',
+        id: ''
+      }
     },
-    droga: {
+    "droga": {
       id: '',
       nombre: '',
       precioCompra: 0,
@@ -45,11 +52,11 @@ export class TratamientoFormComponent implements OnInit {
     },
     veterinario: {
       id: '',
-      cedula: '',
       nombre: '',
+      cedula: '',
       especialidad: '',
-      foto: '',
       numAtenciones: 0,
+      foto: '',
       estado: true
     }
   };
