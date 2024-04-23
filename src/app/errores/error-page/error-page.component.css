@@ -1,0 +1,76 @@
+/*------------------------------------------Error---------------------------------------------------*/
+
+#error-body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#error-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+#error-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error-content {
+    background-color: #ffac809e;
+    margin: 7vw 5vw;
+    border-radius: 1vw;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 2vw 4vw;
+}
+
+#error-content h1 {
+    font-size: 9vw;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Amatic SC', sans-serif;
+}
+
+#error-content h2 {
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: 'Amatic SC', sans-serif;
+}
+
+#error-content button {
+    font-weight: bold;
+    align-self: center;
+    padding: 1vw 2vw;
+    margin: 1vw;
+    background-color: #ffffff;
+    border-radius: 1vw;
+    border-style: none;
+    color: #ff8080;
+    transition: 0.4s;
+}
+
+#error-content button:hover {
+    background-color: #ffa074;
+    color: black;
+    cursor: pointer;
+}
+
+.background {
+    background-image: url("../../../assets/img/loginBack.png");
+    margin-top: -2vw;
+    padding-top: 2vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; /* Set height to cover the entire viewport */
+}

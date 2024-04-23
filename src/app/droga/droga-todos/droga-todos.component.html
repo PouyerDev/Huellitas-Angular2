@@ -18,7 +18,7 @@
     <div id="cliente-container">
         <a class="add-btn" [routerLink]="['/droga/crear']">Agregar Droga</a>
         <input type="file" #fileInput style="display: none;" (change)="cargarDatosDesdeExcel($event)" />
-        <button class="add-btn" (click)="fileInput.click()">Cargar Excel</button>
+        <button class="add-btn add-file" (click)="fileInput.click()">Cargar Más Drogas</button>
   
 
         <!-- Tabla con todas las drogas -->

@@ -30,8 +30,13 @@
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
-    margin-bottom: 3vw;
 }
+
+
+.add-file{
+    margin-left: 3vw;
+}
+
 
 .add-btn:hover {
     color: white;
@@ -101,3 +106,4 @@ a:hover svg {
     padding: 0.5vw;
     border: #ff8080 0.2vw solid;
 }
+
