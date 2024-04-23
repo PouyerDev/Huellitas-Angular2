@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
+import { Mascota } from '../mascota/mascota';
 @Injectable({
   providedIn: 'root'
 })
@@ -69,5 +70,10 @@ crearVeterinario(veterinario: Veterinario) {
 
   cambiarEstadoVeterinario(veterinarioId: string) {
     return this.http.put('http://localhost:8090/veterinarios/changeState', veterinarioId);
+  }
+
+
+  getMascotasByVeterinarioId(id: string): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>('http://localhost:8090/veterinarios/getAllMascotas/'+id);
   }
 }
