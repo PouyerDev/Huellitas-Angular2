@@ -129,6 +129,7 @@ export class TratamientoFormComponent implements OnInit {
 }
 
 obtenerDrogaPorNombre(nombre: string): void {
+  
   this.drogaService.obtenerPorNombre(nombre).subscribe(
     (droga) => {
       this.tratamiento.droga = droga;
@@ -155,46 +156,53 @@ obtenerDrogaPorNombre(nombre: string): void {
     );
   }
   onSubmit(): void {
-    if (this.veterinarioCedula) {
-      this.obtenerVeterinarioPorCedula(this.veterinarioCedula);
+    if (!this.veterinarioCedula || !this.drogaNombre || !this.mascotaId) {
+      console.error('Faltan datos necesarios para completar la operación.');
+      return;
     }
-    if (this.drogaNombre) {
-      this.obtenerDrogaPorNombre(this.drogaNombre);
-    }
-    if (this.mascotaId) {
-      this.obtenerMascotaPorId(this.mascotaId);
-    }
-    if (this.tratamiento.id) {
-      console.log('Actualizando tratamiento:', this.tratamiento);
-      this.tratamientoService.modificarTratamiento(this.tratamiento).subscribe(
-        () => {
-          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
-          console.log('Tratamiento actualizado exitosamente.');
-          // Redirigir al detalle del tratamiento
-          this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
-        },
-        (error) => {
-          console.error('Error al actualizar el tratamiento:', error);
-          // Manejar el error, por ejemplo, mostrar un mensaje de error
-        }
-      );
-    } else {
-      console.log('Creando tratamiento:', this.tratamiento);  
-      this.tratamientoService.agregarTratamiento(this.tratamiento).subscribe(
-        () => {
-          // Manejar la respuesta, por ejemplo, mostrar un mensaje de éxito
-          console.log('Tratamiento creado exitosamente.');
-          // Redirigir a la lista de tratamientos
-          this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
-          
-        },
-        (error) => {
-          console.error('Error al crear el tratamiento:', error);
-          // Manejar el error, por ejemplo, mostrar un mensaje de error
-        }
-      );
-    }
+  
+    // Creamos un array de promesas para esperar que todas las operaciones necesarias se completen.
+    const tasks = [];
+    tasks.push(this.veterinarioService.obtenerPorCedula(this.veterinarioCedula).toPromise());
+    tasks.push(this.drogaService.obtenerPorNombre(this.drogaNombre).toPromise());
+    tasks.push(this.mascotaService.findById(this.mascotaId).toPromise());
+  
+    Promise.all(tasks).then(results => {
+      // Asigna los resultados a las propiedades correspondientes
+      this.tratamiento.veterinario = results[0];
+      this.tratamiento.droga = results[1];
+      this.tratamiento.mascota = results[2];
+  
+      // Ahora procedemos a enviar el tratamiento, ya sea actualizar o crear uno nuevo.
+      if (this.tratamiento.id) {
+        console.log('Actualizando tratamiento:', this.tratamiento);
+        this.tratamientoService.modificarTratamiento(this.tratamiento).subscribe(
+          () => {
+            console.log('Tratamiento actualizado exitosamente.');
+            this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
+          },
+          (error) => {
+            console.error('Error al actualizar el tratamiento:', error);
+          }
+        );
+      } else {
+        console.log('Creando tratamiento:', this.tratamiento);
+        this.tratamientoService.agregarTratamiento(this.tratamiento).subscribe(
+          () => {
+            console.log('Tratamiento creado exitosamente.');
+            this.router.navigate(['/mascotas/detail/' + this.mascotaId]);
+          },
+          (error) => {
+            console.error('Error al crear el tratamiento:', error);
+          }
+        );
+      }
+    }).catch(error => {
+      console.error('Error en la obtención de datos necesarios:', error);
+      // Manejar el error adecuadamente
+    });
   }
+  
    minFechaInicio(): string {
     return new Date().toISOString().split('T')[0]; // Obtener la fecha actual
   }

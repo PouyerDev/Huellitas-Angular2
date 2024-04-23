@@ -22,6 +22,7 @@ export class TratamientoService {
   }
 
   agregarTratamiento(tratamiento: Tratamiento): Observable<any> {
+    console.log("En el servicio angular");
     return this.http.post<any>(this.apiUrl + 'add', tratamiento);
   }
 
