@@ -1,12 +1,9 @@
+import { Component, OnInit } from '@angular/core';
 import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
-import { Droga } from 'src/app/model/droga'; // Importa el modelo Droga
-import { DrogaService } from 'src/app/service/droga.service'; // Importa el servicio Droga
-import { Tratamiento } from 'src/app/model/tratamiento'; // Importa el modelo Tratamiento
-import { TratamientoService } from 'src/app/service/tratamiento.service'; // Importa el servicio Tratamiento
-import { Router } from '@angular/router';
-import { Component } from '@angular/core';
-import { Veterinario } from 'src/app/model/veterinario';
+import { Droga } from 'src/app/model/droga';
+import { DrogaService } from 'src/app/service/droga.service';
+import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
@@ -14,37 +11,28 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
   templateUrl: './dashboard-general.component.html',
   styleUrls: ['./dashboard-general.component.css'],
 })
-export class DashboardGeneralComponent {
-  //atributos
-  selectedMascota!: Mascota;
-  mascotasList!: Mascota[];
-  numMascotas!: number;
-  totalMascotasTratamiento!: number;
-  gananciasTotales!: number;
-  totalDrogasVendidas!: number;
-  topDrogasVendidas!: Droga[];
-  totalTratamientosUltimoMes!: number;
-  tratamientosPorDrogaUltimoMes!: { droga: string; cantidad: number }[]; 
-  totalVeterinariosActivos!: number;
-  totalVeterinariosInActivos!: number;
+export class DashboardGeneralComponent implements OnInit {
+  numMascotas: number = 0;
+  totalMascotasTratamiento: number = 0;
+  gananciasTotales: number = 0;
+  totalDrogasVendidas: number = 0;
+  topDrogasVendidas: Droga[] = [];
+  totalTratamientosUltimoMes: number = 0;
+  tratamientosPorDrogaUltimoMes: { droga: string; cantidad: number }[] = [];
+  totalVeterinariosActivos: number = 0;
+  totalVeterinariosInActivos: number = 0;
 
-  //inyectar dependencias
   constructor(
-    private mascotaService2: MascotaService,
+    private mascotaService: MascotaService,
     private drogaService: DrogaService,
-    private tratamientoService: TratamientoService, // Nueva dependencia
-    private veterinarioService: VeterinarioService, 
-    private router: Router
+    private tratamientoService: TratamientoService,
+    private veterinarioService: VeterinarioService
   ) {}
-  //realizar llamados cuando ya esta cargada la interfaz
 
   ngOnInit(): void {
-    this.mascotaService2.findAll().subscribe((mascotas) => {
-      this.mascotasList = mascotas;
-      this.numMascotas = this.mascotasList.length;
-      this.totalMascotasTratamiento = this.mascotasList.filter(
-        (mascota) => mascota.estado
-      ).length;
+    this.mascotaService.findAll().subscribe((mascotas) => {
+      this.numMascotas = mascotas.length;
+      this.totalMascotasTratamiento = mascotas.filter((mascota) => mascota.estado).length;
     });
 
     this.drogaService.findAll().subscribe((drogas) => {
@@ -52,62 +40,37 @@ export class DashboardGeneralComponent {
         (total, droga) => total + droga.precioVenta * droga.unidadesVendidas,
         0
       );
-      this.totalDrogasVendidas = drogas.reduce(
-        (total, droga) => total + droga.unidadesVendidas,
-        0
-      );
-      this.topDrogasVendidas = drogas
-        .sort((a, b) => b.unidadesVendidas - a.unidadesVendidas)
-        .slice(0, 3);
+      this.totalDrogasVendidas = drogas.reduce((total, droga) => total + droga.unidadesVendidas, 0);
+      this.topDrogasVendidas = drogas.sort((a, b) => b.unidadesVendidas - a.unidadesVendidas).slice(0, 3);
     });
 
     this.tratamientoService.findAll().subscribe((tratamientos) => {
       const unMesAtras = new Date();
       unMesAtras.setMonth(unMesAtras.getMonth() - 1);
+
       this.totalTratamientosUltimoMes = tratamientos.filter(
         (tratamiento) => new Date(tratamiento.fechaInicio) >= unMesAtras
       ).length;
 
-      // Nuevas líneas
       const tratamientosUltimoMes = tratamientos.filter(
         (tratamiento) => new Date(tratamiento.fechaInicio) >= unMesAtras
       );
-      const drogas = [
-        ...new Set(
-          tratamientosUltimoMes.map((tratamiento) => tratamiento.droga?.id)
-        ),
-      ];
-      this.tratamientosPorDrogaUltimoMes = drogas.map((drogaId) => {
-        const droga = tratamientosUltimoMes.find(
-          (tratamiento) => tratamiento.droga?.id === drogaId
-        )?.droga;
+
+      const drogas = [...new Set(tratamientosUltimoMes.map((tratamiento) => tratamiento.droga?.nombre))];
+
+      this.tratamientosPorDrogaUltimoMes = drogas.map((nombreDroga) => {
         return {
-          droga: droga ? droga.nombre : 'Desconocido',
-          cantidad: tratamientosUltimoMes.filter(
-            (tratamiento) => tratamiento.droga?.id === drogaId
-          ).length,
+          droga: nombreDroga || 'Desconocido',
+          cantidad: tratamientosUltimoMes.filter((tratamiento) => tratamiento.droga?.nombre === nombreDroga).length,
         };
       });
     });
 
-    this.veterinarioService.getAllVeterinarios().subscribe(veterinarios => {
-     // this.totalVeterinariosActivos = veterinarios.filter(veterinario => veterinario.estado).length;
-     // this.totalVeterinariosInActivos = veterinarios.filter(veterinario => !veterinario.activo).length;
-    });
+    console.log(this.tratamientosPorDrogaUltimoMes)
 
-
-
-
-  }
-
-  //metodos
-  //contar todas las mascotas
-  countMascotas() {
-    this.mascotaService2.findAll().subscribe((mascotas) => {
-      this.numMascotas = this.mascotasList.length;
-      this.totalMascotasTratamiento = this.mascotasList.filter(
-        (mascota) => mascota.estado
-      ).length;
+    this.veterinarioService.getAllVeterinarios().subscribe((veterinarios) => {
+      this.totalVeterinariosActivos = veterinarios.filter((veterinario) => veterinario.estado).length;
+      this.totalVeterinariosInActivos = veterinarios.filter((veterinario) => !veterinario.estado).length;
     });
   }
 }

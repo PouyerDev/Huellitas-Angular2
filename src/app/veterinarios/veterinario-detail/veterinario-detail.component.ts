@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Veterinario } from 'src/app/model/veterinario';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MascotaService } from 'src/app/service/mascota.service';
+import { Mascota } from 'src/app/model/mascota';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-veterinario-detail',
@@ -10,10 +13,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class VeterinarioDetailComponent implements OnInit {
   @Input() veterinario!: Veterinario;
-
+  mascotas!: Mascota[]
   constructor(
     private veterinarioService: VeterinarioService,
     private route: ActivatedRoute,
+    private mascotaService: MascotaService,
     private router: Router
   ) {}
 
@@ -24,7 +28,17 @@ export class VeterinarioDetailComponent implements OnInit {
         this.veterinarioService.getVeterinarioById(id).subscribe((veterinario) => {
           this.veterinario = veterinario;
         });
+        this.veterinarioService.getMascotasByVeterinarioId(id).subscribe(mascotas => {
+          this.mascotas = mascotas;
+        });
       }
+      
     });
+
+
+
+
+
   }
+
 }

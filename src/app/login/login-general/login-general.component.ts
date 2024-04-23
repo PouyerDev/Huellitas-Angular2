@@ -18,25 +18,44 @@ export class LoginGeneralComponent {
     private auth: AuthService,
     private router: Router,
     private veterinarioService: VeterinarioService,
-    private clienteService: ClienteService) { }
+    private clienteService: ClienteService,
+    private authService: AuthService
+  ) {
+    this.checkIfSession();
+  }
+
+  ngOnChanges(): void {
+    this.checkIfSession();
+  }
 
   login(): void {
     if (this.cedula === "9999") {
       this.auth.setCurrentUser('dev');
+      this.auth.setCurrentUserCedula(this.cedula);
       this.router.navigate(['/mascotas']); 
-    } else{
+    } else {
       if (this.cedula === "0000") {
         // Redirigir al administrador a su página correspondiente
         this.auth.setCurrentUser('admin');
+        this.auth.setCurrentUserCedula(this.cedula);
         this.router.navigate(['/dashboard']); 
       } else {
         // Verificar si la cedula ingresada corresponde a un veterinario existente
         this.veterinarioService.obtenerPorCedula(this.cedula).subscribe(
           (veterinario) => {
             if (veterinario) {
-              // Redirigir al veterinario a su página correspondiente
-              this.auth.setCurrentUser('veterinario');
-              this.router.navigate(['/clientes']); 
+              if (!veterinario.estado) {
+                // El veterinario está desactivado, no se le permite iniciar sesión
+                console.log('El veterinario está desactivado. No se puede iniciar sesión.');
+                // Puedes mostrar un mensaje de error o redirigir a una página de error
+                // Por ejemplo:
+                this.mostrarMensajeError('El veterinario está desactivado');
+              } else {
+                // El veterinario está activo, se le permite iniciar sesión
+                this.auth.setCurrentUser('veterinario');
+                this.auth.setCurrentUserCedula(this.cedula);
+                this.router.navigate(['/clientes']);
+              }
             } else {
               // Si el veterinario no existe, buscar en el servicio de cliente
               this.clienteService.getClienteByCedula(this.cedula).subscribe(
@@ -44,31 +63,61 @@ export class LoginGeneralComponent {
                   if (cliente) {
                     // Redirigir al cliente a su página correspondiente
                     this.auth.setCurrentUser('cliente');
+                    this.auth.setCurrentUserCedula(this.cedula);
                     this.router.navigate(['/cliente/cliente-detail/' + cliente.id]);
                   } else {
                     // Si no se encuentra ningún usuario, mostrar un mensaje de error
-                    this.mostrarMensajeError();
+                    this.mostrarMensajeError('El usuario no existe');
                   }
                 },
                 (error) => {
                   console.error('Error al verificar el cliente:', error);
-                  this.mostrarMensajeError();
+                  this.mostrarMensajeError('El usuario no existe');
                 }
               );
             }
           },
           (error) => {
             console.error('Error al verificar el veterinario:', error);
-            this.mostrarMensajeError();
+            this.mostrarMensajeError('El usuario no existe');
           }
         );
       }
     }
   }
 
-  mostrarMensajeError(): void {
+  mostrarMensajeError(mensaje : string): void {
     // Mostrar un mensaje de error al usuario
-    alert('El usuario no existe');
+    alert(mensaje);
   }
 
+  checkIfSession(): void {
+    this.authService.getCurrentUser().subscribe(currentUser => {
+      if (currentUser) {
+        // Si hay un usuario en sesión, redirigir a la página correspondiente
+        // según el tipo de usuario
+        switch (currentUser) {
+          case 'dev':
+            this.router.navigate(['/mascotas']);
+            break;
+          case 'admin':
+            this.router.navigate(['/dashboard']);
+            break;
+          case 'veterinario':
+            this.router.navigate(['/clientes']);
+            break;
+          case 'cliente':
+            break;
+          default:
+            // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
+            // redirigir a la página de inicio de sesión
+            this.router.navigate(['/login']);
+            break;
+        }
+      } else {
+        // Si no hay un usuario en sesión, redirigir a la página de inicio de sesión
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 }

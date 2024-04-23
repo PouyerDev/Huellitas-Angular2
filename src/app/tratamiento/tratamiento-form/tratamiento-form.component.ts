@@ -8,6 +8,7 @@ import { Droga } from 'src/app/model/droga';
 import { DrogaService } from 'src/app/service/droga.service';
 import { Input } from '@angular/core';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-tratamiento-form', // Cambiar el selector del componente
   templateUrl: './tratamiento-form.component.html', // Cambiar la ruta de la plantilla
@@ -19,22 +20,29 @@ export class TratamientoFormComponent implements OnInit {
   veterinarios: any[] = [];
   drogaNombre: string = '';
   mascotaId: string | null = null; // Inicializar como null
-  tratamiento: Tratamiento = { // Cambiar la inicialización del tratamiento
-    id: '',
+  tratamiento: Tratamiento = {
     descripcion: '',
     fechaInicio: '',
     fechaFin: '',
+    id: '',
     mascota: {
-      id: '',
       nombre: '',
       raza: '',
       edad: 0,
       peso: 0,
       enfermedad: '',
       foto: '',
-      estado: true
+      estado: true,
+      id: '',
+      cliente: {
+        cedula: '',
+        nombre: '',
+        correo: '',
+        celular: '',
+        id: ''
+      }
     },
-    droga: {
+    "droga": {
       id: '',
       nombre: '',
       precioCompra: 0,
@@ -44,11 +52,11 @@ export class TratamientoFormComponent implements OnInit {
     },
     veterinario: {
       id: '',
-      cedula: '',
       nombre: '',
+      cedula: '',
       especialidad: '',
-      foto: '',
       numAtenciones: 0,
+      foto: '',
       estado: true
     }
   };
@@ -59,16 +67,19 @@ export class TratamientoFormComponent implements OnInit {
     private tratamientoService: TratamientoService, // Cambiar la inyección de dependencia al servicio de tratamiento
     private veterinarioService: VeterinarioService,
     private drogaService: DrogaService,
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.mascotaId = params['mascotaId'] || null;
     });
-  
-    console.log('desde mascota' + this.mascotaId);
-  
+    
+    this.authService.getCurrentUserCedula().subscribe(cedula => {
+      this.veterinarioCedula = cedula.toString();
+    });
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.tratamientoService.findById(id).subscribe(
@@ -88,15 +99,6 @@ export class TratamientoFormComponent implements OnInit {
         }
       );
     } else {
-      // Obtener lista de veterinarios
-      this.veterinarioService.getAllVeterinarios().subscribe(
-        (veterinarios) => {
-          this.veterinarios = veterinarios;
-        },
-        (error) => {
-          console.error('Error al obtener la lista de veterinarios:', error);
-        }
-      );
   
       // Obtener lista de drogas
       this.drogaService.getAllDrogasValidas().subscribe(

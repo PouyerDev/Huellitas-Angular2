@@ -19,9 +19,10 @@
     backdrop-filter: blur(0.1vw);
 }
 
-.form-general-group h2 {
-    font-size: 2vw;
+.form-general-group h1 {
+    font-size: 3vw;
     margin-bottom: 1vw;
+    font-weight: 1100;
 }
 
 .form-group {
@@ -47,7 +48,7 @@
     text-align: center;
     line-height: 1;
     font-size: 1.2vw;
-    background-color: rgba(255, 255, 255, 0.199);
+    background-color: rgba(255, 255, 255, 0.358);
     font-weight: bolder;
     padding: 0.8vw;
     outline: none;
@@ -64,5 +65,17 @@
 }
 
 label{
+    font-weight: bold;
     margin-right: 1vw;
+}
+
+.background {
+    background-image: url("../../../assets/img/registro-cliente.jpg");
+    margin-top: -2vw;
+    padding-top: 2vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; /* Set height to cover the entire viewport */
 }

@@ -7,6 +7,7 @@
     background-attachment: fixed;
     width: 100%;
     background-color: #ffffff;
+    height: 100vh;
 }
 
 .form-general-group {
@@ -14,7 +15,7 @@
     background-color: #ffd09691;
     border-radius: 1vw;
     margin: 0 27vw;
-    margin-top: 3vw;
+    margin-top: 6vw;
     padding: 2vw;
     padding-top: 1vw;
     backdrop-filter: blur(0.1vw);
@@ -27,6 +28,23 @@
 
 .form-group {
     padding: 1vw;
+}
+
+
+.background {
+    background-image: url("../../../assets/img/registro-mascota.jpg");
+    margin-top: -2vw;
+    padding-top: 2vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 130vh; 
+}
+
+label{
+    font-weight: bold;
+    margin-right: 1vw;
 }
 
 .form-group input, #drogaNombre, #veterinarioCedula {
@@ -48,7 +66,7 @@
     text-align: center;
     line-height: 1;
     font-size: 1.2vw;
-    background-color: rgba(255, 255, 255, 0.199);
+    background-color: rgba(255, 255, 255, 0.53);
     font-weight: bolder;
     padding: 0.8vw;
     outline: none;
@@ -58,12 +76,4 @@
 .form-general-group button:hover {
     color: white;
     background-color: #ff7474;
-}
-
-.background-registro.mascota {
-  
-}
-
-.background-registro.tratamiento {
-
 }
