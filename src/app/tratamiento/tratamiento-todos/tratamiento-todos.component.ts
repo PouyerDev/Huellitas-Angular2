@@ -3,6 +3,7 @@ import { Tratamiento } from 'src/app/model/tratamiento';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { Input } from '@angular/core';
 import { Mascota } from 'src/app/model/mascota';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-tratamiento-todos',
@@ -11,11 +12,19 @@ import { Mascota } from 'src/app/model/mascota';
 })
 export class TratamientoTodosComponent implements OnInit {
   tratamientosList: Tratamiento[] = [];
+  rol: string = '';
   @Input() mascota!: Mascota;
-  constructor(private tratamientoService: TratamientoService) { }
+  constructor(
+    private tratamientoService: TratamientoService,
+     private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.loadTratamientos();
+
+    this.authService.getCurrentUser().subscribe(rol => {
+      this.rol = rol.toString();
+    });
   }
 
   loadTratamientos(): void {

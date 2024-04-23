@@ -5,6 +5,7 @@ import { Tratamiento } from 'src/app/model/tratamiento'; // Asegúrate de import
 import { MascotaService } from 'src/app/service/mascota.service';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { mergeMap } from 'rxjs/operators';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-mascota-detail',
   templateUrl: './mascota-detail.component.html',
@@ -14,15 +15,22 @@ export class MascotaDetailComponent implements OnInit {
   @Input()
   mascota!: Mascota;
   tratamiento!: Tratamiento;
-
+  rol: string = '';
   constructor(
     private mascotaService: MascotaService,
     private route: ActivatedRoute,
     private router: Router,
-    private tratamientoService: TratamientoService
+    private tratamientoService: TratamientoService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+   
+    this.authService.getCurrentUser().subscribe(rol => {
+      this.rol = rol.toString();
+    });
+
+    
     this.route.params.subscribe(params => {
       const id = String(params['id']);    
       this.mascotaService.findById(id).pipe(

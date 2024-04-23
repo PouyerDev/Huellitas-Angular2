@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/model/cliente';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { mergeMap } from 'rxjs';
 import { Mascota } from 'src/app/model/mascota';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -14,16 +15,20 @@ import { Mascota } from 'src/app/model/mascota';
 export class ClienteDetailComponent implements OnInit {
   @Input() cliente!: Cliente;
   mascota!: Mascota;
-
+  rol: string = '';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private clienteService: ClienteService,
-    private mascotaService: MascotaService
+    private mascotaService: MascotaService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.loadMascotas();
+    this.authService.getCurrentUser().subscribe(rol => {
+      this.rol = rol.toString();
+    });
   }
 
   loadMascotas(): void {

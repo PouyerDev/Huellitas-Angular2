@@ -25,7 +25,7 @@
                 <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
                 <p><strong>Correo:</strong> {{ cliente.correo }}</p>
                 <p><strong>Celular:</strong> {{ cliente.celular }}</p>
-                <button class="btn-primary" [routerLink]="['/cliente/update/', cliente.id]">Modificar</button>
+                <button *ngIf="this.rol != 'cliente'" class="btn-primary" [routerLink]="['/cliente/update/', cliente.id]">Modificar</button>
             </div>
         </div>
 
