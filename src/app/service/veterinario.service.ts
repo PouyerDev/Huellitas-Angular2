@@ -3,16 +3,16 @@ import { Observable, of } from 'rxjs';
 import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
 import { Mascota } from '../mascota/mascota';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class VeterinarioService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
-
- 
 
   getAllVeterinarios(): Observable<Veterinario[]> {
     return this.http.get<Veterinario[]>('http://localhost:8090/veterinarios/all');
@@ -33,11 +33,11 @@ export class VeterinarioService {
 actualizarVeterinario(veterinario: Veterinario){
   console.log("actualizando servicio angular");
   
-  this.http.put('http://localhost:8090/veterinarios/update/' + veterinario.id, veterinario)
+  this.http.put('http://localhost:8090/veterinarios/update', veterinario)
     .subscribe(
       response => {
         console.log("Veterinario actualizado correctamente:", response);
-        // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+        this.router.navigate(['/veterinarios/detail', veterinario.id]);
       },
       error => {
         console.error("Error al actualizar el veterinario:", error);
@@ -55,6 +55,7 @@ crearVeterinario(veterinario: Veterinario) {
       response => {
         console.log("Veterinario creado correctamente:", response);
         // Aquí puedes agregar lógica para actualizar la interfaz de usuario si es necesario
+        this.router.navigate(['/veterinarios']);
       },
       error => {
         console.error("Error al crear el veterinario:", error);

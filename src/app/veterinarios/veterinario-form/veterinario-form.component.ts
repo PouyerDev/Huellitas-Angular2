@@ -11,11 +11,11 @@ import { Veterinario } from 'src/app/model/veterinario'; // Importa el modelo pa
 export class VeterinarioFormComponent implements OnInit {
   veterinario: Veterinario = {
     id: '',
-    cedula: '',
     nombre: '',
+    cedula: '',
     especialidad: '',
-    foto: '',
     numAtenciones: 0,
+    foto: '',
     estado: true
   };
 
@@ -35,8 +35,7 @@ export class VeterinarioFormComponent implements OnInit {
           this.veterinario = veterinario;
         } else {
           console.log('El veterinario no existe');
-          // Redirigir a una página de error o a otra ubicación deseada
-          this.router.navigate(['/']); // Por ejemplo, redirige a la página principal
+          this.router.navigate(['/']); 
         }
       });
     }
@@ -46,14 +45,12 @@ export class VeterinarioFormComponent implements OnInit {
     
     if (this.veterinario.id) {
       console.log('Actualizando veterinario:', this.veterinario);
-      
       this.veterinarioService.actualizarVeterinario(this.veterinario);
-      this.router.navigate(['/veterinarios/detail', this.veterinario.id]);
+      console.log('Veterinario:', this.veterinario)
       console.log("veterinario actualizado");
     } else {
       console.log('Creando veterinario:', this.veterinario);
       this.veterinarioService.crearVeterinario(this.veterinario);
-      this.router.navigate(['/veterinarios']);
       console.log("veterinario creado");
       
     }

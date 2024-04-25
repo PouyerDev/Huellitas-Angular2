@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit{
   ngOnInit() {
+    this.actions();
+  }
+  
+  ngOnChanges(){
+    this.actions();
+  }
+  
+  actions(){
     document.addEventListener("DOMContentLoaded", () => {
       const slidesContainer = document.getElementById("slides-container")!;
       const slides = document.querySelectorAll(".slide")!;
@@ -66,4 +74,5 @@ export class LandingComponent implements OnInit{
 
     slidesContainer.scrollLeft = currentSlideIndex * slideWidth;
   }
+
 }
