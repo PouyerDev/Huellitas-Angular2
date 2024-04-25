@@ -19,11 +19,7 @@ import { LoginGeneralComponent } from './login/login-general/login-general.compo
 import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
 import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
 import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
-import { AppComponent } from './app.component';
-import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
-import { AuthService } from './service/auth.service';
-
 
 
 const routes: Routes = [

@@ -23,7 +23,6 @@ import { DrogaTodosComponent } from './droga/droga-todos/droga-todos.component';
 import { DrogaFormComponent } from './droga/droga-form/droga-form.component';
 import { DrogaDetailComponent } from './droga/droga-detail/droga-detail.component';
 import { DashboardGeneralComponent } from './dashboard/dashboard-general/dashboard-general.component';
-import { DashboardAuxComponent } from './dashboard/dashboard-aux/dashboard-aux.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 
@@ -49,7 +48,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     DrogaFormComponent,
     DrogaDetailComponent,
     DashboardGeneralComponent,
-    DashboardAuxComponent,
     NavbarComponent
   ],
   imports: [
