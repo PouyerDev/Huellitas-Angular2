@@ -44,7 +44,7 @@
     font-size: 1vw;
     position: unset;
     color: #ffa074;
-    border-color: #ffa074;
+    border-color: hsl(19, 100%, 73%);
 }
 
 #todas-mascotas-title {

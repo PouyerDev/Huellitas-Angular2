@@ -179,6 +179,19 @@ button {
     border-radius: 1vw;
 }
 
+.lottie{
+    border:none;
+}
+
+.dudas {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3vw;
+    margin: 2.5vw 0;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    border-radius: 1vw;
+}
 
 .welcome div {
     width: 35%;
@@ -221,7 +234,17 @@ button {
     padding: 1vw;
     margin-top: 0vw;
 }
-
+.dudas-title{
+    margin-top: 2.2vw;
+    margin-bottom: 0vw;
+}
+.dudas-div {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: left;
+    margin: 2vw 0;
+    margin-top: 0vw;
+}
 .our-services h1 {
     text-align: center;
 }
