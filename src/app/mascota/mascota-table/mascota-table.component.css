@@ -203,3 +203,14 @@ a:hover svg {
 .buttons_nav {
     background-color: white;
 }
+.filtro{
+    text-align: center;
+}
+.input-busqueda{
+    border-radius: 20vw;
+    border-style: none;
+    background-color: #ff848418;
+    padding: 0.5vw;
+    margin-top: 1.5vw;
+    
+}

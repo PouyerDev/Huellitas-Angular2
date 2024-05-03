@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/service/dashboard.service';
 
 @Component({
-  selector: 'app-dashboard-general',
+  selector: 'app-dashboard',
   templateUrl: './dashboard-general.component.html',
-  styleUrls: ['./dashboard-general.component.css'],
+  styleUrls: ['./dashboard-general.component.css'] // Update the file path to the correct location of the CSS file
 })
 export class DashboardGeneralComponent implements OnInit {
   numMascotas: number = 0;
@@ -14,6 +14,8 @@ export class DashboardGeneralComponent implements OnInit {
   topDrogasVendidas: any[] = [];
   totalVeterinariosActivos: number = 0;
   totalVeterinariosInActivos: number = 0;
+  totalTratamientosUltimoMes : number = 0;
+  tratamientosPorDrogaUltimoMes : any[] = [];
 
   constructor(
     private DashboardService: DashboardService) { }
