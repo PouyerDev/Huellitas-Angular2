@@ -11,8 +11,15 @@ import { MascotaService } from 'src/app/service/mascota.service';
 })
 export class MascotaTableComponent {
   //atributos
+  filtroNombre: string = '';
   selectedMascota!: Mascota;
   mascotasList!: Mascota[];
+
+  filtrarMascotas(): any[] {
+    return this.mascotasList.filter(mascota =>
+      mascota.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase())
+    );
+  }
   //inyectar dependencias
   constructor(
     private mascotaService: MascotaService,

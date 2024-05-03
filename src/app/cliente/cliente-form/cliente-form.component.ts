@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/model/cliente';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cliente-form',
   templateUrl: './cliente-form.component.html',
@@ -46,6 +46,25 @@ export class ClienteFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    //verificar campos
+    if (!this.cliente.nombre || !this.cliente.cedula || !this.cliente.correo || !this.cliente.celular) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor completa todos los campos obligatorios.'
+      });
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.cliente.correo)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor ingresa un correo electrónico válido.'
+      });
+      return; 
+    }
+
     if (this.cliente.id) {
       console.log('Actualizando cliente:', this.cliente);
       this.clienteService.actualizarCliente(this.cliente).subscribe(
