@@ -13,8 +13,8 @@
             <a [routerLink]="['/drogas']">Drogas</a>
           </ng-container>
           <ng-container *ngSwitchCase="'veterinario'">
-            <a [routerLink]="['/mascotas']">Mascotas </a>
-            <a [routerLink]="['/clientes']">Clientes</a>
+            <a id="btn-ver-mascotas" [routerLink]="['/mascotas']">Mascotas </a>
+            <a id="btn-ver-clientes" [routerLink]="['/clientes']">Clientes</a>
           </ng-container>
           <ng-container *ngSwitchCase="'cliente'">
             
@@ -28,6 +28,6 @@
           </ng-container>
         </ng-container>
       </nav>
-      <a (click)="logOut()" [routerLink]="['/landing']" class="btn-login" >Cerrar Sesión</a>
+      <a iid="btn-logout" (click)="logOut()" [routerLink]="['/landing']" class="btn-login" >Cerrar Sesión</a>
     </div>
   </header>

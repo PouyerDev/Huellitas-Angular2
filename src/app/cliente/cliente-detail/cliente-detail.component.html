@@ -38,7 +38,7 @@
                         <div class="mascota-info info-vista">
                             <img class="mascota_cliente" src="{{ mascota.foto ? mascota.foto : '/img/bichon.png' }}"
                                 alt="Foto de la mascota">
-                            <h2>{{ mascota.nombre }}</h2>
+                            <h2 id="nombreMascota">{{ mascota.nombre }}</h2>
                         </div>
                     </a>
                     <div *ngIf="!mascota.estado" class="mascota-info info-vista specified-mascota-inactive">

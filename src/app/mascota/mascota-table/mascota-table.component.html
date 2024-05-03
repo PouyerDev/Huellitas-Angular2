@@ -21,7 +21,7 @@
   <input type="text" class="input-busqueda" [(ngModel)]="filtroNombre" placeholder=" Buscar por nombre..." /> <br>
 </div>
   <br>
-  <a class="add-btn" [routerLink]="['/mascota/crear']">Agregar Mascota</a>
+  <a id="add-btn-mascota" class="add-btn" [routerLink]="['/mascota/crear']">Agregar Mascota</a>
   <section id="mascotas-table">
     <div id="mascota-container-todas" *ngFor="let mascota of filtrarMascotas()">
       <div class="mascota-info">
