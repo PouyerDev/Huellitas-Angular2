@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-general',
@@ -88,7 +89,11 @@ export class LoginGeneralComponent {
 
   mostrarMensajeError(mensaje : string): void {
     // Mostrar un mensaje de error al usuario
-    alert(mensaje);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: mensaje
+    });
   }
 
   checkIfSession(): void {
