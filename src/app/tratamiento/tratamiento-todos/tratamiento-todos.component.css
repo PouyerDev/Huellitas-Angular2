@@ -73,7 +73,7 @@ lima pastel     #CDFADB
 }
 
 
-#mascota-container-todas {
+.mascota-container-todas {
     padding: 1vw;
     margin: 0 1vw;
     width: 40vw;
@@ -88,12 +88,12 @@ lima pastel     #CDFADB
     transition: 0.3s;
 }
 
-#mascota-container-todas:hover{
+.mascota-container-todas:hover{
     cursor: pointer;
     box-shadow: 0 0 1.5rem #f28d5ee8;
 }
 
-#mascota-container-todas .img-mascota-todas {
+.mascota-container-todas .img-mascota-todas {
     border-radius: 500px;
     width: 12vw;
     height: 12vw;
@@ -116,7 +116,7 @@ lima pastel     #CDFADB
     color: white;
 }
 
-#mascota-container-todas .mascota-actions {
+.mascota-container-todas .mascota-actions {
     display: flex;
     flex-direction: column;
     width: fit-content;
