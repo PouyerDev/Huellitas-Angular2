@@ -57,10 +57,11 @@ export class TratamientoFormComponent implements OnInit {
       especialidad: '',
       numAtenciones: 0,
       foto: '',
-      estado: true
+      estado: true,
+      pwd: ''      
     }
   };
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,

@@ -10,6 +10,10 @@
                 <label for="cedula">Cédula</label>
                 <input type="text" id="cedula" [(ngModel)]="veterinario.cedula" name="cedula" required>
             </div>
+            <div class="form-group" *ngIf="veterinario.id">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" [(ngModel)]="password" name="password" required>
+            </div>
             <div class="form-group">
                 <label for="especialidad">Especialidad</label>
                 <input type="text" id="especialidad" [(ngModel)]="veterinario.especialidad" name="especialidad" required>

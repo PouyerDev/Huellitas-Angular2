@@ -1,15 +1,38 @@
- <!--barra de navegación-->
- <div class="navbar-full">
+<!-- HTML -->
+<div class="navbar-full">
     <img class="logo" src="assets/img/logo.png" alt="Logo huellitas felices">
     <h2>Huellitas Felices</h2>
 </div>
+
 <section class="background">
-<div id="forms-container" class="form-general-group">
-    <h1>Iniciar sesión</h1>
-    <div class="flex-container">
-        <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" [(ngModel)]="cedula">
-        <button id="button-login2" (click)="login()">Iniciar sesión</button>
+    <div class="tab-container">
+        <!-- Pestañas -->
+        <button class="tab-button" (click)="selectTab('cliente')" [class.selected]="selectedTab === 'cliente'">Cliente</button>
+        <button class="tab-button" (click)="selectTab('veterinario_admin')" [class.selected]="selectedTab === 'veterinario_admin'">Veterinario/Admin</button>
     </div>
-</div>
+    <div id="forms-container" class="form-general-group">
+        <h1>Iniciar sesión</h1>
+        <div class="flex-container">
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" [(ngModel)]="cedula">
+            <label for="password">Contraseña:</label>
+            <!-- HTML -->
+            <div class="password-input-container">
+                <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="password"
+                    placeholder="" *ngIf="selectedTab !== 'cliente'">
+                <span class="password-toggle" (click)="togglePasswordVisibility()"
+                    *ngIf="selectedTab !== 'cliente'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye" viewBox="0 0 16 16" *ngIf="showPassword">
+                        <!-- SVG para mostrar el ojo abierto cuando el password es visible -->
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye-slash" viewBox="0 0 16 16" *ngIf="!showPassword">
+                        <!-- SVG para mostrar el ojo cerrado cuando el password está oculto -->
+                    </svg>
+                </span>
+            </div>
+            <button id="button-login2" (click)="login()">Iniciar sesión</button>
+        </div>
+    </div>
 </section>

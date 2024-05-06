@@ -43,14 +43,47 @@
 
 
 #forms-container{
-    margin-top: 9vw;
-    height: 50%;
+
+    height: fit-content;
+    padding: 2vw 10vw 3vw 10vw;
+}
+/* CSS */
+.password-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  
+  .tab-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    text-align: center;
+    background-color: #ff747477;
+    margin: 0 27vw;
+    border-radius:  1vw 1vw 0 0 ;
+    margin-top: 8vw;
 }
 
+.tab-button {
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+
+}
+
+.tab-button.selected {
+    background-color: #ffffff77;
+    border-radius:  1vw 1vw 0 0 ;
+}
 .form-general-group {
     text-align: center;
-    background-color: #ffffff55;
-    border-radius: 1vw;
+    background-color: #ffffff77;
+    border-radius: 0 0 1vw 1vw ;
     margin: 0 27vw;
     padding: 2vw;
     padding-top: 1vw;
@@ -67,7 +100,7 @@
     border: 3px solid #ff7474;
     font-size: 1.2vw;
     text-align: center;
-    margin-bottom: 6vw;
+    margin-bottom: 3vw;
 }
 
 

@@ -6,6 +6,7 @@ export class Veterinario {
     public foto: string ;
     public numAtenciones: number;
     public estado: boolean = true;
+    private _pwd?: string;
 
     constructor(id: string, cedula: string, nombre: string, especialidad: string, foto: string, numAtenciones: number) {
         this.id = id;
@@ -14,5 +15,8 @@ export class Veterinario {
         this.especialidad = especialidad;
         this.foto = foto;
         this.numAtenciones = numAtenciones;
+    }
+    set pwd(pwd: string) {
+        this._pwd = pwd;
     }
 }

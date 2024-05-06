@@ -9,15 +9,18 @@ import { Veterinario } from 'src/app/model/veterinario'; // Importa el modelo pa
   styleUrls: ['./veterinario-form.component.css']
 })
 export class VeterinarioFormComponent implements OnInit {
-  veterinario: Veterinario = {
-    id: '',
-    nombre: '',
-    cedula: '',
-    especialidad: '',
-    numAtenciones: 0,
-    foto: '',
-    estado: true
-  };
+  veterinario: Veterinario = new Veterinario(
+    '1', // id
+    '1234567890', // cedula
+    'Dr. Juan Pérez', // nombre
+    'Cirugía', // especialidad
+    'foto.jpg', // foto
+    10 // numAtenciones
+  );
+
+
+  password: string = '';
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +53,7 @@ export class VeterinarioFormComponent implements OnInit {
       console.log("veterinario actualizado");
     } else {
       console.log('Creando veterinario:', this.veterinario);
+      this.veterinario.pwd=this.password;
       this.veterinarioService.crearVeterinario(this.veterinario);
       console.log("veterinario creado");
       
