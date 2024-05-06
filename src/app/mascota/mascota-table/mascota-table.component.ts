@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 
@@ -10,51 +9,45 @@ import { MascotaService } from 'src/app/service/mascota.service';
   styleUrls: ['./mascota-table.component.css'],
 })
 export class MascotaTableComponent {
-  //atributos
+  // Atributos
   filtroNombre: string = '';
   selectedMascota!: Mascota;
   mascotasList!: Mascota[];
+  trigger: Boolean = true;
 
-  filtrarMascotas(): any[] {
-    return this.mascotasList.filter(mascota =>
-      mascota.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase())
-    );
-  }
-  //inyectar dependencias
+  // Inyectar dependencias
   constructor(
     private mascotaService: MascotaService,
     private router: Router
   ) { }
-  //realizar llamados cuando ya esta cargada la interfaz
 
+ 
   ngOnInit(): void {
-    this.mascotaService.findAll().subscribe(mascotas => {
-      // Filter mascotas with estado = true
-      this.mascotasList = mascotas.filter(mascota => mascota.estado);
-    });
+    this.loadMascotas();
   }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
+    this.loadMascotas();
+  }
+
+  loadMascotas(): void {
     this.mascotaService.findAll().subscribe(mascotas => {
-      // Filter mascotas with estado = true
-      this.mascotasList = mascotas.filter(mascota => mascota.estado);
+      this.mascotasList = mascotas;
     });
   }
  
   agregarMascota(mascota: Mascota) {
     this.mascotaService.agregarMascota(mascota).subscribe(() => {
-      this.mascotasList.push(mascota);
+      this.loadMascotas(); // Actualizar lista de mascotas
     });
   }
 
   deactivateMascota(mascota: Mascota) {
     console.log('Desactivando mascota:', mascota);
     this.mascotaService.deactivateMascota(mascota.id).subscribe(() => {
-      this.mascotasList = this.mascotasList.filter(m => m !== mascota);
-      
+      this.loadMascotas();
+      console.log('Mascota desactivada:', mascota);
     });
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        return this.router.navigate(['/mascotas']);
-      });
+    this.trigger = !this.trigger;
   }
 }

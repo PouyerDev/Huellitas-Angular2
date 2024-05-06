@@ -57,13 +57,12 @@ export class LoginGeneralComponent {
   }
 
   loginPassword() {
-
     if (!this.password) {
       this.mostrarMensajeError('Por favor, ingrese su contraseña');
       return;
     }
     else {
-      if (this.cedula === "0000" && this.password === "admin") {
+      if (this.cedula == "0000" && this.password === "admin") {
         // Redirigir al administrador a su página correspondiente
         this.auth.setCurrentUser('admin');
         this.auth.setCurrentUserCedula(this.cedula);
@@ -116,7 +115,7 @@ export class LoginGeneralComponent {
     if (this.cedula === '') {
       this.mostrarMensajeError('Por favor, ingrese su cédula');
     } else {
-      if (this.cedula === "9999") {
+      if (this.cedula.toString() === "9999") {
         this.auth.setCurrentUser('dev');
         this.auth.setCurrentUserCedula(this.cedula);
         this.router.navigate(['/mascotas']);

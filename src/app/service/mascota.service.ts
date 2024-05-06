@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
 import { Mascota } from 'src/app/model/mascota';
 import { Tratamiento } from '../model/tratamiento';
 
@@ -28,7 +28,7 @@ export class MascotaService {
   deactivateMascota(id: string): Observable<any> {
     console.log('Desactivando mascota en el servicio:', id);
     return this.http.get<any>(this.apiUrl+'deactivate/'+id);
-  }
+}
 
   actualizarMascota(mascota: Mascota): Observable<any> {
     return this.http.put<any>(this.apiUrl+'update', mascota);

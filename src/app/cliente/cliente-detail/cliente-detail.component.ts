@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ClienteService } from 'src/app/service/cliente.service';
-import { Cliente } from 'src/app/model/cliente';
-import { MascotaService } from 'src/app/service/mascota.service';
+import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs';
+import { Cliente } from 'src/app/model/cliente';
 import { Mascota } from 'src/app/model/mascota';
 import { AuthService } from 'src/app/service/auth.service';
+import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -18,9 +17,7 @@ export class ClienteDetailComponent implements OnInit {
   rol: string = '';
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private clienteService: ClienteService,
-    private mascotaService: MascotaService,
     private authService: AuthService
   ) { }
 
@@ -65,12 +62,8 @@ export class ClienteDetailComponent implements OnInit {
 
   activate(mascotaId: string): void {
     console.log('Activando mascota:', mascotaId, 'del cliente:', this.cliente);
-    this.clienteService.activateMascota(mascotaId, this.cliente.id).subscribe(() => {
-      //
-      // Recargar la página completa
-    
+    this.clienteService.activateMascota(mascotaId, this.cliente.id).subscribe(() => {    
     });
     this.loadMascotas();  
-    //window.location.reload();
   }
 }

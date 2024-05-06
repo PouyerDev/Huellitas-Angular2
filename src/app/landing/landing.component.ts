@@ -14,6 +14,10 @@ export class LandingComponent implements OnInit{
     this.actions();
   }
   
+  ngOnRefresh(){
+    this.actions();
+  } 
+
   actions(){
     document.addEventListener("DOMContentLoaded", () => {
       const slidesContainer = document.getElementById("slides-container")!;

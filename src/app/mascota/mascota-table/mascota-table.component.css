@@ -156,11 +156,17 @@ a:hover svg {
 }
 
 
+#mascotas-table{
+    display:inline-flex;
+    justify-content: space-evenly;
+}
+
 
 #todas-mascotas {
     margin-top: 2vw;
     margin-bottom: 3vw;
 }
+
 
 
 

@@ -46,7 +46,7 @@
                             alt="Foto de la mascota">
                         <div class="column">
                             <h2>{{ mascota.nombre }}</h2>
-                            <a (click)="activate(mascota.id)">Activate</a>
+                            <a *ngIf="this.rol != 'cliente'" (click)="activate(mascota.id)">Activate</a>
                         </div>
                     </div>
                 </div>
