@@ -4,7 +4,7 @@
       <a *ngIf="this.rol != 'cliente'" [routerLink]="['/tratamiento/crear']" [queryParams]="{ mascotaId: mascota.id }"><button class="add-btn">Agregar Tratamiento</button></a>
 
       <br>
-      <div id="mascota-container-todas" *ngFor="let tratamiento of mascota.tratamientos">
+      <div class="mascota-container-todas" *ngFor="let tratamiento of mascota.tratamientos">
         <div class="mascota-info">
             <div class="datos">
             <p><strong>Droga:</strong> {{ tratamiento.droga?.nombre }}</p>

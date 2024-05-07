@@ -37,4 +37,8 @@ export class DashboardService {
   totalVeterinariosInActivos(): Observable<number> {
     return this.http.get<number>(this.baseUrl+'/totalVeterinariosInActivos');
   }
+
+  totalTratamientosUltimoMes(): Observable<number> {
+    return this.http.get<number>(this.baseUrl +'/totalTratamientosUltimoMes');
+  }
 }

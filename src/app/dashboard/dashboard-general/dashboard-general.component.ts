@@ -48,5 +48,9 @@ export class DashboardGeneralComponent implements OnInit {
     this.DashboardService.totalVeterinariosInActivos().subscribe(totalVeterinariosInActivos => {
       this.totalVeterinariosInActivos = totalVeterinariosInActivos;
     });
+
+    this.DashboardService.totalTratamientosUltimoMes().subscribe(totalTratamientosUltimoMes => {
+      this.totalTratamientosUltimoMes = totalTratamientosUltimoMes;
+    })
   }
 }
