@@ -23,7 +23,7 @@
   <br>
   <a id="add-btn-mascota" class="add-btn" [routerLink]="['/mascota/crear']">Agregar Mascota</a>
   <section >
-    <div id="mascotas-table" *ngFor="let mascota of mascotasList">
+    <div id="mascotas-table" *ngFor="let mascota of filtrarMascotas()">
       <div id="mascota-container-todas" *ngIf="mascota.estado">
       <div class="mascota-info">
         <img class="img-mascota-todas" src="{{ mascota.foto }}" alt="mascota" />

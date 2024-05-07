@@ -15,6 +15,11 @@ export class MascotaTableComponent {
   mascotasList!: Mascota[];
   trigger: Boolean = true;
 
+  filtrarMascotas(): any[] {
+    return this.mascotasList.filter(mascota =>
+      mascota.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase())
+    );
+  }
   // Inyectar dependencias
   constructor(
     private mascotaService: MascotaService,
