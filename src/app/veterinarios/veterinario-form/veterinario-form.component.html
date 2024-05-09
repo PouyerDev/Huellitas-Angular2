@@ -1,32 +1,45 @@
-<div id="forms-container">
-    <div class="form-general-group">
-        <h1>Veterinario</h1>
-        <form class="submit" (submit)="onSubmit()">
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" [(ngModel)]="veterinario.nombre" name="nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="cedula">Cédula</label>
-                <input type="text" id="cedula" [(ngModel)]="veterinario.cedula" name="cedula" required>
-            </div>
-            <div class="form-group" *ngIf="veterinario.id">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" [(ngModel)]="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="especialidad">Especialidad</label>
-                <input type="text" id="especialidad" [(ngModel)]="veterinario.especialidad" name="especialidad" required>
-            </div>
-            <div class="form-group">
-                <label for="foto">Foto (URL)</label>
-                <input type="text" id="foto" [(ngModel)]="veterinario.foto" name="foto" required>
-            </div>
-            <div class="form-group">
-                <label for="numAtenciones">Número de Atenciones</label>
-                <input type="number" id="numAtenciones" [(ngModel)]="veterinario.numAtenciones" name="numAtenciones" required>
-            </div>
-            <button type="submit">Guardar</button>
-        </form>
+<section class="background">
+    <div id="forms-container">
+        <div class="form-general-group">
+            <h1>Veterinario</h1>
+            <form class="submit" (submit)="onSubmit()">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" [(ngModel)]="veterinario.nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="cedula">Cédula</label>
+                    <input type="text" id="cedula" [(ngModel)]="veterinario.cedula" name="cedula" required>
+                </div>
+
+
+
+                <div class="form-group" *ngIf="!veterinario.id"> <!--*ngIf="!veterinario.id"-->
+                    <label for="password">Contraseña</label>
+                    <input type="text" id="password" [(ngModel)]="veterinario.password" name="password" required>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <label for="especialidad">Especialidad</label>
+                    <input type="text" id="especialidad" [(ngModel)]="veterinario.especialidad" name="especialidad"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto (URL)</label>
+                    <input type="text" id="foto" [(ngModel)]="veterinario.foto" name="foto" required>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="numAtenciones" [(ngModel)]="veterinario.numAtenciones" name="numAtenciones"
+                        required>
+                </div>
+                
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
     </div>
-</div>
+</section>

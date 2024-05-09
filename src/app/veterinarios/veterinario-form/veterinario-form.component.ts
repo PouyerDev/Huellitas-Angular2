@@ -10,17 +10,16 @@ import { Veterinario } from 'src/app/model/veterinario'; // Importa el modelo pa
 })
 export class VeterinarioFormComponent implements OnInit {
   veterinario: Veterinario = new Veterinario(
-    '1', // id
-    '1234567890', // cedula
-    'Dr. Juan Pérez', // nombre
-    'Cirugía', // especialidad
-    'foto.jpg', // foto
-    10 // numAtenciones
+    '', // id
+    '', // cedula
+    '', // nombre
+    '', // especialidad
+    '', // foto
+    0, // numAtenciones
+    '' // password
   );
 
-
-  password: string = '';
-  
+  private vetOldPassword: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +35,8 @@ export class VeterinarioFormComponent implements OnInit {
       this.veterinarioService.getVeterinarioById(id).subscribe(veterinario => {
         if (veterinario) {
           this.veterinario = veterinario;
+          this.vetOldPassword = veterinario.password;
+          console.log('VeterinarioCargado:', veterinario);
         } else {
           console.log('El veterinario no existe');
           this.router.navigate(['/']); 
@@ -53,10 +54,9 @@ export class VeterinarioFormComponent implements OnInit {
       console.log("veterinario actualizado");
     } else {
       console.log('Creando veterinario:', this.veterinario);
-      this.veterinario.pwd=this.password;
+      console.log('Veterinario:', this.veterinario.password  )
       this.veterinarioService.crearVeterinario(this.veterinario);
       console.log("veterinario creado");
-      
     }
   }
 }

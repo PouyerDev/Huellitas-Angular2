@@ -58,7 +58,7 @@ export class TratamientoFormComponent implements OnInit {
       numAtenciones: 0,
       foto: '',
       estado: true,
-      pwd: ''      
+      password: ''      
     }
   };
   

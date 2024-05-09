@@ -1,4 +1,14 @@
 /*------------------------------------------Registros---------------------------------------------------*/
+.background {
+    background-image: url("../../../assets/img/registro-mascota.jpg");
+    margin-top: -2vw;
+    padding-top: 2vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 130vh; 
+}
 
 .background-registro {
     background-repeat: no-repeat;
@@ -21,25 +31,31 @@
 
 .form-general-group h2 {
     font-size: 2vw;
+    font-weight: 900;
     margin-bottom: 1vw;
 }
 
 .form-group {
     padding: 1vw;
+    display: inline-flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    font-weight: 900;
 }
 
 .form-group input {
+    font-weight: 700;
     border-radius: 1vw;
+    text-align: center;
     border-style: none;
     padding: 1vw;
-    background-color: rgba(255, 255, 255, 0.651);
+    background-color: #e786869c;
     font-family: 'Poppins', sans-serif;
 }
 
 
 .form-general-group button {
-    position: relative;
-    left: 15vw;
     transition: all .5s ease;
     color: #ee6060;
     border: 3px solid #ff7474;
@@ -61,4 +77,10 @@
 
 #forms-container{
     margin-top: 9vw;
+}
+
+.submit{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
 }

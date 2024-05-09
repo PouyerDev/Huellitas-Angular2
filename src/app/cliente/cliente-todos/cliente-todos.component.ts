@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/model/cliente';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-todos',
@@ -9,11 +10,20 @@ import { Cliente } from 'src/app/model/cliente';
 })
 export class ClienteTodosComponent implements OnInit {
   clientes: Cliente[] = [];
+  filtroCedula: string = '';
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService,
+    private router: Router 
+  ) { }
 
   ngOnInit(): void {
     this.loadClientes();
+  }
+
+  filtrarCliente(): any[] {
+    return this.clientes.filter(cliente =>
+      cliente.cedula.toLowerCase().includes(this.filtroCedula.toLowerCase())
+    );
   }
 
   loadClientes(): void {
