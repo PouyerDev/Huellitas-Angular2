@@ -39,6 +39,12 @@ export class DashboardService {
   }
 
   totalTratamientosUltimoMes(): Observable<number> {
+    console.log(this.http.get<number>(this.baseUrl +'/totalTratamientosUltimoMes'))
     return this.http.get<number>(this.baseUrl +'/totalTratamientosUltimoMes');
   }
+
+  tratamientosMedicamentos(): Observable<Map<string, number>> {
+  return this.http.get<Map<string, number>>(this.baseUrl + '/tratamientosMedicamentos');
+  }
+
 }

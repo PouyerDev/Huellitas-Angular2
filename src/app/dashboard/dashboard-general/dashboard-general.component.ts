@@ -15,7 +15,7 @@ export class DashboardGeneralComponent implements OnInit {
   totalVeterinariosActivos: number = 0;
   totalVeterinariosInActivos: number = 0;
   totalTratamientosUltimoMes : number = 0;
-  tratamientosPorDrogaUltimoMes : any[] = [];
+  tratamientosPorDrogaUltimoMes : Map<string, number> | undefined;
 
   constructor(
     private DashboardService: DashboardService) { }
@@ -49,8 +49,9 @@ export class DashboardGeneralComponent implements OnInit {
       this.totalVeterinariosInActivos = totalVeterinariosInActivos;
     });
 
-    this.DashboardService.totalTratamientosUltimoMes().subscribe(totalTratamientosUltimoMes => {
-      this.totalTratamientosUltimoMes = totalTratamientosUltimoMes;
+    this.DashboardService.tratamientosMedicamentos().subscribe(tratamientosMedicamentos => {
+      this.tratamientosPorDrogaUltimoMes = tratamientosMedicamentos;
+      console.log(this.tratamientosPorDrogaUltimoMes);
     })
   }
 }
