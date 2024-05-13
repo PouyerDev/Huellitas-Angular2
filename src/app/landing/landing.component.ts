@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit{
+  sequenceMatched = false;
+
+
   ngOnInit() {
     this.actions();
   }
@@ -78,5 +82,23 @@ export class LandingComponent implements OnInit{
 
     slidesContainer.scrollLeft = currentSlideIndex * slideWidth;
   }
+ // Agregar la detección de la secuencia de teclas
+ private sequence: string[] = []; 
+ private secretSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA']; 
 
+ @HostListener('document:keydown', ['$event'])
+ handleKeyboardEvent(event: KeyboardEvent) {
+   this.sequence.push(event.code);
+   this.sequence = this.sequence.slice(-this.secretSequence.length);
+
+   if (this.sequence.join('') === this.secretSequence.join('')) {
+     console.log('Secuencia secreta ingresada!');
+     // Realizar la acción deseada aquí, por ejemplo:
+     //this.scrollTo('seccion-secreta');
+     this.sequenceMatched = true;
+     window.location.href = 'https://youtu.be/dQw4w9WgXcQ';
+
+     // O puedes llamar a cualquier otra función que desees ejecutar cuando se ingrese la secuencia secreta.
+   }
+ }
 }
