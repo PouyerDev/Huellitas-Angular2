@@ -175,7 +175,8 @@ a:hover svg {
     border-style: none;
     background-color: #ff848418;
     padding: 0.5vw;
-    height: 100%;
+    height: 50%;
+    margin-left: 2vw;
     border: #ff8080 0.2vw solid;
     width: 18vw;
     font-size: 1.2vw;
