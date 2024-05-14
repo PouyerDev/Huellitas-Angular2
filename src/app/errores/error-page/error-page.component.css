@@ -26,7 +26,7 @@
     background-color: #ffac809e;
     margin: 7vw 5vw;
     border-radius: 1vw;
-    color: rgb(255, 255, 255);
+    color: var(--white-color);
     text-align: center;
     width: fit-content;
     height: fit-content;
@@ -51,7 +51,7 @@
     align-self: center;
     padding: 1vw 2vw;
     margin: 1vw;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     border-radius: 1vw;
     border-style: none;
     color: #ff8080;
@@ -59,8 +59,8 @@
 }
 
 #error-content button:hover {
-    background-color: #ffa074;
-    color: black;
+    background-color: var(--fourth-color);
+    color: var(--black-color);
     cursor: pointer;
 }
 

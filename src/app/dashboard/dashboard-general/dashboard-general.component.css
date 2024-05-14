@@ -4,7 +4,7 @@
     padding: 1.5vw 1vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     text-align: center;
     transition: 0.3s;
 }
@@ -38,7 +38,7 @@ text-align: center;
 
 .tabla-general tr {
     padding: 0.5vw;
-    background-color: white;
+    background-color: var(--white-color);
     border: #ff8080 1px solid; /* Define el borde para las celdas */
    
 }
@@ -46,7 +46,7 @@ text-align: center;
 .tabla-general th {
     text-align: center; 
     background-color: #ff8080;
-    color: white;
+    color: var(--white-color);
     padding: 0.5vw;
     width: 50%;
     border: #ff8080 1px solid;
@@ -109,7 +109,7 @@ text-align: center;
 
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     margin-top: 3vw;
     text-align: center;
     transition: 0.3s;

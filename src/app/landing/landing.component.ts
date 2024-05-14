@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from '../service/theme.service';
 
 @Component({
   selector: 'app-landing',
@@ -17,6 +18,10 @@ export class LandingComponent implements OnInit{
   ngOnRefresh(){
     this.actions();
   } 
+
+
+  constructor(private themeService: ThemeService) {
+  }
 
   actions(){
     document.addEventListener("DOMContentLoaded", () => {
@@ -77,6 +82,11 @@ export class LandingComponent implements OnInit{
     }
 
     slidesContainer.scrollLeft = currentSlideIndex * slideWidth;
+  }
+
+  changeTheme(newTheme: string){
+    console.log(newTheme);
+    this.themeService.setThemeByName(newTheme);
   }
 
 }

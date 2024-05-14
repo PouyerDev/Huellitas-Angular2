@@ -5,7 +5,7 @@
     margin: 2vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     margin-top: 3vw;
 }
 #actions_cliente{
@@ -13,7 +13,7 @@
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    border: 0.1vw solid #ff7474;
+    border: 0.1vw solid var(--second-color);
 }
 
 
@@ -21,8 +21,8 @@
 .add-btn {
     position: relative;
     transition: all .5s ease;
-    color: #ff7474;
-    border: 0.2vw solid #ff7474;
+    color: var(--second-color);
+    border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
     background-color: rgba(255, 255, 255, 0.353);
@@ -39,8 +39,8 @@
 
 
 .add-btn:hover {
-    color: white;
-    background-color: #ff7474;
+    color: var(--white-color);
+    background-color: var(--second-color);
 }
 
 .btn-detalle {
@@ -48,8 +48,8 @@
     padding: 0.6vw;
     font-size: 1vw;
     position: unset;
-    color: #ffa074;
-    border-color: #ffa074;
+    color: var(--fourth-color);
+    border-color: var(--fourth-color);
 }
 
 #todas-mascotas-title {
@@ -76,13 +76,13 @@ a:hover svg {
 
 .btn-primary{
     margin-left: 1vw;
-    color: black;
-    background-color: #ff7474;
+    color: var(--black-color);
+    background-color: var(--second-color);
     border: none;
 }
 .btn-primary:hover{
-    background-color: #ffa074;
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--white-color);
 }
 
 .tabla-general {
@@ -101,7 +101,7 @@ a:hover svg {
 
 .tabla-general th {
     background-color: #ff8080;
-    color: white;
+    color: var(--white-color);
     text-align: left;
     padding: 0.5vw;
     border: #ff8080 0.2vw solid;
