@@ -105,4 +105,9 @@ export class LandingComponent implements OnInit{
      // O puedes llamar a cualquier otra función que desees ejecutar cuando se ingrese la secuencia secreta.
    }
  }
+
+ changeTheme(newTheme: string){
+  console.log(newTheme);
+  this.themeService.setThemeByName(newTheme);
+}
 }
