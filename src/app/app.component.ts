@@ -23,6 +23,13 @@ export class AppComponent implements OnInit {
       this.checkIfSession();
     });
   }
+  ngOnChanges(): void {
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(() => {
+        this.checkIfSession();
+      });
+    }
 
   checkIfSession(): void {
     this.authService.getCurrentUser().subscribe(user => {
@@ -36,4 +43,5 @@ export class AppComponent implements OnInit {
   isLoginPageOrLanding(): boolean {
     return this.router.url === '/login' || this.router.url === '/landing' || this.router.url === '/';
   }
+
 }
