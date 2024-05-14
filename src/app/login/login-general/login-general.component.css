@@ -4,7 +4,7 @@
 .navbar-full {
     top: 0;
     position: fixed;
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     width: 100%;
     display: flex;
     /*margen 0 arriba y abajo, auto derecha e izquierda*/
@@ -100,7 +100,7 @@
     padding: 0.5vw;
     background-color: rgba(253, 158, 158, 0.644);
     font-family: 'Poppins', sans-serif;
-    border: 3px solid #ff7474;
+    border: 3px solid var(--second-color);
     font-size: 1.2vw;
     text-align: center;
     margin-bottom: 3vw;
@@ -119,7 +119,7 @@ span{
     border-style: none;
     background-color: rgba(253, 158, 158, 0.644);
     font-family: 'Poppins', sans-serif;
-    border: 3px solid #ff7474;
+    border: 3px solid var(--second-color);
     font-size: 1.2vw;
     text-align: center;
     margin-bottom: 3vw;
@@ -151,8 +151,8 @@ input{
 
 .form-general-group button {
     transition: all .5s ease;
-    color: #ffffff;
-    border: 3px solid #ff7474;
+    color: var(--white-color);
+    border: 3px solid var(--second-color);
     text-transform: uppercase;
     text-align: center;
     line-height: 1;
@@ -166,8 +166,8 @@ input{
 }
 
 .form-general-group button:hover {
-    color: white;
-    background-color: #ff7474;
+    color: var(--white-color);
+    background-color: var(--second-color);
 }
 
 .flex-container {

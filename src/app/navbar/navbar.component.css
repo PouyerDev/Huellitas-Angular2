@@ -2,7 +2,7 @@
 --------------COLORES----------------
 Durazno---------#FFCF96
 Arena-----------#FBECD9
-amarillo claro---#FCF4C4
+amarillo claro---var(--third-color)
 rosa            #FF8080
 azul            #CEE3FA
 lima pastel     #CDFADB
@@ -18,13 +18,13 @@ lima pastel     #CDFADB
     font-family: 'Poppins', sans-serif;
 }
 .btn-primary{
-    background-color: #ffa074;
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--white-color);
     border: none;
 }
 .btn-primary:hover{
-    color: black;
-    background-color: #ff7474;
+    color: var(--black-color);
+    background-color: var(--second-color);
     border: none;
    
 }
@@ -33,7 +33,7 @@ lima pastel     #CDFADB
     width: 5vw;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: #ffa074;
+    background-color: var(--fourth-color);
 }*/
 /*------------------------------------------Boton general---------------------------------------------------*/
 #button-huellitas {
@@ -98,7 +98,7 @@ button {
 .navbar-full {
     top: 0;
     position: fixed;
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     width: 100%;
     display: flex;
     z-index: 9999;
@@ -118,7 +118,7 @@ button {
 
 /*opciones de navegación*/
 .navbar-options a {
-    color: black;
+    color: var(--black-color);
     text-decoration: none;
     margin: 1vw 0;
     padding: 1.5vw 2vw;
@@ -130,7 +130,7 @@ button {
 }
 
 .btn-login {
-    background-color: rgb(244, 244, 244);
+    background-color: var(--white-color);
 }
 
 
@@ -138,13 +138,13 @@ button {
 .navbar-options a:hover {
     cursor: pointer;
     text-decoration: none;
-    background-color: #ffa074;
-    color: rgb(249, 242, 233);
+    background-color: var(--fourth-color);
+    color: var(--secondary-color);
     border: none;
 }
 
 .navbar-options .btn-login:hover {
-    background-color: #ff7474;
+    background-color: var(--second-color);
 }
 
 .btn-login:hover {
@@ -163,7 +163,7 @@ button {
 
 /* Navbar full */
 header .navbar-full {
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     transform: translatex(0px) translatey(0px);
     align-items: center;
     justify-content: center;
@@ -202,9 +202,9 @@ header .navbar-full {
 
 
 .btn-login {
-    background-color: rgb(244, 244, 244);
+    background-color: var(--white-color);
     scroll-behavior: smooth;
-    color: black;
+    color: var(--black-color);
     text-decoration: none;
     margin: 0 3.5vw;
     padding: 1.5vw 2vw;
@@ -223,3 +223,5 @@ header .navbar-full {
     -ms-transform: scale(1.2);
     transform: scale(1.2);
 }
+
+

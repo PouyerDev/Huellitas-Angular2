@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ThemeService } from '../service/theme.service';
 
 @Component({
   selector: 'app-landing',
@@ -21,6 +22,10 @@ export class LandingComponent implements OnInit{
   ngOnRefresh(){
     this.actions();
   } 
+
+
+  constructor(private themeService: ThemeService) {
+  }
 
   actions(){
     document.addEventListener("DOMContentLoaded", () => {
@@ -101,4 +106,9 @@ export class LandingComponent implements OnInit{
      // O puedes llamar a cualquier otra función que desees ejecutar cuando se ingrese la secuencia secreta.
    }
  }
+
+ changeTheme(newTheme: string){
+  console.log(newTheme);
+  this.themeService.setThemeByName(newTheme);
+}
 }

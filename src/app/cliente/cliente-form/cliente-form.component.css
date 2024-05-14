@@ -6,7 +6,7 @@
     background-position: center;
     background-attachment: fixed;
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--white-color);
 }
 
 .form-general-group {
@@ -43,7 +43,7 @@
     left: 15vw;
     transition: all .5s ease;
     color: #ee6060;
-    border: 3px solid #ff7474;
+    border: 3px solid var(--second-color);
     text-transform: uppercase;
     text-align: center;
     line-height: 1;
@@ -56,8 +56,8 @@
 }
 
 .form-general-group button:hover {
-    color: white;
-    background-color: #ff7474;
+    color: var(--white-color);
+    background-color: var(--second-color);
 }
 
 #forms-container{

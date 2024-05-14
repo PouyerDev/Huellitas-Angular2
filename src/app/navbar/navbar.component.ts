@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { ThemeService } from '../service/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit {
   userType: string = '';
   reloadTrigger$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(user => {
@@ -32,5 +33,9 @@ export class NavbarComponent implements OnInit {
   logOut(): void {
     this.authService.setCurrentUser('');
     this.authService.clearSessionData();
+  }
+
+  changeTheme(newTheme: string): void {
+    this.themeService.setThemeByName('dark');
   }
 }

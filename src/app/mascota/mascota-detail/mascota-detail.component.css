@@ -2,7 +2,7 @@
 --------------COLORES----------------
 Durazno---------#FFCF96
 Arena-----------#FBECD9
-amarillo claro---#FCF4C4
+amarillo claro---var(--third-color)
 rosa            #FF8080
 azul            #CEE3FA
 lima pastel     #CDFADB
@@ -18,7 +18,7 @@ lima pastel     #CDFADB
     margin: 2vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     margin-top: 3vw;
 }
 
@@ -65,7 +65,7 @@ lima pastel     #CDFADB
     margin-left: 2vw;
     width: 30vw;
     border-radius: 1vw;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     align-self: center;
     height: max-content;
 }
@@ -100,7 +100,7 @@ lima pastel     #CDFADB
     height: 6vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     margin-top: 3vw;
     text-align: center;
     transition: 0.3s;
@@ -117,9 +117,9 @@ lima pastel     #CDFADB
 
 .edit-btn{
     border-radius: 40vw;
-    color: #ff7474;
+    color: var(--second-color);
     position: relative;
-    border:#fca5a5 0.2vw solid;
+    border:var(--fifth-color) 0.2vw solid;
     
 }
 .edit-btn:hover{
@@ -134,8 +134,8 @@ lima pastel     #CDFADB
     position: relative;
     left: 1vw;
     transition: all .5s ease;
-    color: #ff7474;
-    border: 0.2vw solid #ff7474;
+    color: var(--second-color);
+    border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
     background-color: rgba(255, 255, 255, 0.353);
@@ -154,8 +154,8 @@ lima pastel     #CDFADB
 }
 
 .add-btn:hover {
-    color: white;
-    background-color: #ff7474;
+    color: var(--white-color);
+    background-color: var(--second-color);
 }
 
 .btn-detalle {
@@ -163,13 +163,13 @@ lima pastel     #CDFADB
     padding: 0.6vw;
     font-size: 1vw;
     position: unset;
-    color: #ffa074;
-    border-color: #ffa074;
+    color: var(--fourth-color);
+    border-color: var(--fourth-color);
 }
 
 
 .btn-detalle:hover {
-    background-color: #ffa074;
+    background-color: var(--fourth-color);
 }
 
 .mascota-info {
@@ -186,7 +186,7 @@ lima pastel     #CDFADB
     height: 16vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: var(--white-color);
     margin-top: 3.5vw;
     text-align: center;
     display: inline-flex;
@@ -228,7 +228,7 @@ lima pastel     #CDFADB
 
 
 #button_back {
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     border-radius: 40px;
     border-style: none;
     padding: 1.3vw 2vw;
@@ -240,7 +240,7 @@ lima pastel     #CDFADB
 
 #delete-button {
     background-color: #ff4a4a;
-    color: white;
+    color: var(--white-color);
     margin: 0 0.5vw;
 
 }
@@ -296,8 +296,8 @@ lima pastel     #CDFADB
 }
 
 #clientes-table tr th {
-    background-color: #ff7474;
-    color: white;
+    background-color: var(--second-color);
+    color: var(--white-color);
     border-radius: 2vw;
     border-style: none;
     margin-right: 2vw;
@@ -310,8 +310,8 @@ lima pastel     #CDFADB
 #clientes-table td {
     padding: 0;
     padding-top: 0.6vw;
-    background-color: rgb(255, 141, 71);
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--white-color);
     border-radius: 2vw;
     border-style: none;
 
@@ -326,8 +326,8 @@ lima pastel     #CDFADB
 
 #clientes-table td {
     width: 10vw;
-    background-color: #ffa074;
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--white-color);
     border-radius: 2vw;
     border-style: none;
 
@@ -335,7 +335,7 @@ lima pastel     #CDFADB
 
 
 #casilla-detalle btn-detalle{
-    background-color: white;
+    background-color: var(--white-color);
     width: fit-content;
     margin: 0 0 0 -10vw;
 }
@@ -352,7 +352,7 @@ lima pastel     #CDFADB
 }
 
 .buttons_nav {
-    background-color: white;
+    background-color: var(--white-color);
 }
 
 /* Navigation */
@@ -362,7 +362,7 @@ header .navbar-full nav {
 
 /* Header */
 header {
-    background-color: white;
+    background-color: var(--white-color);
 
 }
 
@@ -381,7 +381,7 @@ header {
 
 /* Navbar full */
 header .navbar-full {
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     transform: translatex(0px) translatey(0px);
     border-bottom-style: solid;
     border-bottom-width: 0.1em !important;
@@ -405,7 +405,7 @@ header .navbar-full {
 
 
 .mascotas-clientes {
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     width: 40%;
     align-items: center;
     justify-content: center;
@@ -420,7 +420,7 @@ header .navbar-full {
     display: inline-flex;
     align-items: right;
     justify-content: right;
-    background-color: #FFCF96;
+    background-color: var(--main-color);
 
 }
 
@@ -462,7 +462,7 @@ header .navbar-full {
 }
 
 .navbar-specific #button_back {
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     margin: 0vw 2vw;
     margin-right: 4vw;
     padding: 1.5vw 3vw;
@@ -473,16 +473,16 @@ header .navbar-full {
 }
 
 #button_back:hover {
-    background-color: #ffa074;
+    background-color: var(--fourth-color);
     cursor: pointer;
-    color: black;
+    color: var(--black-color);
     transition: 0.4s;
 }
 
 .navbar-specific #header_title, .nombre-cliente {
     align-self: end;
     justify-content: center;
-    color: white;
+    color: var(--white-color);
     background-color: #ff8080;
     border-radius: 40px;
     padding: 0.5vw 2vw;
@@ -504,7 +504,7 @@ header .navbar-full {
     display: flex;
     padding: 2vw;
     margin: 2vw;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.0);
 }
 
@@ -554,7 +554,7 @@ header .navbar-full {
 
 #button_modificar,
 #button_modificar_tratamiento{
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     color: rgb(91, 91, 91);
     border-radius: 40px;
     border-style: none;
@@ -569,9 +569,9 @@ header .navbar-full {
 
 #button_modificar:hover,
 #button_modificar_tratamiento:hover {
-    background-color: #ffa074;
+    background-color: var(--fourth-color);
     cursor: pointer;
-    color: black;
+    color: var(--black-color);
 }
 
 #button_modificar_tratamiento{
@@ -595,7 +595,7 @@ header .navbar-full {
 
 .tabla-general th {
     background-color: #ff8080;
-    color: white;
+    color: var(--white-color);
     text-align: left;
     padding: 0.5vw;
     border: #ff8080 0.2vw solid;
@@ -635,21 +635,21 @@ header .navbar-full {
     margin: 0.7vw;
     padding: 0.4vw;
     border-radius: 1vw;
-    background-color: #ff7474;
-    color: white;
+    background-color: var(--second-color);
+    color: var(--white-color);
     z-index: 9999;
     text-decoration: none;
 }
 .column a:hover{
-    background-color: #ffa074;
+    background-color: var(--fourth-color);
     cursor: pointer;
-    color: white;
+    color: var(--white-color);
 }
 /*
 --------------COLORES----------------
-Durazno---------#FFCF96
+Durazno---------var(--main-color)
 Arena-----------#FBECD9
-amarillo claro---#FCF4C4
+amarillo claro---var(--third-color)
 rosa            #FF8080
 azul            #CEE3FA
 lima pastel     #CDFADB
@@ -720,7 +720,7 @@ button {
 .navbar-full {
     top: 0;
     position: fixed;
-    background-color: #FFCF96;
+    background-color: var(--main-color);
     width: 100%;
     display: flex;
     /*margen 0 arriba y abajo, auto derecha e izquierda*/
@@ -744,7 +744,7 @@ button {
 
 /*opciones de navegación*/
 .navbar-options a {
-    color: black;
+    color: var(--black-color);
     text-decoration: none;
     margin: 1vw 0;
     padding: 1.5vw 2vw;
@@ -755,7 +755,7 @@ button {
 }
 
 .btn-login {
-    background-color: rgb(244, 244, 244);
+    background-color: var(--white-color);
 }
 
 
@@ -763,13 +763,13 @@ button {
 .navbar-options a:hover {
     cursor: pointer;
     text-decoration: none;
-    background-color: #ffa074;
-    color: rgb(249, 242, 233);
+    background-color: var(--fourth-color);
+    color: var(--white-color);
 
 }
 
 .navbar-options .btn-login:hover {
-    background-color: #ff7474;
+    background-color: var(--second-color);
 }
 
 .btn-login:hover {
@@ -804,7 +804,7 @@ button {
     margin: 1vw;
     border-radius: 1vw;
     padding: 0.4vw 3vw;
-    color: black;
+    color: var(--black-color);
     font-family: 'Amatic SC', sans-serif;
     font-size: 2.5vw;
     text-align: center;
@@ -950,7 +950,7 @@ li.slide {
     bottom: 0;
     margin: auto;
     height: 4vw;
-    background-color: white;
+    background-color: var(--white-color);
     border: none;
     width: 2vw;
     font-size: 3vw;
@@ -1027,8 +1027,8 @@ li.slide {
 footer {
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient(180deg, #fca5a5, #fdb0b0);
-    color: black;
+    background-image: linear-gradient(180deg, var(--fifth-color), var(--fifth-color));
+    color: var(--black-color);
     padding: 2vw 2vw 0vw 2vw;
 }
 
@@ -1060,7 +1060,7 @@ footer ul li {
 footer ul li a {
     width: 4.1vw;
     height: 4.1vw;
-    background-color: #fff;
+    background-color: var(--white-color);
     text-align: center;
     line-height: 4.1vw;
     font-size: 4.1vw;
@@ -1069,7 +1069,7 @@ footer ul li a {
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    border: 0.15vw solid #fff;
+    border: 0.15vw solid var(--white-color);
     z-index: 1;
 }
 
@@ -1082,7 +1082,7 @@ footer ul li a .icon {
 }
 
 footer ul li a:hover .icon {
-    color: #fff;
+    color: var(--white-color);
     transform: rotateY(360deg);
 }
 

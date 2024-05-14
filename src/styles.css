@@ -1,8 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
-body {  
-    padding:0;
+body {
+    padding: 0;
     margin: 0;
     margin-top: 2%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3vw;
+}
+
+/*
+        Durazno---------var(--primary-color)
+        Arena-----------#FBECD9
+        amarillo claro---var(--third-color)
+        rosa            #FF8080
+        azul            #CEE3FA
+        lima pastel     #CDFADB
+    */
+:root { 
+    --white-color: #ffffff;/* var(--white-color) */
+    --black-color: #181818; /* var(--black-color) */
+    --main-color: #FFCF96; /* var(--main-color) */
+    --second-color: #ff7474; /* var(--second-color) */
+    --third-color: #FCF4C4; /* var(--third-color) */
+    --fourth-color: #FFA074; /* var(--fourth-color) */
+    --fifth-color: #fca5a5;/* var(--fifth-color) */
+
+
+    --sixth-color: #CDFADB;
+    --seventh-color: #FFA074;
+    --eighth-color: #FFA074;
+    --ninth-color: #FFA074;
+
 }

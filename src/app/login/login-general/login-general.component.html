@@ -9,19 +9,19 @@
         <!-- Pestañas -->
         <button class="tab-button" (click)="selectTab('cliente')"
             [class.selected]="selectedTab === 'cliente'">Cliente</button>
-        <button class="tab-button tab-button-veterinario" (click)="selectTab('veterinario_admin')"
+        <button class="tab-button tab-button-veterinario" (click)="selectTab('veterinario_admin') "
             [class.selected]="selectedTab === 'veterinario_admin'">Veterinario/Admin</button>
     </div>
     <div id="forms-container" class="form-general-group">
         <h1>Iniciar sesión</h1>
         <div class="flex-container">
             <label for="cedula">Cédula:</label>
-            <input class="input" type="number" id="cedula" [(ngModel)]="cedula">
+            <input class="input" type="number" id="cedula" [(ngModel)]="cedula" (keyup.enter)="login()">
             <label *ngIf="selectedTab!=='cliente'" for="password">Contraseña:</label>
             <!-- HTML -->
             <div class="password-toggle pwInput" *ngIf="selectedTab!=='cliente'">
 
-                <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="password"
+                <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="password" (keyup.enter)="login()"
                     placeholder="" *ngIf="selectedTab !== 'cliente'" class="password-input">
                 <span class="toggle-icon" (click)="togglePasswordVisibility()">
                     <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="20" fill="grey"
@@ -46,3 +46,4 @@
         </div>
     </div>
 </section>
+
