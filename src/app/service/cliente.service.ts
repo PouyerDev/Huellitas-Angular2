@@ -15,14 +15,20 @@ export class ClienteService {
   ) { }
 
   baseUrl: string = 'http://localhost:8090/clientes';
-
+  result: any;
+  cliente: Cliente | undefined;
+  
   getAllClientes(): Observable<Cliente[]> {
     // Return an observable of the client list
     return this.http.get<Cliente[]>(this.baseUrl+'/all');
   }
 
   getClienteByCedula(cedula: string): Observable<Cliente> {
-    return this.http.get<Cliente>(this.baseUrl+'/findCedula/'+cedula);
+   
+    this.result = this.http.get<any>(this.baseUrl+'/findCedula/'+cedula);
+    this.cliente = new Cliente (this.result.id, this.result.cedula, this.result.nombre, this.result.correo, this.result.celular, this.result.mascotas);
+    
+    return of(this.cliente);
   }
   
   getClienteById(id: string): Observable<Cliente> {

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Optional, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/model/cliente';
 import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClienteService } from 'src/app/service/cliente.service';
@@ -17,7 +18,8 @@ export class LoginGeneralComponent {
   constructor(
     private clienteService: ClienteService,
     private veterinarioService: VeterinarioService,
-    private router: Router) { }
+    private auth: AuthService,
+    private router: Router) { this.checkIfSession(); }
 
   cedula: string = '';
   password: string | undefined = '';
@@ -34,33 +36,35 @@ export class LoginGeneralComponent {
   loginSimple() {
     this.formUser.cedula = this.cedula;
     this.formUser.password = '123';
-    
-    console.log("Enviando solicitud cliente");
-    this.clienteService.login(this.formUser).subscribe(
-      (data) => {
-        // Almacenar el token recibido en el local storage
-        localStorage.setItem('token', String(data));
 
-        // Obtener el cliente por su cédula para redirigir a su página de detalles
-        this.clienteService.getClienteByCedula(this.cedula).subscribe(
-          (cliente) => {
-            if (cliente) {
-              // Redirigir al cliente a su página correspondiente    
+    console.log("Enviando solicitud cliente");
+
+    // Obtener el cliente por su cédula para redirigir a su página de detalles
+    this.clienteService.getClienteByCedula(this.cedula).subscribe(
+      (cliente) => {
+        if (cliente) {
+          // Redirigir al cliente a su página correspondiente  
+          this.clienteService.login(this.formUser).subscribe(
+            (data) => {
+              // Almacenar el token recibido y el tipo de usuario en el local storage
+              localStorage.setItem('token', String(data));
+              this.auth.setCurrentUser('cliente');
+              this.auth.setCurrentUserCedula(this.cedula);
               this.router.navigate(['/cliente/cliente-detail/' + cliente.id]);
-            } else {
-              // Si no se encuentra ningún usuario, mostrar un mensaje de error
-              this.mostrarMensajeError('El cliente no existe');
+            },
+            (error) => {
+              console.error('Error al iniciar sesión:', error);
+              this.mostrarMensajeError('Error al iniciar sesión');
             }
-          },
-          (error) => {
-            console.error('Error al verificar el cliente:', error);
-            this.mostrarMensajeError('El cliente no existe');
-          }
-        );
+          );
+        
+        } else {
+          // Si no se encuentra ningún usuario, mostrar un mensaje de error
+          this.mostrarMensajeError('El cliente no existe');
+        }
       },
       (error) => {
-        console.error('Error al iniciar sesión:', error);
-        this.mostrarMensajeError('Error al iniciar sesión');
+        this.mostrarMensajeError('error en las credenciales');
       }
     );
   }
@@ -68,22 +72,22 @@ export class LoginGeneralComponent {
   loginPassword() {
     this.formUser.cedula = this.cedula;
     this.formUser.password = this.password!;
-    
+
     if (!this.password) {
       this.mostrarMensajeError('Por favor, ingrese su contraseña');
       return;
-    }
-    else {
+    } else {
       if (this.cedula == "0000" && this.password === "admin") {
+        // Almacenar el tipo de usuario en el local storage
+        this.auth.setCurrentUser('admin');
+        this.auth.setCurrentUserCedula(this.cedula);
         // Redirigir al administrador a su página correspondiente
-
         this.router.navigate(['/dashboard']);
       } else {
         // Verificar si la cedula ingresada corresponde a un veterinario existente
         this.veterinarioService.obtenerPorCedula(this.cedula).subscribe(
           (veterinario) => {
             if (veterinario) {
-              // La contraseña es correcta y se recibió una respuesta del servidor
               if (!veterinario.estado) {
                 console.log('El veterinario está desactivado. No se puede iniciar sesión.');
                 this.mostrarMensajeError('El veterinario está desactivado');
@@ -92,11 +96,12 @@ export class LoginGeneralComponent {
                 console.log("Enviando solicitud vet");
                 this.veterinarioService.login(this.formUser).subscribe(
                   (data) => {
-                    console.log("Recibe datos");
                     localStorage.setItem('token', String(data));
-                    
+                    this.auth.setCurrentUser('veterinario');
+                    this.auth.setCurrentUserCedula(this.cedula);
                     this.router.navigate(['/mascotas']);
                   }
+
                 )
               }
             } else {
@@ -113,12 +118,13 @@ export class LoginGeneralComponent {
   }
 
 
-
   login(): void {
     if (this.cedula === '') {
       this.mostrarMensajeError('Por favor, ingrese su cédula');
     } else {
       if (this.cedula.toString() === "9999") {
+        this.auth.setCurrentUser('dev');
+        this.auth.setCurrentUserCedula(this.cedula);
         this.router.navigate(['/mascotas']);
       } else {
         if (this.selectedTab === 'cliente') {
@@ -150,6 +156,36 @@ export class LoginGeneralComponent {
     this.cedula = '';
     this.password = '';
     this.showPassword = false;
+  }
+
+  checkIfSession(): void {
+    this.auth.getCurrentUser().subscribe(currentUser => {
+      if (currentUser) {
+        // Si hay un usuario en sesión, redirigir a la página correspondiente
+        // según el tipo de usuario
+        switch (currentUser) {
+          case 'dev':
+            this.router.navigate(['/mascotas']);
+            break;
+          case 'admin':
+            this.router.navigate(['/dashboard']);
+            break;
+          case 'veterinario':
+            this.router.navigate(['/clientes']);
+            break;
+          case 'cliente':
+            break;
+          default:
+            // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
+            // redirigir a la página de inicio de sesión
+            this.router.navigate(['/login']);
+            break;
+        }
+      } else {
+        // Si no hay un usuario en sesión, redirigir a la página de inicio de sesión
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 
@@ -281,34 +317,34 @@ export class LoginGeneralComponent {
       });
     }
   
-    checkIfSession(): void {
-      this.authService.getCurrentUser().subscribe(currentUser => {
-        if (currentUser) {
-          // Si hay un usuario en sesión, redirigir a la página correspondiente
-          // según el tipo de usuario
-          switch (currentUser) {
-            case 'dev':
-              this.router.navigate(['/mascotas']);
-              break;
-            case 'admin':
-              this.router.navigate(['/dashboard']);
-              break;
-            case 'veterinario':
-              this.router.navigate(['/clientes']);
-              break;
-            case 'cliente':
-              break;
-            default:
-              // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
-              // redirigir a la página de inicio de sesión
-              this.router.navigate(['/login']);
-              break;
+      checkIfSession(): void {
+        this.authService.getCurrentUser().subscribe(currentUser => {
+          if (currentUser) {
+            // Si hay un usuario en sesión, redirigir a la página correspondiente
+            // según el tipo de usuario
+            switch (currentUser) {
+              case 'dev':
+                this.router.navigate(['/mascotas']);
+                break;
+              case 'admin':
+                this.router.navigate(['/dashboard']);
+                break;
+              case 'veterinario':
+                this.router.navigate(['/clientes']);
+                break;
+              case 'cliente':
+                break;
+              default:
+                // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
+                // redirigir a la página de inicio de sesión
+                this.router.navigate(['/login']);
+                break;
+            }
+          } else {
+            // Si no hay un usuario en sesión, redirigir a la página de inicio de sesión
+            this.router.navigate(['/login']);
           }
-        } else {
-          // Si no hay un usuario en sesión, redirigir a la página de inicio de sesión
-          this.router.navigate(['/login']);
-        }
-      });
+        });
     }
   
     togglePasswordVisibility(): void {

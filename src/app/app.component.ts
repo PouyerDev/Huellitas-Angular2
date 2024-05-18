@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
  
   }
-/*
+
   checkIfSession(): void {
     this.authService.getCurrentUser().subscribe(user => {
       if (!user && !this.isLoginPageOrLanding()) {
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       }
       this.change = !this.change;
     });
-  }*/
+  }
 
   isLoginPageOrLanding(): boolean {
     return this.router.url === '/login' || this.router.url === '/landing' || this.router.url === '/';

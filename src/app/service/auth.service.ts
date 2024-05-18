@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +23,22 @@ export class AuthService {
       this.currentUserSubject.next(userTypeFromLocalStorage);
     }
 
-    
-
     const cedulaFromLocalStorage = localStorage.getItem('cedula');
     if (cedulaFromLocalStorage) {
       this.currentUserSubjectCedula.next(cedulaFromLocalStorage);
     }
+  }
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let token = localStorage.getItem('token');
+
+    if (token) {
+      const cloned = request.clone({
+        headers: request.headers.set('Authorization', 'Bearer ' + token)
+      })
+      return next.handle(cloned);
+    }
+    return next.handle(request);
   }
 
   setCurrentUser(user: string): void {
@@ -46,15 +61,16 @@ export class AuthService {
 
   // Métodos para manejar la sesión del usuario
   setSessionData(sessionData: any): void {
-    localStorage.setItem('token', JSON.stringify(sessionData));
+    localStorage.setItem('sessionData', JSON.stringify(sessionData));
   }
 
   getSessionData(): any {
-    const sessionData = localStorage.getItem('token');
+    const sessionData = localStorage.getItem('sessionData');
     return sessionData ? JSON.parse(sessionData) : null;
   }
 
   clearSessionData(): void {
+    localStorage.removeItem('sessionData');
     localStorage.removeItem('token');
   }
 }
