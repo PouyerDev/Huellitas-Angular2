@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from '../model/cliente'; // Assuming you have a Cliente model
 import { HttpClient } from '@angular/common/http';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,14 @@ export class ClienteService {
     return this.http.post<any>(this.baseUrl + '/addMascotaCliente', datos);
   }
 
+  login(user:User):Observable<String>{
+    console.log('User service', user.cedula, user.password)
+    return this.http.post("http://localhost:8090/clientes/login",user,
+      {
+        responseType: 'text'
+      }
+    );
+  }
 /* actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);
   }

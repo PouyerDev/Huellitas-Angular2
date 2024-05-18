@@ -4,6 +4,7 @@ import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
 import { Mascota } from '../mascota/mascota';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -95,5 +96,19 @@ export class VeterinarioService {
         }
       })
     );
+  }
+
+  login(user:User):Observable<String>{
+    console.log("service veterinario con user", user.cedula, user.password);
+    
+    return this.http.post("http://localhost:8090/veterinarios/login",user,
+      {
+        responseType: 'text'
+      }
+    );
+  }
+
+  veterinarioHome():Observable<Veterinario>{
+    return this.http.get<Veterinario>("http://localhost:8090/mascotas");
   }
 }

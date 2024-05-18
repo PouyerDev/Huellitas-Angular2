@@ -46,15 +46,15 @@ export class AuthService {
 
   // Métodos para manejar la sesión del usuario
   setSessionData(sessionData: any): void {
-    localStorage.setItem('sessionData', JSON.stringify(sessionData));
+    localStorage.setItem('token', JSON.stringify(sessionData));
   }
 
   getSessionData(): any {
-    const sessionData = localStorage.getItem('sessionData');
+    const sessionData = localStorage.getItem('token');
     return sessionData ? JSON.parse(sessionData) : null;
   }
 
   clearSessionData(): void {
-    localStorage.removeItem('sessionData');
+    localStorage.removeItem('token');
   }
 }
