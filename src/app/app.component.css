@@ -70,6 +70,7 @@ body {
     margin-top: 2%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3vw;
+    background-color: var(--white-color);
 }
 
 button {

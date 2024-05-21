@@ -5,7 +5,7 @@
     margin: 2vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     margin-top: 3vw;
 }
 #actions_cliente{

@@ -6,6 +6,7 @@ import { Injectable } from "@angular/core";
 export class ThemeService {
     currentTheme: keyof Themes = 'light'; // Theme por defecto
 /*    --background-color: #FBECD9;
+    --white-color: #FFFFFF;
     --text-color: #181818;
     --primary-color: #FFCF96;
     --second-color: #ff7474;
@@ -13,7 +14,8 @@ export class ThemeService {
     --fourth-color: #FFA074; */
     private themes: Themes = {
         light: {
-            backgroundColor: '#FBECD9', //Blanco
+            whiteColor: '#FFFFFF', //Blanco
+            backgroundColor: '#FFFFFF', //crema
             textColor: '#181818',
             mainColor: '#FFCF96', //Naranja
             secondColor: '#FF7474', //Rosa fuerte
@@ -23,7 +25,8 @@ export class ThemeService {
             sixthColor: '#CDFADB'
         },
         dark: {
-            backgroundColor: '#181818',
+            whiteColor: '#181818',
+            backgroundColor: '#C3C3C3',
             textColor: '#FBECD9',
             mainColor: '#BF6C5A',
             secondColor: '#a13d3d',
@@ -33,12 +36,13 @@ export class ThemeService {
             sixthColor: '#FF69B4'
         },
         access: {
+            whiteColor: '#FFFFFF',
             backgroundColor: '#ffffff',
             textColor: '#181818',
-            mainColor: '#008000',
-            secondColor: '#0000CD',
+            mainColor: '#FFA07A ',
+            secondColor: '#2C0888',
             thirdColor: '#FFFF00',
-            fourthColor: '#8A2BE2',
+            fourthColor: '#F100D1',
             fifthColor: '#FFA07A',
             sixthColor: '#00CED1'
         }
@@ -56,7 +60,8 @@ export class ThemeService {
     }
 
     private applyTheme(theme: Theme) {
-        document.documentElement.style.setProperty('--white-color', theme.backgroundColor);
+        document.documentElement.style.setProperty('--background-color', theme.backgroundColor);
+        document.documentElement.style.setProperty('--white-color', theme.whiteColor);
         document.documentElement.style.setProperty('--black-color', theme.textColor);
         document.documentElement.style.setProperty('--main-color', theme.mainColor);
         document.documentElement.style.setProperty('--second-color', theme.secondColor);
@@ -68,6 +73,7 @@ export class ThemeService {
 }
 
 interface Theme {
+    whiteColor: string;
     backgroundColor: string;
     textColor: string;
     mainColor: string;

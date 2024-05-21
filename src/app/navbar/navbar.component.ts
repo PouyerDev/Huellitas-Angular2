@@ -35,7 +35,8 @@ export class NavbarComponent implements OnInit {
     this.authService.clearSessionData();
   }
 
-  changeTheme(newTheme: string): void {
-    this.themeService.setThemeByName('dark');
+  changeTheme(newTheme: string){
+    console.log(newTheme);
+    this.themeService.setThemeByName(newTheme);
   }
 }

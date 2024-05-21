@@ -5,6 +5,7 @@ body {
     margin-top: 2%;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3vw;
+    background-color: var(--white-color);
 }
 
 /*
@@ -16,6 +17,7 @@ body {
         lima pastel     #CDFADB
     */
 :root { 
+    --background-color: #ffffff;
     --white-color: #ffffff;/* var(--white-color) */
     --black-color: #181818; /* var(--black-color) */
     --main-color: #FFCF96; /* var(--main-color) */

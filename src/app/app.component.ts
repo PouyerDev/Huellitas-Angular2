@@ -57,4 +57,5 @@ export class AppComponent implements OnInit {
      // O puedes llamar a cualquier otra función que desees ejecutar cuando se ingrese la secuencia secreta.
    }
  }
+ 
 }
