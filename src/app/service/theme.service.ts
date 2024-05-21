@@ -4,14 +4,7 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class ThemeService {
-    currentTheme: keyof Themes = 'light'; // Theme por defecto
-/*    --background-color: #FBECD9;
-    --white-color: #FFFFFF;
-    --text-color: #181818;
-    --primary-color: #FFCF96;
-    --second-color: #ff7474;
-    --third-color: #FCF4C4;
-    --fourth-color: #FFA074; */
+    currentTheme: keyof Themes = 'light'; // Default theme
     private themes: Themes = {
         light: {
             whiteColor: '#FFFFFF', //Blanco
@@ -39,7 +32,7 @@ export class ThemeService {
             whiteColor: '#FFFFFF',
             backgroundColor: '#ffffff',
             textColor: '#181818',
-            mainColor: '#FFA07A ',
+            mainColor: '#FFA07A',
             secondColor: '#2C0888',
             thirdColor: '#FFFF00',
             fourthColor: '#F100D1',
@@ -48,15 +41,25 @@ export class ThemeService {
         }
     };
 
+    constructor() {
+        // Load the saved theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme && this.themes[savedTheme as keyof Themes]) {
+            this.setTheme(savedTheme as keyof Themes);
+        } else {
+            this.applyTheme(this.themes[this.currentTheme]); // Apply default theme if no saved theme
+        }
+    }
+
     setThemeByName(themeName: string) {
         this.setTheme(themeName as keyof Themes);
     }
-    
 
     setTheme(theme: keyof Themes) {
         this.currentTheme = theme;
         const selectedTheme = this.themes[theme];
         this.applyTheme(selectedTheme);
+        localStorage.setItem('theme', theme); // Save the selected theme to localStorage
     }
 
     private applyTheme(theme: Theme) {
