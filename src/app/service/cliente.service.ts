@@ -20,23 +20,24 @@ export class ClienteService {
   
   getAllClientes(): Observable<Cliente[]> {
     // Return an observable of the client list
+    console.log('obteniendo los clientes ' , this.http.get<Cliente[]>(this.baseUrl+'/all'));
     return this.http.get<Cliente[]>(this.baseUrl+'/all');
   }
 
   getClienteByCedula(cedula: string): Observable<Cliente> {
-   
+   /*
     this.result = this.http.get<any>(this.baseUrl+'/findCedula/'+cedula);
     this.cliente = new Cliente (this.result.id, this.result.cedula, this.result.nombre, this.result.correo, this.result.celular, this.result.mascotas);
-    
-    return of(this.cliente);
+   
+    return of(this.cliente); */
+    return this.http.get<Cliente>(this.baseUrl+'/findCedula/'+cedula);
   }
   
   getClienteById(id: string): Observable<Cliente> {
     return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
   }
-  deleteCliente(id: string): Observable<string> {
-    console.log('Eliminando cliente en el servicio:', id);
-    return this.http.delete<string>(this.baseUrl+'/delete/'+id);
+  deleteCliente(id: string): Observable<void> {
+    return this.http.delete<void>(this.baseUrl+'/delete/'+id);
   }
   actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);

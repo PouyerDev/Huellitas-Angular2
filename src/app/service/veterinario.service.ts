@@ -67,7 +67,6 @@ export class VeterinarioService {
 
   obtenerPorCedula(cedula: string) {
     return this.http.get<Veterinario>('http://localhost:8090/veterinarios/findByCedula/' + cedula);
-
   }
 
   cambiarEstadoVeterinario(veterinarioId: string) {

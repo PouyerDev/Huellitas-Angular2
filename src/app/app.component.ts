@@ -19,7 +19,11 @@ export class AppComponent implements OnInit {
   change: boolean = false;
 
   ngOnInit(): void {
- 
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.checkIfSession();
+    });
   }
 
   checkIfSession(): void {

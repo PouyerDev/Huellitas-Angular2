@@ -19,7 +19,7 @@ export class LoginGeneralComponent {
     private clienteService: ClienteService,
     private veterinarioService: VeterinarioService,
     private auth: AuthService,
-    private router: Router) { this.checkIfSession(); }
+    private router: Router) { this.checkIfSession() }
 
   cedula: string = '';
   password: string | undefined = '';
@@ -44,6 +44,7 @@ export class LoginGeneralComponent {
       (cliente) => {
         if (cliente) {
           // Redirigir al cliente a su página correspondiente  
+          console.log('Iniciando con ', cliente.id)
           this.clienteService.login(this.formUser).subscribe(
             (data) => {
               // Almacenar el token recibido y el tipo de usuario en el local storage
@@ -171,9 +172,13 @@ export class LoginGeneralComponent {
             this.router.navigate(['/dashboard']);
             break;
           case 'veterinario':
-            this.router.navigate(['/clientes']);
+            this.router.navigate(['/mascotas']);
             break;
           case 'cliente':
+            this.clienteService.getClienteByCedula(this.cedula).subscribe(
+              (cliente) => {
+                this.router.navigate(['/cliente/cliente-detail/' + cliente.id]);
+              });
             break;
           default:
             // Si el tipo de usuario no coincide con ninguno de los casos anteriores,
