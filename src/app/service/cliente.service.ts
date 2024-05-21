@@ -34,8 +34,9 @@ export class ClienteService {
   getClienteById(id: string): Observable<Cliente> {
     return this.http.get<Cliente>(this.baseUrl+'/find/'+id);
   }
-  deleteCliente(id: string): Observable<void> {
-    return this.http.delete<void>(this.baseUrl+'/delete/'+id);
+  deleteCliente(id: string): Observable<string> {
+    console.log('Eliminando cliente en el servicio:', id);
+    return this.http.delete<string>(this.baseUrl+'/delete/'+id);
   }
   actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);

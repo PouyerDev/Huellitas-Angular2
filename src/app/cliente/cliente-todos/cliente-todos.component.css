@@ -29,7 +29,6 @@
     padding: 0.8vw;
     outline: none;
     border-radius: 1vw;
-    margin-bottom: 3vw;
 }
 
 .add-btn:hover {
@@ -149,8 +148,8 @@ a:hover svg {
 .options{
     display: inline-flex;
     justify-content: space-between;
-    margin-top : 1.5vw;
-
+    margin-top : 2vw;
+    margin-left: 2vw;
 }
 
 .card-title{
@@ -175,7 +174,7 @@ a:hover svg {
     border-style: none;
     background-color: #ff848418;
     padding: 0.5vw;
-    height: 50%;
+    height: 100%;
     margin-left: 2vw;
     border: #ff8080 0.2vw solid;
     width: 18vw;
