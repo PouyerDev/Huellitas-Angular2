@@ -14,7 +14,7 @@
 </head>
 
 <section id="todos-clientes">
-    <h1 id="todas-mascotas-title">Lista de Drogas</h1>
+    <h1 id="todas-mascotas-title" class="texto-color-cambiar">Lista de Drogas</h1>
     <div id="cliente-container">
         <a class="add-btn" [routerLink]="['/droga/crear']">Agregar Droga</a>
         <input type="file" #fileInput style="display: none;" (change)="cargarDatosDesdeExcel($event)" />

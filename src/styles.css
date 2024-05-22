@@ -35,3 +35,9 @@ body {
     --ninth-color: #FFA074;
 
 }
+.texto-color-cambiar {
+    color: var(--black-color);
+}
+.background{
+    background-color: var(--white-color);
+}

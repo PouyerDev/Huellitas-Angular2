@@ -19,14 +19,14 @@
 
 <body class="background">
     <section id="todas-mascotas">
-        <h1 id="todas-mascotas-title">Información General</h1>
+        <h1 id="todas-mascotas-title" class="texto-color-cambiar">Información General</h1>
         <div id="flex-container">
             <div class="mascotas-flex">
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
                             src="https://lottie.host/embed/5f99740b-4f2c-43bd-a698-1c8c2697acf9/MUJsXjzV02.json"></iframe>
-                        <h2>Total de Mascotas: {{ numMascotas }}</h2>
+                        <h2 class="texto-color-cambiar">Total de Mascotas: {{ numMascotas }}</h2>
 
                     </div>
                 </a>
@@ -36,7 +36,7 @@
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
                             src="https://lottie.host/embed/24b347eb-ca64-4b68-aa65-46115065c2f7/yCFMBp6mQy.json"></iframe>
-                        <h2>Mascotas en Tratamiento: {{ numMascotasTratamiento }}</h2>
+                        <h2 class="texto-color-cambiar">Mascotas en Tratamiento: {{ numMascotasTratamiento }}</h2>
                     </div>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
                         <iframe class="lottie" src="https://lottie.host/embed/751290f5-c92b-4996-8370-e1ede1672a1d/UKZYMXsWVN.json"></iframe>
-                        <h2>Veterinarios Activos: {{ totalVeterinariosActivos }}</h2>
+                        <h2 class="texto-color-cambiar">Veterinarios Activos: {{ totalVeterinariosActivos }}</h2>
 
                     </div>
                 </a>
@@ -56,7 +56,7 @@
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
                         src="https://lottie.host/embed/0be3c0f9-3a83-4575-8de8-c44f344ce66c/G6gM3VXK19.json"></iframe>
-                        <h2>Veterinarios inactivos: {{ totalVeterinariosInActivos }}</h2>
+                        <h2 class="texto-color-cambiar">Veterinarios inactivos: {{ totalVeterinariosInActivos }}</h2>
                     </div>
                 </a>
             </div>
@@ -66,7 +66,7 @@
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
                             src="https://lottie.host/embed/f6afce49-ab45-4773-bddc-368e0858082f/dG9oXFWh5h.json"></iframe>
-                        <h2>Ganancias Totales: ${{ gananciasTotales }}</h2>
+                        <h2 class="texto-color-cambiar">Ganancias Totales: ${{ gananciasTotales }}</h2>
                     </div>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                     <div class="mascota-info info-vista">
                         <iframe class="lottie"
                             src="https://lottie.host/embed/9de68c9d-571a-43aa-adfa-0eeac4908732/OarmJsJq5e.json"></iframe>
-                        <h2>Drogas Vendidas: {{ totalDrogasVendidas }}</h2>
+                        <h2 class="texto-color-cambiar">Drogas Vendidas: {{ totalDrogasVendidas }}</h2>
                     </div>
                 </a>
             </div>
@@ -83,9 +83,9 @@
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
 
-                        <h2>Top 3 Drogas Más Vendidas:</h2>
+                        <h2 class="texto-color-cambiar">Top 3 Drogas Más Vendidas:</h2>
                         <ol>
-                            <li *ngFor="let droga of topDrogasVendidas">{{ droga.nombre }}</li>
+                            <li class="texto-color-cambiar" *ngFor="let droga of topDrogasVendidas">{{ droga.nombre }}</li>
                         </ol>
                     </div>
                 </a>
@@ -95,7 +95,7 @@
                 <a style="text-decoration: none; color: black;">
                     <div class="mascota-info info-vista">
                         <iframe class ="lottie" src="https://lottie.host/embed/5f19d466-bf59-44dd-94a7-c772a0fad98f/MTbJpw9iKq.json"></iframe>
-                        <h2 style="margin-top: -2.5vw !important;">Tratamientos Administrados en el Último Mes: {{ totalTratamientosUltimoMes }}</h2>
+                        <h2 class="texto-color-cambiar" style="margin-top: -2.5vw !important;">Tratamientos Administrados en el Último Mes: {{ totalTratamientosUltimoMes }}</h2>
                     </div>
                 </a>
             </div>

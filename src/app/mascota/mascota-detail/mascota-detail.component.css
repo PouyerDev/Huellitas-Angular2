@@ -65,7 +65,7 @@ lima pastel     #CDFADB
     margin-left: 2vw;
     width: 30vw;
     border-radius: 1vw;
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     align-self: center;
     height: max-content;
 }

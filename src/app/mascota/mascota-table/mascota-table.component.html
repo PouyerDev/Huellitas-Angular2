@@ -14,7 +14,7 @@
 </head>
 
 <section id="todas-mascotas">
-  <h1 id="todas-mascotas-title">Lista de Mascotas</h1>
+  <h1 id="todas-mascotas-title" class="texto-color-cambiar">Lista de Mascotas</h1>
 
   <!--filtro-->
   <div class="filtro">
@@ -28,10 +28,10 @@
         <div class="mascota-info">
           <img class="img-mascota-todas" src="{{ mascota.foto }}" alt="mascota" />
           <div class="datos">
-            <h2>{{ mascota.nombre }}</h2>
-            <p>Edad: {{ mascota.edad }}</p>
-            <p>Raza: {{ mascota.raza }}</p>
-            <p>Peso: {{ mascota.peso }}</p>
+            <h2 class="texto-color-cambiar">{{ mascota.nombre }}</h2>
+            <p class="texto-color-cambiar">Edad: {{ mascota.edad }}</p>
+            <p class="texto-color-cambiar">Raza: {{ mascota.raza }}</p>
+            <p class="texto-color-cambiar">Peso: {{ mascota.peso }}</p>
           </div>
         </div>
         <div class="mascota-actions">

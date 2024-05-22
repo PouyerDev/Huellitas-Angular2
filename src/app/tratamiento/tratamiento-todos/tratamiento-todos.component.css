@@ -38,7 +38,7 @@ lima pastel     #CDFADB
 }
 
 .add-btn:hover {
-    color: var(--white-color);
+    color: white;
     background-color: var(--second-color);
 }
 
@@ -80,7 +80,7 @@ lima pastel     #CDFADB
     height: 18vw auto;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     margin-top: 3.5vw;
     text-align: center;
     display: inline-flex;
@@ -113,7 +113,7 @@ lima pastel     #CDFADB
 }
 .btn-primary:hover{
     background-color: var(--fourth-color);
-    color: var(--white-color);
+    color: white;
 }
 
 .mascota-container-todas .mascota-actions {

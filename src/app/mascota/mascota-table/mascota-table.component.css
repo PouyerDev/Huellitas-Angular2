@@ -30,7 +30,7 @@ lima pastel     #CDFADB
     border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
-    background-color: rgba(255, 255, 255, 0.353);
+    background-color: var(--background-color);
     font-size: 1.2vw;
     padding: 0.8vw;
     outline: none;
@@ -38,7 +38,7 @@ lima pastel     #CDFADB
 }
 
 .add-btn:hover {
-    color: var(--white-color);
+    color: white;
     background-color: var(--second-color);
 }
 
@@ -80,7 +80,7 @@ lima pastel     #CDFADB
     height: 18vw auto;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     margin-top: 3.5vw;
     text-align: center;
     display: inline-flex;

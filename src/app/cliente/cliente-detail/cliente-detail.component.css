@@ -62,7 +62,7 @@ lima pastel     #CDFADB
     margin-left: 2vw;
     width: 30vw;
     border-radius: 1vw;
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     align-self: center;
 }
 
@@ -97,7 +97,7 @@ lima pastel     #CDFADB
     height: 10vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     margin-top: 3vw;
     text-align: center;
     transition: 0.3s;
@@ -130,7 +130,7 @@ lima pastel     #CDFADB
     border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
-    background-color: rgba(255, 255, 255, 0.353);
+    background-color: var(--white-color);
     font-size: 1.2vw;
     padding: 0.8vw;
     outline: none;
@@ -480,7 +480,7 @@ header .navbar-full {
 .navbar-specific #header_title, .nombre-cliente {
     align-self: center;
     justify-content: center;
-    color: var(--white-color);
+    color: white;
     background-color: #ff8080;
     border-radius: 40px;
     padding: 0.5vw 1vw;
@@ -649,7 +649,7 @@ header .navbar-full {
 }
 .btn-primary:hover{
     background-color: var(--fourth-color);
-    color: var(--white-color);
+    color: white;
     border-color: var(--fourth-color);
 }
 

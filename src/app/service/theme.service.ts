@@ -19,8 +19,8 @@ export class ThemeService {
         },
         dark: {
             whiteColor: '#181818',
-            backgroundColor: '#C3C3C3',
-            textColor: '#FBECD9',
+            backgroundColor: '#323232',
+            textColor: '#ffffff',
             mainColor: '#BF6C5A',
             secondColor: '#a13d3d',
             thirdColor: '#FCF4C4',
@@ -35,7 +35,7 @@ export class ThemeService {
             mainColor: '#FFA07A',
             secondColor: '#2C0888',
             thirdColor: '#FFFF00',
-            fourthColor: '#F100D1',
+            fourthColor: '#2C0888',
             fifthColor: '#FFA07A',
             sixthColor: '#00CED1'
         }

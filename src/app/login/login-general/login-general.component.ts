@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { ThemeService } from 'src/app/service/theme.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginGeneralComponent {
   @Output() loginUser = new EventEmitter<string>();
 
   constructor(
+    private themeService: ThemeService,
     private clienteService: ClienteService,
     private veterinarioService: VeterinarioService,
     private auth: AuthService,
@@ -364,4 +366,8 @@ export class LoginGeneralComponent {
       this.password = '';
       this.showPassword = false;
     }*/
+    changeTheme(newTheme: string){
+      console.log(newTheme);
+      this.themeService.setThemeByName(newTheme);
+    }
 }

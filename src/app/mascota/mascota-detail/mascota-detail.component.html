@@ -13,15 +13,15 @@
 </head>
 
 <section class="content-mascota-specific">
-    <title>Detalle de Mascota</title>
+    <title class="texto-color-cambiar">Detalle de Mascota</title>
     <div id="mascota-container">
         <img class="img-mascota" src="{{ mascota.foto }}" alt="mascota">
         <div id="informacionMascota">
-            <h2>{{ mascota.nombre }}</h2>
-            <p>Edad: {{ mascota.edad }}</p>
-            <p>Raza: {{ mascota.raza }}</p>
-            <p>Peso: {{ mascota.peso }}</p>
-            <p>Enfermedad: {{ mascota.enfermedad }}</p>
+            <h2 class="texto-color-cambiar">{{ mascota.nombre }}</h2>
+            <p class="texto-color-cambiar">Edad: {{ mascota.edad }}</p>
+            <p class="texto-color-cambiar">Raza: {{ mascota.raza }}</p>
+            <p class="texto-color-cambiar">Peso: {{ mascota.peso }}</p>
+            <p class="texto-color-cambiar">Enfermedad: {{ mascota.enfermedad }}</p>
             <!-- Agregar un botón para editar la mascota -->
             <a *ngIf="this.rol != 'cliente'" [routerLink]="['../../../mascota/update/', mascota.id]" class="add-btn"> 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

@@ -1,5 +1,5 @@
 <section id="todas-mascotas" *ngIf="mascota">
-    <h1 id="todas-mascotas-title">Lista de tratamientos</h1>
+    <h1 id="todas-mascotas-title" class="texto-color-cambiar">Lista de tratamientos</h1>
     <section id="mascotas-table" *ngIf="mascota.tratamientos">
       <a *ngIf="this.rol != 'cliente'" [routerLink]="['/tratamiento/crear']" [queryParams]="{ mascotaId: mascota.id }"><button class="add-btn">Agregar Tratamiento</button></a>
 
@@ -7,11 +7,11 @@
       <div class="mascota-container-todas" *ngFor="let tratamiento of mascota.tratamientos">
         <div class="mascota-info">
             <div class="datos">
-            <p><strong>Droga:</strong> {{ tratamiento.droga?.nombre }}</p>
-            <p><strong>Descripción:</strong> {{ tratamiento.descripcion }}</p>
-            <p><strong>Fecha de Inicio:</strong> {{ tratamiento.fechaInicio }}</p>
-            <p><strong>Fecha de Fin:</strong> {{ tratamiento.fechaFin }}</p>
-            <p><strong>Cédula Veterinario:</strong> {{ tratamiento.veterinario?.cedula}}</p>
+            <p class="texto-color-cambiar"><strong>Droga:</strong> {{ tratamiento.droga?.nombre }}</p>
+            <p class="texto-color-cambiar"><strong>Descripción:</strong> {{ tratamiento.descripcion }}</p>
+            <p class="texto-color-cambiar"><strong>Fecha de Inicio:</strong> {{ tratamiento.fechaInicio }}</p>
+            <p class="texto-color-cambiar"><strong>Fecha de Fin:</strong> {{ tratamiento.fechaFin }}</p>
+            <p class="texto-color-cambiar"><strong>Cédula Veterinario:</strong> {{ tratamiento.veterinario?.cedula}}</p>
           </div>
         </div> 
         <div class="mascota-actions">

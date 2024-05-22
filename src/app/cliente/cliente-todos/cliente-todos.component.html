@@ -15,7 +15,7 @@
 
 
 <section id="todos-clientes">
-    <h1 id="todas-mascotas-title">Lista de clientes</h1>
+    <h1 id="todas-mascotas-title" class="texto-color-cambiar">Lista de clientes</h1>
     <div class="options">
         <a id="add-btn-cliente" class="add-btn" [routerLink]="['/cliente/crear']">Agregar Cliente</a>
         <div class="filtro">
@@ -26,10 +26,10 @@
     <div class="mascotas-table">
         <ng-container *ngFor=" let cliente of filtrarCliente()">
             <div id="mascota-container-todas">
-                <div class="card-body">
-                    <h5 class="card-title">{{ cliente.nombre }}</h5>
-                    <p class="card-text">Cédula: {{ cliente.cedula }}</p>
-                    <p class="card-text">Correo: {{ cliente.correo }}</p>
+                <div class="card-body texto-color-cambiar">
+                    <h5 class="card-title texto-color-cambiar">{{ cliente.nombre }}</h5>
+                    <p class="card-text texto-color-cambiar">Cédula: {{ cliente.cedula }}</p>
+                    <p class="card-text texto-color-cambiar">Correo: {{ cliente.correo }}</p>
                     <div class="text-center">
                         <a [routerLink]="['/cliente/cliente-detail', cliente.id]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffa074"
