@@ -154,6 +154,7 @@ a:hover svg {
 
 .card-title{
     background-color: #ff8080;
+    color: white;
     border-radius: 40px;
     padding: 0.5vw 1vw;
     font-weight: 700;
