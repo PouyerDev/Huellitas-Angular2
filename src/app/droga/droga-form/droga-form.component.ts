@@ -67,6 +67,7 @@ export class DrogaFormComponent implements OnInit {
           console.log('Droga creada exitosamente');
           // Redirigir a la lista de drogas
           this.router.navigate(['/drogas']);
+          
         },
         (error) => {
           console.error('Error al crear la droga:', error);
@@ -88,7 +89,7 @@ export class DrogaFormComponent implements OnInit {
     } else {
       console.log('Creando droga:', this.droga);
       this.drogaService.crearDroga(this.droga);
-      this.router.navigate(['/drogas/all']);
+      this.router.navigate(['/drogas']);
       console.log("droga creado");
       
     }

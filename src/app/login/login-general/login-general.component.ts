@@ -80,6 +80,7 @@ export class LoginGeneralComponent {
     } else {
       if (this.cedula == "0000" && this.password === "admin") {
         // Almacenar el tipo de usuario en el local storage
+        this.clienteService.checkAdmin();
         this.auth.setCurrentUser('admin');
         this.auth.setCurrentUserCedula(this.cedula);
         // Redirigir al administrador a su página correspondiente

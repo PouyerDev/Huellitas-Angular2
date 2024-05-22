@@ -8,9 +8,6 @@ azul            #CEE3FA
 lima pastel     #CDFADB
 */
 
-/*---------------------------------LANDING PAGE---------------------------------------*/
-
-
 * {
    
     scroll-behavior: smooth;
@@ -35,7 +32,6 @@ lima pastel     #CDFADB
 ::-webkit-scrollbar-thumb{
     background-color: var(--fourth-color);
 }*/
-/*------------------------------------------Boton general---------------------------------------------------*/
 #button-huellitas {
     border-radius: 0.5vw;
     box-shadow: none;
@@ -61,13 +57,6 @@ lima pastel     #CDFADB
     border: none;
 }
 
-.navbar-options a:hover {
-    cursor: pointer;
-    text-decoration: none;
-    background-color: var(--fourth-color);
-    color: var(--white-color);
-
-}
 #button-huellitas button {
     display: inline-flex;
     align-items: center;
@@ -101,7 +90,6 @@ button {
     border: none;
 }
 
-/*menu de navegación*/
 .navbar-full {
     top: 0;
     position: fixed;
@@ -123,7 +111,7 @@ button {
 
 }
 
-/*opciones de navegación*/
+
 .navbar-options a {
     color: var(--black-color);
     text-decoration: none;
@@ -141,7 +129,6 @@ button {
 }
 
 
-/*cambio de color al pasar el mouse*/
 .navbar-options a:hover {
     cursor: pointer;
     text-decoration: none;
@@ -230,11 +217,11 @@ header .navbar-full {
     -ms-transform: scale(1.2);
     transform: scale(1.2);
 }
+
 .dropdown {
     position: relative;
     display: inline-flex;
     flex-direction: column;
-    
 }
 
 .dropdown-content {
@@ -256,7 +243,6 @@ header .navbar-full {
     padding-right: 4vw;
 }
 
-
 .dropdown:hover .dropdown-content {
     display: inline-flex;
     flex-direction: column;
@@ -267,7 +253,3 @@ header .navbar-full {
     height: 3vw;
     margin-top: 2.5vw;
 }
-.texto-color-cambiar {
-    color: var(--black-color);
-}
-

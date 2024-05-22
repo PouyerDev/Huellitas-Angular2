@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: 'admin', component: AdminPageComponent },
   { path: 'login', component: LoginGeneralComponent},
 
-
   { path: 'clientes', component: ClienteTodosComponent },
   { path: 'cliente/update/:id', component: ClienteFormComponent },
   { path: 'cliente/crear', component: ClienteFormComponent },

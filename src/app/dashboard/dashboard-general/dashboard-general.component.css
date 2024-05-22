@@ -1,3 +1,7 @@
+.backgroud{
+    background-color: var(--background-color);
+}
+
 .info-special{
     width: 70%;
     margin: 4vw 13vw;

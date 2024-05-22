@@ -583,3 +583,41 @@ footer h3 {
 .texto-color-cambiar {
     color: var(--black-color);
 }
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    
+}
+
+.dropdown-content {
+    text-align: center;
+    display: none;
+    border-radius: 1vw;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 4vw;
+    padding-right: 2vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 2vw;
+    margin-right: 2vw;
+}
+
+.dropdown-content a {
+    font-size: small;
+    padding-right: 4vw;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.icon-paleta {
+    width: 3vw;
+    height: 3vw;
+    margin-top: 2.5vw;
+}

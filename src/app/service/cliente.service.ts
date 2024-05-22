@@ -69,6 +69,11 @@ export class ClienteService {
       }
     );
   }
+
+  checkAdmin(): void { 
+    this.http.get<boolean>('http://localhost:8090/clientes/checkAdmin');
+    return;
+  }
 /* actualizarCliente(cliente: Cliente): Observable<void> {
     return this.http.put<void>(this.baseUrl+'/update', cliente);
   }
