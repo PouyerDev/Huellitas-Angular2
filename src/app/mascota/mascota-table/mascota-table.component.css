@@ -30,7 +30,7 @@ lima pastel     #CDFADB
     border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
-    background-color: var(--background-color);
+    background-color: var(--white-color);
     font-size: 1.2vw;
     padding: 0.8vw;
     outline: none;

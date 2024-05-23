@@ -481,7 +481,7 @@ header .navbar-full {
 .navbar-specific #header_title, .nombre-cliente {
     align-self: center;
     justify-content: center;
-    color: var(--white-color);
+    color: white;
     background-color: #ff8080;
     border-radius: 40px;
     padding: 0.5vw 1vw;

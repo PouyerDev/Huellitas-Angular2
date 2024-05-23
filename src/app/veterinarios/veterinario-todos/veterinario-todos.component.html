@@ -25,10 +25,10 @@
       <div class="mascota-info">
         <img class="img-mascota-todas" src="{{ veterinario.foto }}" alt="veterinario" />
         <div class="datos">
-          <h2>{{ veterinario.nombre }}</h2>
-          <p>Cédula: {{ veterinario.cedula }}</p>
-          <p>Especialidad: {{ veterinario.especialidad }}</p>
-          <p>Número de Atenciones: {{ veterinario.numAtenciones }}</p>
+          <h2 class="texto-color-cambiar">{{ veterinario.nombre }}</h2>
+          <p class="texto-color-cambiar">Cédula: {{ veterinario.cedula }}</p>
+          <p class="texto-color-cambiar">Especialidad: {{ veterinario.especialidad }}</p>
+          <p class="texto-color-cambiar">Número de Atenciones: {{ veterinario.numAtenciones }}</p>
         </div>
       </div>
       <div class="mascota-actions" *ngIf="veterinario.estado; else deactivatedSection">

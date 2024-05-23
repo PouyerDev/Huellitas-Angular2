@@ -11,14 +11,14 @@
 </head>
 
 <section class="content-mascota-specific">
-    <h1>Detalle de Veterinario</h1>
+    <h1 class="texto-color-cambiar">Detalle de Veterinario</h1>
     <div id="mascota-container">
         <img class="img-mascota" src="{{veterinario.foto}}" alt="veterinario">
         <div id="informacionMascota">
-            <h2>{{veterinario.nombre}}</h2>
-            <p>Cédula: {{veterinario.cedula}}</p>
-            <p>Especialidad: {{veterinario.especialidad}}</p>
-            <p>Número de Atenciones: {{veterinario.numAtenciones}}</p>
+            <h2 class="texto-color-cambiar">{{veterinario.nombre}}</h2>
+            <p class="texto-color-cambiar">Cédula: {{veterinario.cedula}}</p>
+            <p class="texto-color-cambiar">Especialidad: {{veterinario.especialidad}}</p>
+            <p class="texto-color-cambiar">Número de Atenciones: {{veterinario.numAtenciones}}</p>
             <button class="btn-primary" [routerLink]="['/veterinario/update/' + veterinario.id]">Modificar</button>
         </div>
     </div>

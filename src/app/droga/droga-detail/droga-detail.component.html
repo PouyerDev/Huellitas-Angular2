@@ -17,10 +17,10 @@
     <div *ngIf="droga">
         <div style="text-align: center;" id="informacionCliente">
             <h2 class="nombre-cliente">{{ droga.nombre }}</h2>
-            <p><strong>Precio Compra:</strong> {{ droga.precioCompra }}</p>
-            <p><strong>Precio Venta:</strong> {{ droga.precioVenta }}</p>
-            <p><strong>Unidades Disponibles:</strong> {{ droga.unidadesDisponibles }}</p>
-            <p><strong>Unidades Vendidas:</strong> {{ droga.unidadesVendidas }}</p>
+            <p class="texto-color-cambiar"><strong>Precio Compra:</strong> {{ droga.precioCompra }}</p>
+            <p class="texto-color-cambiar"><strong>Precio Venta:</strong> {{ droga.precioVenta }}</p>
+            <p class="texto-color-cambiar"><strong>Unidades Disponibles:</strong> {{ droga.unidadesDisponibles }}</p>
+            <p class="texto-color-cambiar"><strong>Unidades Vendidas:</strong> {{ droga.unidadesVendidas }}</p>
             <button class="btn-primary" [routerLink]="['/droga/update/', droga.id]">Modificar</button>
         </div>
     </div>

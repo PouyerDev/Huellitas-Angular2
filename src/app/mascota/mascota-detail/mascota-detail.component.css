@@ -138,7 +138,7 @@ lima pastel     #CDFADB
     border: 0.2vw solid var(--second-color);
     text-align: center;
     line-height: 1;
-    background-color: rgba(255, 255, 255, 0.353);
+    background-color: var(--background-color);
     font-size: 1.2vw;
     padding: 0.8vw;
     outline: none;
@@ -872,6 +872,12 @@ button {
     text-align: center;
 }
 
+h1 {
+    text-align: center;
+    margin-top: 11vw;
+    margin-bottom: 2vw;
+
+}
 #service-image {
     width: 40%;
     height: auto;

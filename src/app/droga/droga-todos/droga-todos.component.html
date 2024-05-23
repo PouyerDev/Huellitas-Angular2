@@ -26,7 +26,7 @@
         <table class="tabla-general">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th >Nombre</th>
                     <th>Precio Compra</th>
                     <th>Precio Venta</th>
                     <th>Unidades Disponibles</th>
@@ -36,11 +36,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let droga of drogasList">
-                    <td>{{ droga.nombre }}</td>
-                    <td>{{ droga.precioCompra }}</td>
-                    <td>{{ droga.precioVenta }}</td>
-                    <td>{{ droga.unidadesDisponibles }}</td>
-                    <td>{{ droga.unidadesVendidas }}</td>
+                    <td class="texto-color-cambiar">{{ droga.nombre }}</td>
+                    <td class="texto-color-cambiar">{{ droga.precioCompra }}</td>
+                    <td class="texto-color-cambiar">{{ droga.precioVenta }}</td>
+                    <td class="texto-color-cambiar">{{ droga.unidadesDisponibles }}</td>
+                    <td class="texto-color-cambiar">{{ droga.unidadesVendidas }}</td>
                     <td id="actions_cliente">
                         <a [routerLink]="['/droga/droga-detail', droga.id]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ffa074"

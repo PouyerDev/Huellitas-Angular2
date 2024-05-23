@@ -65,7 +65,7 @@ lima pastel     #CDFADB
     margin-left: 2vw;
     width: 30vw;
     border-radius: 1vw;
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     align-self: center;
 }
 
@@ -98,7 +98,7 @@ lima pastel     #CDFADB
     height: 6vw;
     border-radius: 1vw;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     margin-top: 3vw;
     text-align: center;
     transition: 0.3s;
@@ -816,7 +816,8 @@ button {
 
 h1 {
     text-align: center;
-    margin-bottom: 5vw;
+    margin-top: 11vw;
+    margin-bottom: 2vw;
 }
 .btn-primary{
     margin-left: 1vw;
