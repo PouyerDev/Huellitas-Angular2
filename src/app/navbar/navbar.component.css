@@ -227,7 +227,7 @@ header .navbar-full {
     border-radius: 1vw;
     position: absolute;
     background-color: var(--white-color);
-    width: 4vw;
+    max-width: 6vw;
     padding-right: 2vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;

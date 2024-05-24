@@ -14,7 +14,7 @@ export class ThemeService {
             secondColor: '#FF7474', //Rosa fuerte
             thirdColor: '#FCF4C4',
             fourthColor: '#FFA074',
-            fifthColor: '#CEE3FA',
+            fifthColor: '#FFCF96',
             sixthColor: '#CDFADB'
         },
         dark: {
